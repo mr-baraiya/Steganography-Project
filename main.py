@@ -135,7 +135,7 @@ def update_output_area(message, success=True):
 
 # Setup Tkinter GUI
 root = tk.Tk()
-root.title("Steganography Encoder/Decoder")
+root.title("Steganography Encoder/Decoder By Vi.685")
 
 # Set window size and background color
 root.geometry("500x500")
