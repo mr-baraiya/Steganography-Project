@@ -93,9 +93,6 @@ steganography-project/
 
 Contributions are welcome! You can fork this repository, make improvements, or submit bug fixes. Please feel free to create a pull request with your changes.
 
-## License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
