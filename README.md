@@ -1,6 +1,3 @@
-Here’s the README.md file formatted for your project. You can copy and paste this directly into your project:
-
-```markdown
 # Steganography Encoder/Decoder
 
 This Python-based Steganography tool allows users to encode a secret message into an image and decode it using a passcode. The application uses the **Least Significant Bit (LSB)** method for encoding the message into the image. The user interface is built using `Tkinter` to make the process simple and intuitive.
@@ -106,5 +103,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - **Tkinter**: For building the graphical user interface.
 - **NumPy**: For efficient data handling and manipulation.
 ```
-
-This README file provides a comprehensive overview of your project, including features, installation instructions, usage examples, and more. You can customize the repository link and other details as needed.
