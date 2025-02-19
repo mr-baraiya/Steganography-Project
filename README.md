@@ -99,4 +99,3 @@ Contributions are welcome! You can fork this repository, make improvements, or s
 - **OpenCV**: For image manipulation.
 - **Tkinter**: For building the graphical user interface.
 - **NumPy**: For efficient data handling and manipulation.
-```
