@@ -42,7 +42,7 @@ pip install opencv-python numpy
 
 1. Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/your-username/steganography-project.git
+   git clone https://github.com/mr-baraiya/Steganography-Project.git
    ```
 2. Install the required dependencies:
    ```bash
