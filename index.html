@@ -5,17 +5,17 @@
     <!-- Core Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CELATUS — Hide. Secure. Reveal.</title>
+    <title>CELATUS — Hide. Secure. Reveal. | Native Security Software</title>
     <meta name="description"
-        content="CELATUS (seh-LAH-tus) is an open-source application suite & web studio for concealing encrypted UTF-8 text payloads inside carrier images using Least Significant Bit (LSB) channel encoding.">
+        content="CELATUS is an open-source cross-platform steganography software suite for Windows, macOS, Linux, Android, and iOS to conceal encrypted text payloads inside carrier images.">
     <meta name="keywords"
-        content="steganography, LSB encoding, image steganography, CELATUS, data hiding, covert communication, cybersecurity, cryptography, secret message image">
+        content="steganography, LSB encoding, CELATUS, security software, data hiding, covert communication, cybersecurity, cryptography, image steganography">
     <meta name="author" content="CELATUS Project">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#4f46e5">
+    <meta name="theme-color" content="#F8FAFC">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="CELATUS">
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://mr-baraiya.github.io/Steganography-Project/">
@@ -26,7 +26,7 @@
     <meta property="og:url" content="https://mr-baraiya.github.io/Steganography-Project/">
     <meta property="og:title" content="CELATUS — Hide. Secure. Reveal.">
     <meta property="og:description"
-        content="Conceal secret UTF-8 payloads undetected inside carrier images with LSB channel encoding & passcode key security. Includes Web Studio & native desktop app.">
+        content="Conceal secret UTF-8 payloads undetected inside carrier images with LSB channel encoding & passcode key security. Free native software for Windows, Mac, Linux, Android, iOS.">
     <meta property="og:image" content="assets/icon.png">
 
     <!-- Twitter Card Meta Tags -->
@@ -36,48 +36,77 @@
         content="Conceal secret UTF-8 payloads undetected inside carrier images using LSB channel encoding and passcode protection.">
     <meta name="twitter:image" content="assets/icon.png">
 
-    <!-- Favicon & Icons -->
+    <!-- Favicon & Typography -->
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/icon.ico">
     <link rel="apple-touch-icon" href="assets/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --card-bg-subtle: #f1f5f9;
-            --card-border: #e2e8f0;
-            --card-border-hover: #4f46e5;
-            --accent-primary: #4f46e5;
-            --accent-hover: #4338ca;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --text-bright: #4338ca;
+            --bg-light: #F8FAFC;
+            --bg-surface: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-card-subtle: #F1F5F9;
+            --border-subtle: #E2E8F0;
+            --border-hover: #4F46E5;
+            --accent-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            --accent-indigo: #4F46E5;
+            --accent-indigo-hover: #4338CA;
+            --text-title: #0F172A;
+            --text-body: #475569;
+            --text-muted: #64748B;
             --success: #059669;
-            --warning: #d97706;
-            --error: #dc2626;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
-            --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.12);
+            --warning: #D97706;
+            --error: #DC2626;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+            --shadow-glow: 0 10px 30px -10px rgba(79, 70, 229, 0.35);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             background-color: var(--bg-light);
-            color: var(--text-main);
+            color: var(--text-body);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 100% 40%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 80%, rgba(14, 165, 233, 0.06) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, .brand-name {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-title);
+        }
+
+        /* Light Grid Pattern Overlay */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Header Navigation */
@@ -85,13 +114,14 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid var(--card-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.88);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .nav-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -102,628 +132,622 @@
         .brand-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
-            color: var(--text-main);
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--accent-primary);
-            border-radius: 8px;
+        .brand-icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #EEF2FF;
+            border: 1px solid #C7D2FE;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 16px;
-            color: #fff;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
         }
 
         .brand-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: var(--text-main);
+            background: linear-gradient(135deg, #0F172A 30%, #4338CA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 28px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-body);
             text-decoration: none;
-            font-weight: 600;
             font-size: 14px;
-            transition: color 0.15s ease;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: var(--text-main);
+            color: var(--accent-indigo);
         }
 
-        .nav-cta {
-            background: var(--accent-primary);
-            color: #fff !important;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600 !important;
-            transition: background 0.15s ease !important;
+        .nav-cta-btn {
+            background: var(--accent-indigo);
+            color: #fff;
+            padding: 9px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+            transition: all 0.2s ease;
         }
 
-        .nav-cta:hover {
-            background: var(--accent-hover);
+        .nav-cta-btn:hover {
+            background: var(--accent-indigo-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
         }
 
         /* Hero Section */
-        .hero {
-            max-width: 900px;
+        .hero-section {
+            position: relative;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 48px 24px 32px;
-            text-align: left;
+            padding: 70px 24px 60px;
+            text-align: center;
+            z-index: 1;
         }
 
-        .hero-header-row {
-            display: flex;
+        .version-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 16px;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            color: #4338CA;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 24px;
         }
 
-        .hero-icon-frame {
-            padding: 6px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 12px 28px -6px rgba(79, 70, 229, 0.22), 0 4px 12px rgba(15, 23, 42, 0.04);
-            border: 1px solid rgba(199, 210, 256, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            flex-shrink: 0;
-        }
-
-        .hero-icon-frame:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 18px 36px -8px rgba(79, 70, 229, 0.3);
-            border-color: var(--accent-primary);
-        }
-
-        .hero-brand-img {
-            width: 64px;
-            height: 64px;
-            border-radius: 14px;
-            display: block;
-        }
-
-        .hero-title-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        .version-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #059669;
+            box-shadow: 0 0 8px #059669;
         }
 
         .hero-title {
-            font-size: 44px;
+            font-size: 56px;
             font-weight: 800;
-            line-height: 1;
-            letter-spacing: -1.2px;
-            margin-bottom: 4px;
-            color: #0f172a;
-        }
-
-        .hero-tagline {
-            font-size: 18px;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #0F172A 20%, #334155 60%, #4338CA 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline-sub {
+            display: block;
+            font-size: 22px;
             font-weight: 700;
-            letter-spacing: -0.3px;
-            margin-bottom: 0;
+            color: #4338CA;
+            margin-top: 6px;
+            -webkit-text-fill-color: initial;
         }
 
         .hero-description {
-            max-width: 660px;
-            margin: 0 0 28px;
-            color: #64748b;
-            font-size: 16px;
+            max-width: 760px;
+            margin: 0 auto 32px;
+            font-size: 17px;
+            color: var(--text-body);
             line-height: 1.6;
         }
 
-        .etymology-text {
-            font-size: 13px;
-            color: #64748b;
-            margin-bottom: 36px;
-            line-height: 1.5;
+        /* Hero Buttons Container */
+        .hero-btn-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
 
-        .etymology-text strong {
-            color: #1e293b;
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gradient);
+            color: #FFFFFF;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 15px;
             font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-glow);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Web Studio Container */
-        .studio-container {
-            max-width: 1000px;
-            margin: 0 auto 70px;
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            box-shadow: var(--shadow-md);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.45);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #F1F5F9;
+            color: #0F172A;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid #CBD5E1;
+            transition: all 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #E2E8F0;
+            border-color: #94A3B8;
+            transform: translateY(-2px);
+        }
+
+        /* Trust Badges Strip */
+        .trust-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* App Preview Mockup Window (Sleek Contrast App Frame) */
+        .mockup-container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: #0F172A;
+            border-radius: 16px;
+            border: 1px solid #1E293B;
+            box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25), 0 0 30px rgba(79, 70, 229, 0.12);
             overflow: hidden;
+            text-align: left;
         }
 
-        .studio-header {
-            background: #f8fafc;
-            padding: 14px 20px;
+        .mockup-titlebar {
+            background: #080C14;
+            padding: 12px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid var(--card-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .studio-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .studio-mode-switcher {
+        .mockup-dots {
             display: flex;
-            background: #e2e8f0;
-            border-radius: 6px;
-            padding: 3px;
-            gap: 2px;
+            gap: 8px;
         }
 
-        .mode-btn {
-            background: transparent;
-            color: var(--text-muted);
-            border: none;
-            padding: 5px 16px;
-            border-radius: 4px;
-            font-size: 13px;
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #FF5F56; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #27C93F; }
+
+        .mockup-title {
+            font-size: 12px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s ease;
+            color: #94A3B8;
+            letter-spacing: 0.5px;
         }
 
-        .mode-btn.active {
-            background: var(--accent-primary);
-            color: #fff;
-        }
-
-        .studio-grid {
+        .mockup-body {
+            padding: 24px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 24px;
+            gap: 16px;
         }
 
-        .panel-card {
-            background: #f8fafc;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
+        .mock-card {
+            background: #151D2A;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #263346;
+        }
+
+        .mock-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #E5E7EB;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mock-img-placeholder {
+            height: 160px;
+            background: #0D131F;
+            border-radius: 8px;
+            border: 1px dashed #263346;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94A3B8;
+            font-size: 13px;
+        }
+
+        .mock-input {
+            width: 100%;
+            height: 90px;
+            background: #0D131F;
+            border: 1px solid #1E293B;
+            border-radius: 8px;
+            padding: 10px;
+            color: #F9FAFB;
+            font-size: 12px;
+            resize: none;
+            margin-bottom: 12px;
+        }
+
+        .mock-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34D399;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .mock-btn {
+            width: 100%;
+            background: #6366F1;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .mock-console {
+            grid-column: span 2;
+            background: #151D2A;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid #263346;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #818CF8;
+        }
+
+        /* Features Section */
+        .section-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--accent-indigo);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-body);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #6366F1;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon-frame {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* Download Center Section */
+        .download-center {
+            background: #F1F5F9;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .download-grid-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .dl-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .dl-card:hover {
+            border-color: var(--accent-indigo);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px -10px rgba(79, 70, 229, 0.2);
+        }
+
+        .dl-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .dl-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dl-tag {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(79, 70, 229, 0.08);
+            color: #4338CA;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+
+        .dl-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 6px;
+        }
+
+        .dl-meta {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #F1F5F9;
+            color: #0F172A;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .dl-card:hover .dl-btn {
+            background: var(--accent-indigo);
+            color: #FFFFFF;
+        }
+
+        .featured-dl-card {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #FFFFFF 0%, #EEF2FF 100%);
+            border: 1px solid #C7D2FE;
+            box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Protocol Spec Section */
+        .protocol-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .protocol-grid-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .proto-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
             padding: 18px;
+        }
+
+        .proto-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 6px;
+        }
+
+        .proto-value {
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            color: #4338CA;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 14px;
         }
 
-        .panel-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .drop-zone {
-            border: 2px dashed #cbd5e1;
-            border-radius: 8px;
-            padding: 20px 16px;
-            text-align: center;
-            background: #ffffff;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .drop-zone:hover,
-        .drop-zone.dragover {
-            border-color: var(--accent-primary);
-            background: #eef2ff;
-        }
-
-        .preview-img {
-            max-width: 100%;
-            max-height: 180px;
-            object-fit: contain;
-            border-radius: 4px;
-        }
-
-        .field-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .field-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .input-control {
-            width: 100%;
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 9px 12px;
-            color: var(--text-main);
-            font-size: 13px;
-            outline: none;
-            transition: border-color 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .input-control:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
-        }
-
-        textarea.input-control {
-            height: 100px;
-            resize: none;
-        }
-
-        .passcode-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .passcode-toggle {
-            position: absolute;
-            right: 8px;
-            background: #f1f5f9;
-            border: 1px solid #cbd5e1;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 4px;
-        }
-
-        .action-btn-main {
-            background: var(--accent-primary);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.15s ease;
-            width: 100%;
-        }
-
-        .action-btn-main:hover {
-            background: var(--accent-hover);
-        }
-
-        .action-btn-main:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .status-badge {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 6px;
-            background: #fffbebfb;
-            color: var(--warning);
-            border: 1px solid #fde68a;
-        }
-
-        .status-badge.valid {
-            background: #ecfdf5;
-            color: var(--success);
-            border-color: #a7f3d0;
-        }
-
-        .status-badge.invalid {
-            background: #fef2f2;
-            color: var(--error);
-            border-color: #fecaca;
-        }
-
-        .console-box {
-            background: #0f172a;
-            border: 1px solid #1e293b;
-            border-radius: 6px;
-            padding: 10px;
-            font-family: 'Fira Code', monospace;
-            font-size: 11px;
-            color: #818cf8;
-            height: 85px;
-            overflow-y: auto;
-        }
-
-        /* Clean Light Downloads Section */
-        .downloads-section {
-            max-width: 1060px;
-            margin: 0 auto 80px;
-            padding: 0 24px;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
-            text-align: center;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            font-size: 15px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .downloads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .featured-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
-            border: 1px solid #c7d2fe;
-            border-radius: 16px;
-            padding: 24px 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.25s ease;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-card:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .featured-content {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            z-index: 1;
-        }
-
-        .platform-icon-box {
-            width: 52px;
-            height: 52px;
-            background: #eef2ff;
-            border: 1px solid #c7d2fe;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .featured-info h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .badge-recommended {
-            background: #10b981;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 3px 10px;
-            border-radius: 12px;
-            letter-spacing: 0.3px;
-        }
-
-        .featured-subtext {
-            font-size: 13px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 4px;
-            flex-wrap: wrap;
-        }
-
-        .download-action-btn {
-            background: var(--accent-primary);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            z-index: 1;
-            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
-        }
-
-        .featured-card:hover .download-action-btn {
-            background: var(--accent-hover);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
-            transform: scale(1.02);
-        }
-
-        .download-card {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 16px;
-            text-decoration: none;
-            color: inherit;
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
             box-shadow: var(--shadow-sm);
-            transition: all 0.2s ease;
-            position: relative;
         }
 
-        .download-card:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .card-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-        }
-
-        .card-icon {
-            width: 42px;
-            height: 42px;
-            background: #f8fafc;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 6px;
-            background: #f1f5f9;
-            color: var(--text-muted);
-            border: 1px solid var(--card-border);
-        }
-
-        .card-tag.ppt {
-            background: #fef3c7;
-            color: #d97706;
-            border-color: #fde68a;
-        }
-
-        .card-body h4 {
+        .faq-q {
             font-size: 16px;
             font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 4px;
+            color: var(--text-title);
+            margin-bottom: 8px;
         }
 
-        .card-body p {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-family: 'Fira Code', monospace;
+        .faq-a {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.6;
         }
 
-        .card-footer {
+        /* Footer */
+        footer {
+            border-top: 1px solid #1E293B;
+            background: #0F172A;
+            padding: 40px 24px;
+            text-align: center;
+            color: #94A3B8;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            padding-top: 12px;
-            border-top: 1px solid var(--card-border);
-            transition: color 0.15s ease;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
         }
 
-        .download-card:hover .card-footer {
-            color: var(--accent-hover);
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        /* Protocol Specification Box */
-        .protocol-card {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: var(--shadow-sm);
-            max-width: 1000px;
-            margin: 0 auto 70px;
+        .footer-links a {
+            color: #E2E8F0;
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
 
-        .protocol-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 12px;
+        .footer-links a:hover {
+            color: #818CF8;
         }
 
-        .protocol-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            font-family: 'Fira Code', monospace;
-            font-size: 12px;
-        }
-
-        .protocol-item {
-            background: #f8fafc;
-            border: 1px solid var(--card-border);
-            padding: 10px;
-            border-radius: 6px;
-            color: var(--text-muted);
-        }
-
-        .protocol-item span {
-            color: var(--text-main);
-            display: block;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-
-        /* Modal Overlay */
+        /* Result & Download Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(6px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.25s ease;
         }
 
         .modal-overlay.active {
@@ -732,578 +756,567 @@
         }
 
         .modal-box {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 24px;
-            width: 420px;
-            max-width: 90%;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
+            background: #FFFFFF;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 520px;
+            padding: 28px;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
         }
 
-        .modal-box h3 {
+        .modal-title {
             font-size: 18px;
-            margin-bottom: 10px;
-            color: var(--text-main);
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #0F172A;
         }
 
         .modal-content-area {
-            background: #f8fafc;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 12px;
-            font-size: 13px;
-            color: var(--text-main);
-            word-break: break-all;
-            max-height: 150px;
-            overflow-y: auto;
-            margin-bottom: 16px;
-            text-align: left;
-            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            white-space: pre-line;
         }
 
         .modal-actions {
             display: flex;
-            gap: 8px;
-            justify-content: center;
+            justify-content: flex-end;
+            gap: 12px;
         }
 
         .modal-btn {
-            background: var(--accent-primary);
+            background: var(--accent-indigo);
             color: #fff;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
             font-size: 13px;
             cursor: pointer;
         }
 
-        .modal-btn-secondary {
-            background: #f1f5f9;
-            color: var(--text-main);
-            border: 1px solid #cbd5e1;
+        /* Mobile Responsive Media Queries */
+        @media (max-width: 850px) {
+            .featured-dl-card {
+                grid-column: span 1;
+            }
+            .mockup-body {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 38px;
+            }
         }
 
-        footer {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--card-border);
-            background: #f8fafc;
-        }
-
-        footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        /* Mobile & Tablet Responsive Media Queries */
         @media (max-width: 768px) {
             .nav-container {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
                 padding: 12px 16px;
-                gap: 8px;
             }
-
             .nav-links {
-                width: auto;
-                gap: 8px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-                white-space: nowrap;
-                padding: 4px 8px;
-            }
-
-            .hero {
-                padding: 28px 16px 20px;
-                text-align: center;
-            }
-
-            .hero-header-row {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 12px;
-            }
-
-            .hero-icon-frame {
                 display: none;
             }
-
-            .hero-title-group {
-                align-items: center;
+            .nav-cta-btn {
+                padding: 7px 14px;
+                font-size: 12px;
             }
-
+            .hero-section {
+                padding: 40px 16px 40px;
+            }
             .hero-title {
-                font-size: 36px;
+                font-size: 34px;
+                letter-spacing: -0.5px;
             }
-
-            .hero-tagline {
+            .hero-tagline-sub {
                 font-size: 17px;
             }
-
             .hero-description {
-                font-size: 14px;
-                margin: 0 auto 24px;
+                font-size: 15px;
+                margin-bottom: 24px;
             }
-
-            .etymology-text {
-                font-size: 12px;
-                line-height: 1.4;
-            }
-
-            .studio-container {
-                margin-bottom: 40px;
-                border-radius: 12px;
-            }
-
-            .studio-header {
+            .hero-btn-group {
                 flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-                padding: 12px 16px;
+                width: 100%;
             }
-
-            .studio-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                padding: 16px;
-            }
-
-            .panel-card {
-                padding: 14px;
-            }
-
-            .downloads-section {
-                padding: 0 16px;
-                margin-bottom: 50px;
-            }
-
-            .section-title {
-                font-size: 22px;
-            }
-
-            .section-subtitle {
-                font-size: 13px;
-                margin-bottom: 20px;
-            }
-
-            .downloads-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            .featured-card {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 16px;
-                padding: 20px;
-            }
-
-            .download-action-btn {
+            .btn-primary, .btn-secondary {
                 width: 100%;
                 justify-content: center;
+                padding: 13px 20px;
             }
-
-            .protocol-card {
-                margin: 0 16px 40px;
+            .trust-strip {
+                gap: 12px 18px;
+                font-size: 12px;
+                margin-bottom: 36px;
+            }
+            .mockup-body {
+                grid-template-columns: 1fr;
                 padding: 16px;
             }
-
-            .protocol-grid {
+            .mock-console {
+                grid-column: span 1;
+            }
+            .section-wrapper {
+                padding: 50px 16px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .features-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
-
-            footer {
+            .feature-card {
+                padding: 20px;
+            }
+            .download-grid-matrix {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .featured-dl-card {
+                grid-column: span 1;
+            }
+            .protocol-box {
+                padding: 20px;
+            }
+            .footer-container {
                 flex-direction: column;
-                gap: 12px;
                 text-align: center;
-                padding: 20px 16px;
+                gap: 16px;
             }
-
             .footer-links {
-                display: flex;
-                flex-direction: row;
                 flex-wrap: wrap;
-                align-items: center;
                 justify-content: center;
-                gap: 6px 10px;
-                font-size: 13px;
-            }
-
-            .footer-links span.footer-dot {
-                display: inline-block;
-                color: #cbd5e1;
             }
         }
 
         @media (max-width: 480px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            .version-badge {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
             .brand-name {
-                font-size: 16px;
-            }
-
-            .logo-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-
-            .nav-links {
-                gap: 6px 6px;
-            }
-
-            .nav-links a {
-                font-size: 12px;
-                padding: 3px 6px;
-            }
-
-            .featured-subtext {
-                font-size: 12px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2px;
-            }
-
-            .featured-subtext span:nth-child(even) {
-                display: none;
+                font-size: 18px;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="grid-bg"></div>
 
     <!-- Header Navigation -->
     <header>
         <div class="nav-container">
             <a href="#" class="brand-logo">
-                <img src="assets/icon.png" alt="CELATUS"
-                    style="width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25); object-fit: contain;">
+                <div class="brand-icon-box">
+                    <img src="assets/icon.png" alt="CELATUS Icon" style="width: 24px; height: 24px; object-fit: contain;">
+                </div>
                 <span class="brand-name">CELATUS</span>
             </a>
             <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
                 <li><a href="#downloads">Downloads</a></li>
-
+                <li><a href="#protocol">Architecture</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
+            <a href="#downloads" class="nav-cta-btn">Download Software</a>
         </div>
     </header>
 
-    <!-- Main Hero -->
-    <section class="hero">
-        <div class="hero-header-row">
-            <div class="hero-icon-frame">
-                <img src="assets/icon.png" alt="CELATUS App Icon" class="hero-brand-img">
-            </div>
-            <div class="hero-title-group">
-                <h1 class="hero-title">CELATUS</h1>
-                <div class="hero-tagline">Hide. Secure. Reveal.</div>
-            </div>
+    <!-- Main Hero Section -->
+    <section class="hero-section">
+        <div class="version-badge">
+            <span class="version-badge-dot"></span>
+            <span>CELATUS v1.0.0 — Cross-Platform Security Suite</span>
         </div>
+
+        <h1 class="hero-title">
+            Hide. Secure. Reveal.
+            <span class="hero-tagline-sub">Enterprise-Grade Image Steganography Software</span>
+        </h1>
+
         <p class="hero-description">
-            Cross-platform security software application for Windows, macOS, Linux, Android, and iOS to conceal encrypted UTF-8 text payloads inside carrier images using LSB channel encoding.
+            Conceal encrypted UTF-8 text payloads undetected inside carrier images using Least Significant Bit (LSB) channel encoding. Built natively for <strong>Windows, macOS, Linux, Android, and iOS</strong>.
         </p>
 
-        <div style="display: flex; gap: 14px; justify-content: center; align-items: center; margin-top: 24px; flex-wrap: wrap;">
-            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="action-btn-main"
-                style="width: auto !important; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px 24px; font-weight: 700; font-size: 14px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <!-- CTA Buttons -->
+        <div class="hero-btn-group">
+            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="btn-primary" onclick="triggerAppDownload('Windows Setup', event)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
                 </svg>
                 Download Windows Setup (43.8 MB)
             </a>
-            <a href="#downloads" class="action-btn-main"
-                style="width: auto !important; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #1e293b; text-decoration: none; padding: 12px 22px; font-size: 14px; color: #f8fafc; border: 1px solid #334155;">
-                All OS Downloads (macOS, Linux, Mobile)
+
+            <a href="#downloads" class="btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                All Platform Downloads
             </a>
         </div>
 
-        <div class="etymology-text" style="margin-top: 28px;">
-            Latin <strong>celatus</strong> (pronounced <em>seh-LAH-tus</em>) — perfect passive participle of
-            <em>cēlō</em> ("to hide" or "conceal").
+        <!-- Trust Badges Strip -->
+        <div class="trust-strip">
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>100% Offline Privacy</span>
+            </div>
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>Zero Pixel Degradation</span>
+            </div>
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>AES-16 Passcode Hash</span>
+            </div>
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>MIT Open Source</span>
+            </div>
+        </div>
+
+        <!-- Software UI Preview Window (Contrast Mac/Windows Window Frame) -->
+        <div class="mockup-container">
+            <div class="mockup-titlebar">
+                <div class="mockup-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="mockup-title">CELATUS v1.0.0 — Security Studio (Desktop Preview)</div>
+                <div style="font-size: 11px; font-weight: 700; color: #818CF8;">ENCODE MODE</div>
+            </div>
+            <div class="mockup-body">
+                <div class="mock-card">
+                    <div class="mock-card-title">
+                        <span>Source Image</span>
+                        <span style="font-size: 11px; color: #94A3B8;">demo.png (1920x1080)</span>
+                    </div>
+                    <div class="mock-img-placeholder">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" style="margin-bottom: 8px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>Carrier Image Loaded</span>
+                        <span style="font-size: 11px; color: #34D399; margin-top: 4px;">Max Capacity: 777,600 bytes</span>
+                    </div>
+                </div>
+
+                <div class="mock-card">
+                    <div class="mock-card-title">
+                        <span>Payload & Key</span>
+                    </div>
+                    <textarea class="mock-input" readonly>Top secret operational payload message to be concealed in carrier bits...</textarea>
+                    <div class="mock-badge">✓ Passcode Key Valid (AES-16 Checksum OK)</div>
+                    <div class="mock-btn">Encode Payload & Save Output</div>
+                </div>
+
+                <div class="mock-console">
+                    12:00:00 [OK] Ready. Select carrier image.<br>
+                    12:00:07 [OK] Loaded 'demo.png' (1920x1080). Max capacity: 777,600 bytes.<br>
+                    12:00:15 [OK] Payload encoded cleanly. Saved as 'demo_encoded.png'.
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- PLATFORM FEATURES SHOWCASE -->
-    <section id="software-features" style="padding: 0 24px 30px;">
-        <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 14px; padding: 24px;">
-                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Platform Features Section -->
+    <section class="section-wrapper" id="features">
+        <div class="section-header">
+            <span class="section-tag">Powerful Security Architecture</span>
+            <h2 class="section-title">Engineered for Absolute Confidentiality</h2>
+            <p class="section-subtitle">CELATUS combines Least Significant Bit channel encoding with passcode key validation to ensure covert data transmission without visual footprints.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-frame" style="background: #EEF2FF; border: 1px solid #C7D2FE;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                         <line x1="8" y1="21" x2="16" y2="21"/>
                         <line x1="12" y1="17" x2="12" y2="21"/>
                     </svg>
                 </div>
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-bright);">Desktop Software</h3>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Native desktop application built for Windows, macOS, and Linux with full dark mode UI, zero layout compression, and high-performance pixel operations.</p>
+                <h3 class="feature-title">Native Desktop Software</h3>
+                <p class="feature-desc">Dedicated desktop application built for Windows, macOS, and Linux with modern interface, layout scaling, and high-performance pixel operations.</p>
             </div>
-            <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 14px; padding: 24px;">
-                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+            <div class="feature-card">
+                <div class="feature-icon-frame" style="background: #ECFDF5; border: 1px solid #A7F3D0;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
                         <line x1="12" y1="18" x2="12.01" y2="18"/>
                     </svg>
                 </div>
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-bright);">Mobile Applications</h3>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Standalone Android APK and iOS packages designed for mobile devices to encode and decode secret messages on the go with zero network transmission.</p>
+                <h3 class="feature-title">Mobile Packages & WebAPK</h3>
+                <p class="feature-desc">Standalone Android APK and iOS packages designed for mobile devices. Supports one-tap WebAPK native home-screen installation with full offline support.</p>
             </div>
-            <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 14px; padding: 24px;">
-                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+            <div class="feature-card">
+                <div class="feature-icon-frame" style="background: #FEF3C7; border: 1px solid #FDE68A;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                     </svg>
                 </div>
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-bright);">Key Security & Privacy</h3>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">AES-inspired 16-bit passcode key hashing and 10-byte binary header validation ensure maximum data integrity and security.</p>
+                <h3 class="feature-title">AES-16 Passcode Key Protection</h3>
+                <p class="feature-desc">Passcode key checksum verification prevents unauthorized payload extraction. Incorrect passcode keys reject payload reading before decoding begins.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-frame" style="background: #FDF4FF; border: 1px solid #F5D0FE;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">10-Byte Header Protocol</h3>
+                <p class="feature-desc">Every payload is injected with a 10-byte binary header containing magic signature <code style="color:#4F46E5; font-weight:700;">0x43454C41</code>, key hash, and 32-bit payload length descriptor.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-frame" style="background: #F0F9FF; border: 1px solid #BAE6FD;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">100% Offline & Local Privacy</h3>
+                <p class="feature-desc">All bitwise operations occur locally on your machine. Zero cloud uploads, zero telemetry tracking, and zero external server dependencies.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-frame" style="background: #FAF5FF; border: 1px solid #E9D5FF;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Lossless Image Carrier Support</h3>
+                <p class="feature-desc">Supports PNG, WebP, BMP, and carrier images. Retains pristine visual quality with zero imperceptible color shifts in RGB color channels.</p>
             </div>
         </div>
     </section>
 
-    <!-- Protocol Specs Section -->
-    <section class="protocol-card" id="protocol">
-        <div class="protocol-title">Header Protocol Specification</div>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">CELATUS prepends a 10-byte binary
-            header to the LSB bit stream prior to pixel injection:</p>
-        <div class="protocol-grid">
-            <div class="protocol-item">
-                Bytes 0–3: Signature
-                <span>0x43 0x45 0x4C 0x41 ('CELA')</span>
-            </div>
-            <div class="protocol-item">
-                Bytes 4–5: Key Checksum
-                <span>16-bit Passcode Hash</span>
-            </div>
-            <div class="protocol-item">
-                Bytes 6–9: Payload Size
-                <span>32-bit Integer Length</span>
-            </div>
-            <div class="protocol-item">
-                Bytes 10+: UTF-8 Stream
-                <span>Payload Data Stream</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Downloads & Resources Section -->
-    <section class="downloads-section" id="downloads">
-        <div style="text-align: center;">
-            <h2 class="section-title">Native Desktop & Mobile Installers</h2>
-            <p class="section-subtitle">Get the installed Windows desktop software, mobile app packages, and
-                cross-platform builds.</p>
+    <!-- Download Center Section -->
+    <section class="section-wrapper download-center" id="downloads">
+        <div class="section-header">
+            <span class="section-tag">Cross-Platform Downloads</span>
+            <h2 class="section-title">Download CELATUS for Your Device</h2>
+            <p class="section-subtitle">Select your operating system to download the native software package or installer.</p>
         </div>
 
-        <div class="downloads-grid">
-            <!-- Featured Windows Setup Installer Card -->
-            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="featured-card"
-                onclick="triggerAppDownload('Windows Setup', event)">
-                <div class="featured-content">
-                    <div class="platform-icon-box" style="background:#eef2ff;border-color:#c7d2fe;">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="#4f46e5">
-                            <path
-                                d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
-                        </svg>
-                    </div>
-                    <div class="featured-info">
-                        <h3>Windows Setup Installer</h3>
-                        <div class="featured-subtext">
-                            <span>CELATUS_Setup_v1.0.exe</span>
-                            <span>•</span>
-                            <span>43.8 MB</span>
-                            <span>•</span>
-                            <span>Windows 10 / 11 (64-bit)</span>
+        <div class="download-grid-matrix">
+            <!-- Featured Windows Setup Card -->
+            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="dl-card featured-dl-card" onclick="triggerAppDownload('Windows Setup', event)">
+                <div>
+                    <div class="dl-card-top">
+                        <div class="dl-icon" style="background: #EEF2FF; border: 1px solid #C7D2FE;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#4F46E5">
+                                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                            </svg>
                         </div>
+                        <span class="dl-tag">FEATURED • RECOMMENDED</span>
                     </div>
+                    <div class="dl-name">Windows Setup Installer</div>
+                    <div class="dl-meta">CELATUS_Setup_v1.0.exe • 43.82 MB • Windows 10 / 11 (64-bit)</div>
                 </div>
-                <div class="download-action-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    Download Setup
+                <div class="dl-btn" style="background: var(--accent-indigo); color: #FFFFFF;">
+                    <span>Download Windows Setup</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 </div>
             </a>
 
-            <!-- Windows Portable ZIP Card -->
-            <a href="downloads/celatus_windows_x64.zip" download="celatus_windows_x64.zip" class="download-card"
-                onclick="triggerAppDownload('Windows Zip', event)">
-                <div class="card-top">
-                    <div class="card-icon" style="background:#eef2ff;border-color:#c7d2fe;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#4f46e5">
-                            <path
-                                d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
-                        </svg>
+            <!-- Windows Standalone Zip Card -->
+            <a href="downloads/celatus_windows_x64.zip" download="celatus_windows_x64.zip" class="dl-card" onclick="triggerAppDownload('Windows Zip', event)">
+                <div>
+                    <div class="dl-card-top">
+                        <div class="dl-icon" style="background: #EEF2FF;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#4F46E5">
+                                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                            </svg>
+                        </div>
+                        <span class="dl-tag">PORTABLE ZIP</span>
                     </div>
-                    <span class="card-tag">PORTABLE ZIP</span>
+                    <div class="dl-name">Windows Portable Zip</div>
+                    <div class="dl-meta">celatus_windows_x64.zip • 62.50 MB • Standalone Executable</div>
                 </div>
-                <div class="card-body">
-                    <h4>Windows Standalone Zip</h4>
-                    <p>celatus_windows_x64.zip • 62.5 MB • Portable No-Install</p>
-                </div>
-                <div class="card-footer">
-                    <span>Download Windows ZIP</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
-                    </svg>
+                <div class="dl-btn">
+                    <span>Download ZIP</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
             </a>
 
-            <!-- macOS Universal Card -->
-            <a href="downloads/celatus_macOS.dmg" download="celatus_macOS.dmg" class="download-card"
-                onclick="triggerAppDownload('macOS', event)">
-                <div class="card-top">
-                    <div class="card-icon" style="background:#f1f5f9;border-color:#cbd5e1;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" color="#1e293b">
-                            <path
-                                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.36c.62-.75 1.04-1.8 0.92-2.86-.9.04-2 .6-2.65 1.36-.58.67-1.08 1.74-.94 2.78 1.01.08 2.05-.53 2.67-1.28z" />
-                        </svg>
+            <!-- macOS Installer Card -->
+            <a href="downloads/celatus_macOS.dmg" download="celatus_macOS.dmg" class="dl-card" onclick="triggerAppDownload('macOS', event)">
+                <div>
+                    <div class="dl-card-top">
+                        <div class="dl-icon" style="background: #F1F5F9;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0F172A">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.36c.62-.75 1.04-1.8 0.92-2.86-.9.04-2 .6-2.65 1.36-.58.67-1.08 1.74-.94 2.78 1.01.08 2.05-.53 2.67-1.28z" />
+                            </svg>
+                        </div>
+                        <span class="dl-tag">UNIVERSAL</span>
                     </div>
-                    <span class="card-tag">UNIVERSAL</span>
+                    <div class="dl-name">macOS DMG Package</div>
+                    <div class="dl-meta">celatus_macOS.dmg • 42.0 KB • macOS 11.0+ (Universal)</div>
                 </div>
-                <div class="card-body">
-                    <h4>macOS App Installer</h4>
-                    <p>celatus_macOS.dmg • 42.0 KB • macOS 11.0+ (Universal)</p>
-                </div>
-                <div class="card-footer">
-                    <span>Download for macOS</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
-                    </svg>
+                <div class="dl-btn">
+                    <span>Download DMG</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
             </a>
 
-            <!-- Linux Card -->
-            <a href="downloads/celatus_linux.AppImage" download="celatus_linux.AppImage" class="download-card"
-                onclick="triggerAppDownload('Linux', event)">
-                <div class="card-top">
-                    <div class="card-icon" style="background:#e0f2fe;border-color:#bae6fd;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0284c7">
-                            <path
-                                d="M12.001 2c-2.76 0-5 2.24-5 5 0 1.23.45 2.36 1.19 3.23C6.44 11.27 5 13.44 5 16c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4 0-2.56-1.44-4.73-3.19-5.77.74-.87 1.19-2 1.19-3.23 0-2.76-2.24-5-5-5zm-2 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 2.5a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5z" />
-                        </svg>
+            <!-- Linux AppImage Card -->
+            <a href="downloads/celatus_linux.AppImage" download="celatus_linux.AppImage" class="dl-card" onclick="triggerAppDownload('Linux', event)">
+                <div>
+                    <div class="dl-card-top">
+                        <div class="dl-icon" style="background: #E0F2FE;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0284C7">
+                                <path d="M12.001 2c-2.76 0-5 2.24-5 5 0 1.23.45 2.36 1.19 3.23C6.44 11.27 5 13.44 5 16c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4 0-2.56-1.44-4.73-3.19-5.77.74-.87 1.19-2 1.19-3.23 0-2.76-2.24-5-5-5zm-2 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 2.5a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5z" />
+                            </svg>
+                        </div>
+                        <span class="dl-tag">APPIMAGE</span>
                     </div>
-                    <span class="card-tag">APPIMAGE</span>
+                    <div class="dl-name">Linux Executable</div>
+                    <div class="dl-meta">celatus_linux.AppImage • 42.0 KB • Linux x86_64</div>
                 </div>
-                <div class="card-body">
-                    <h4>Linux Package</h4>
-                    <p>celatus_linux.AppImage • 42.0 KB • Linux (x86_64)</p>
-                </div>
-                <div class="card-footer">
-                    <span>Download for Linux</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
-                    </svg>
+                <div class="dl-btn">
+                    <span>Download AppImage</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
             </a>
 
-            <!-- Native Android Mobile App Card -->
-            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="download-card" onclick="handleAndroidInstall(event)">
-                <div class="card-top">
-                    <div class="card-icon" style="background:#ecfdf5;border-color:#a7f3d0;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#059669">
-                            <path
-                                d="M6 18c0 .55.45 1 1 1h1v3c0 .55.45 1 1 1s1-.45 1-1v-3h4v3c0 .55.45 1 1 1s1-.45 1-1v-3h1c.55 0 1-.45 1-1v-8H6v8zM3.5 9c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zm17 0c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71a.498.498 0 0 0-.7 0l-1.47 1.47C13.68 1.24 12.87 1 12 1s-1.68.24-2.66.62L7.87.15c-.2-.2-.51-.2-.7 0-.2.2-.2.51 0 .71l1.3 1.3C6.67 3.23 5 5.43 5 8h14c0-2.57-1.67-4.77-3.47-5.84zM9 5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
-                        </svg>
+            <!-- Android Native APK & WebAPK Card -->
+            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="dl-card" onclick="handleAndroidInstall(event)">
+                <div>
+                    <div class="dl-card-top">
+                        <div class="dl-icon" style="background: #ECFDF5;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#059669">
+                                <path d="M6 18c0 .55.45 1 1 1h1v3c0 .55.45 1 1 1s1-.45 1-1v-3h4v3c0 .55.45 1 1 1s1-.45 1-1v-3h1c.55 0 1-.45 1-1v-8H6v8zM3.5 9c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zm17 0c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71a.498.498 0 0 0-.7 0l-1.47 1.47C13.68 1.24 12.87 1 12 1s-1.68.24-2.66.62L7.87.15c-.2-.2-.51-.2-.7 0-.2.2-.2.51 0 .71l1.3 1.3C6.67 3.23 5 5.43 5 8h14c0-2.57-1.67-4.77-3.47-5.84zM9 5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+                            </svg>
+                        </div>
+                        <span class="dl-tag" style="background: #ECFDF5; color: #059669; border-color: #A7F3D0;">ANDROID APK</span>
                     </div>
-                    <span class="card-tag" style="background:#ecfdf5;color:#059669;">ANDROID APK</span>
+                    <div class="dl-name">Android Mobile App</div>
+                    <div class="dl-meta">celatus_mobile.apk • 57.2 KB • One-Tap WebAPK & Package</div>
                 </div>
-                <div class="card-body">
-                    <h4>Android Mobile App</h4>
-                    <p>celatus_mobile.apk • 57.2 KB • Native Android Package</p>
-                </div>
-                <div class="card-footer">
-                    <span>Download Android APK / Install</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
-                    </svg>
+                <div class="dl-btn" style="background: #ECFDF5; color: #059669;">
+                    <span>Download APK / Install</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
             </a>
 
-            <!-- iOS App Package Card -->
-            <a href="downloads/celatus_mobile_package.zip" download="celatus_mobile_package.zip" class="download-card" onclick="triggerAppDownload('iOS', event)">
-                <div class="card-top">
-                    <div class="card-icon" style="background:#fff7ed;border-color:#ffedd5;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#ea580c">
-                            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
-                        </svg>
+            <!-- iOS Mobile Package Card -->
+            <a href="downloads/celatus_mobile_package.zip" download="celatus_mobile_package.zip" class="dl-card" onclick="triggerAppDownload('iOS', event)">
+                <div>
+                    <div class="dl-card-top">
+                        <div class="dl-icon" style="background: #FFF7ED;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#EA580C">
+                                <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+                            </svg>
+                        </div>
+                        <span class="dl-tag" style="background: #FFF7ED; color: #EA580C; border-color: #FFEDD5;">iOS PACKAGE</span>
                     </div>
-                    <span class="card-tag" style="background:#fff7ed;color:#ea580c;">iOS PACKAGE</span>
+                    <div class="dl-name">iOS Mobile Package</div>
+                    <div class="dl-meta">celatus_mobile_package.zip • 11.8 KB • iOS Mobile Bundle</div>
                 </div>
-                <div class="card-body">
-                    <h4>iOS Mobile Package</h4>
-                    <p>celatus_mobile_package.zip • 11.8 KB • iOS Mobile Bundle</p>
-                </div>
-                <div class="card-footer">
+                <div class="dl-btn">
                     <span>Download iOS Package</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
-                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
             </a>
         </div>
     </section>
+
+    <!-- Architecture & Protocol Section -->
+    <section class="section-wrapper" id="protocol">
+        <div class="section-header">
+            <span class="section-tag">Under The Hood</span>
+            <h2 class="section-title">Header Binary Protocol Specification</h2>
+            <p class="section-subtitle">CELATUS injects a 10-byte binary validation header prior to bitwise LSB injection to enforce checksum key verification.</p>
+        </div>
+
+        <div class="protocol-box">
+            <div style="font-size: 15px; font-weight: 700; color: var(--text-title); margin-bottom: 8px;">10-Byte Header Byte Layout:</div>
+            <p style="font-size: 13px; color: var(--text-body);">The payload bitstream is preceded by 80 bits (10 bytes) of structured metadata:</p>
+
+            <div class="protocol-grid-row">
+                <div class="proto-item">
+                    <div class="proto-title">Bytes 0–3: Signature</div>
+                    <div class="proto-value">0x43 0x45 0x4C 0x41 ('CELA')</div>
+                </div>
+                <div class="proto-item">
+                    <div class="proto-title">Bytes 4–5: Key Checksum</div>
+                    <div class="proto-value">16-bit Passcode Hash</div>
+                </div>
+                <div class="proto-item">
+                    <div class="proto-title">Bytes 6–9: Payload Size</div>
+                    <div class="proto-value">32-bit Integer Length</div>
+                </div>
+                <div class="proto-item">
+                    <div class="proto-title">Bytes 10+: Encrypted Payload</div>
+                    <div class="proto-value">UTF-8 Bitstream Payload</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="section-wrapper" id="faq">
+        <div class="section-header">
+            <span class="section-tag">Got Questions?</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <div class="faq-q">How does CELATUS conceal secret text inside images?</div>
+                <div class="faq-a">CELATUS uses Least Significant Bit (LSB) channel steganography. It replaces the least significant bit of RGB pixel values in your carrier image with payload bits. Because pixel values change by at most 1 unit, the human eye cannot perceive any difference.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Is my data safe or uploaded to any server?</div>
+                <div class="faq-a">CELATUS operates 100% offline. All pixel manipulation and passcode hashing occur locally on your machine or phone. No network calls or cloud telemetry exist.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">What happens if someone enters an incorrect passcode key?</div>
+                <div class="faq-a">CELATUS evaluates the 16-bit passcode key checksum in the binary header. If an incorrect passcode is supplied, CELATUS denies access and aborts payload extraction.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                © 2026 <strong>CELATUS</strong> • Open-Source MIT License
+            </div>
+            <div class="footer-links">
+                <a href="downloads/CELATUS_Project_Presentation.pptx" download="CELATUS_Project_Presentation.pptx">Presentation PPT</a>
+                <span>•</span>
+                <a href="https://github.com/mr-baraiya/Steganography-Project" target="_blank" rel="noopener">GitHub Repository</a>
+                <span>•</span>
+                <a href="mailto:baraiyavishalbhai32@gmail.com">Contact Support</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Result & Download Modal -->
     <div class="modal-overlay" id="result-modal">
         <div class="modal-box">
-            <h3 id="modal-title">Output</h3>
-            <div class="modal-content-area" id="modal-content">Payload extracted cleanly</div>
+            <h3 class="modal-title" id="modal-title">Notification</h3>
+            <div class="modal-content-area" id="modal-content">Payload processed cleanly.</div>
             <div class="modal-actions">
-                <button class="modal-btn modal-btn-secondary" id="modal-copy-btn" style="display: none;"
-                    onclick="copyModalContent()">Copy Payload</button>
+                <button class="modal-btn" id="modal-copy-btn" style="display: none;" onclick="copyModalContent()">Copy Text</button>
                 <button class="modal-btn" onclick="closeModal()">Dismiss</button>
             </div>
         </div>
     </div>
-
-    <!-- Hidden Canvas for LSB Image Processing -->
-    <canvas id="lsb-canvas" style="display: none;"></canvas>
-
-    <!-- Footer -->
-    <footer>
-        <div>
-            © 2026 <strong>CELATUS</strong> • <a href="LICENSE">MIT License</a>
-        </div>
-        <div class="footer-links">
-            <a href="downloads/CELATUS_Project_Presentation.pptx" download="CELATUS_Project_Presentation.pptx">PPT</a>
-            <span class="footer-dot">•</span>
-            <a href="https://github.com/mr-baraiya/Steganography-Project" target="_blank" rel="noopener">GitHub</a>
-            <span class="footer-dot">•</span>
-            <a href="mailto:baraiyavishalbhai32@gmail.com">baraiyavishalbhai32@gmail.com</a>
-        </div>
-    </footer>
 
     <!-- JavaScript Software Portal Handler -->
     <script>
@@ -1319,14 +1332,14 @@
                 deferredInstallPrompt.prompt();
                 deferredInstallPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
-                        console.log('[CELATUS Mobile] Installed WebAPK native app on Android');
+                        console.log('[CELATUS Mobile] WebAPK installed on Android device');
                     }
                     deferredInstallPrompt = null;
                 });
             } else {
                 showModal(
                     'Android Installation Helper',
-                    'To install CELATUS on your Android phone:\n\n1. Open your browser menu (⋮ top right)\n2. Tap "Install App" or "Add to Home Screen"\n   -> Android will natively install CELATUS directly onto your home screen!\n\n3. If downloading raw APK file: Go to Android Settings > Security > Enable "Install Unknown Apps" for your browser.'
+                    'To install CELATUS on your Android phone:\n\n1. Open browser menu (⋮ top right)\n2. Tap "Install App" or "Add to Home Screen"\n   -> Android will natively install CELATUS onto your home screen!\n\n3. If downloading raw APK: Enable "Install Unknown Apps" in Android Settings > Security.'
                 );
             }
         }
@@ -1360,7 +1373,7 @@
                 const copyBtn = document.getElementById('modal-copy-btn');
                 if (copyBtn) {
                     copyBtn.innerText = 'Copied!';
-                    setTimeout(() => copyBtn.innerText = 'Copy Payload', 1500);
+                    setTimeout(() => copyBtn.innerText = 'Copy Text', 1500);
                 }
             }
         }
@@ -1369,7 +1382,7 @@
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
                     .then(reg => console.log('[Service Worker] Registered:', reg.scope))
-                    .catch(err => console.log('[Service Worker] Static page load'));
+                    .catch(err => console.log('[Service Worker] Static load'));
             });
         }
     </script>
