@@ -1305,373 +1305,47 @@
         </div>
     </footer>
 
-    <!-- JavaScript LSB Steganography Engine -->
+    <!-- JavaScript Software Portal Handler -->
     <script>
-        let currentMode = 'encode';
-        let loadedImage = null;
-        let imageCapacityBytes = 0;
-
-        const dropZone = document.getElementById('drop-zone');
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                loadImageFile(e.dataTransfer.files[0]);
-            }
-        });
-
-        function setStudioMode(mode) {
-            currentMode = mode;
-            document.getElementById('mode-encode-btn').classList.toggle('active', mode === 'encode');
-            document.getElementById('mode-decode-btn').classList.toggle('active', mode === 'decode');
-
-            const msgGroup = document.getElementById('msg-field-group');
-            const actionBtn = document.getElementById('process-action-btn');
-
-            if (mode === 'encode') {
-                msgGroup.style.display = 'flex';
-                actionBtn.innerText = 'Encode Payload';
-                actionBtn.style.background = 'var(--accent-primary)';
-                logConsole('Mode set to ENCODE.');
-            } else {
-                msgGroup.style.display = 'none';
-                actionBtn.innerText = 'Decode Payload';
-                actionBtn.style.background = '#8b5cf6';
-                logConsole('Mode set to DECODE.');
-            }
-            validateForm();
-        }
-
-        function handleFileSelect(e) {
-            if (e.target.files && e.target.files[0]) {
-                loadImageFile(e.target.files[0]);
-            }
-        }
-
-        function loadImageFile(file) {
-            if (!file.type.startsWith('image/')) {
-                logConsole('ERROR: File is not a valid image format.', true);
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const img = new Image();
-                img.onload = () => {
-                    loadedImage = img;
-                    document.getElementById('image-preview').src = event.target.result;
-                    document.getElementById('image-preview').style.display = 'block';
-                    document.getElementById('upload-prompt').style.display = 'none';
-                    document.getElementById('clear-img-btn').style.display = 'block';
-
-                    const width = img.width;
-                    const height = img.height;
-                    imageCapacityBytes = Math.max(0, Math.floor((width * height * 3) / 8) - 10);
-
-                    document.getElementById('img-info-badge').innerText = `${file.name} (${width}x${height})`;
-                    logConsole(`Loaded '${file.name}' (${width}x${height}). Capacity: ${imageCapacityBytes.toLocaleString()} bytes.`);
-                    validateForm();
-                };
-                img.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function clearSelectedImage() {
-            loadedImage = null;
-            imageCapacityBytes = 0;
-            document.getElementById('image-preview').style.display = 'none';
-            document.getElementById('upload-prompt').style.display = 'flex';
-            document.getElementById('clear-img-btn').style.display = 'none';
-            document.getElementById('file-input').value = '';
-            document.getElementById('img-info-badge').innerText = 'No file selected';
-            logConsole('Image cleared.');
-            validateForm();
-        }
-
-        function togglePasscodeVisibility() {
-            const passInput = document.getElementById('passcode-input');
-            const toggleBtn = document.getElementById('passcode-toggle-btn');
-            if (passInput.type === 'password') {
-                passInput.type = 'text';
-                toggleBtn.innerText = 'Hide';
-            } else {
-                passInput.type = 'password';
-                toggleBtn.innerText = 'Show';
-            }
-        }
-
-        function validateForm() {
-            const badge = document.getElementById('validation-badge');
-            const actionBtn = document.getElementById('process-action-btn');
-            const payload = document.getElementById('payload-text').value;
-            const passcode = document.getElementById('passcode-input').value;
-            const counter = document.getElementById('byte-counter');
-
-            const payloadBytes = new TextEncoder().encode(payload).length;
-            if (imageCapacityBytes > 0) {
-                counter.innerText = `${payloadBytes.toLocaleString()} / ${imageCapacityBytes.toLocaleString()} bytes`;
-            } else {
-                counter.innerText = `${payloadBytes.toLocaleString()} bytes`;
-            }
-
-            if (!loadedImage) {
-                badge.innerText = 'Select a carrier image file to start';
-                badge.className = 'status-badge';
-                actionBtn.disabled = true;
-                return false;
-            }
-
-            if (currentMode === 'encode' && payload.length === 0) {
-                badge.innerText = 'Secret message payload cannot be empty';
-                badge.className = 'status-badge';
-                actionBtn.disabled = true;
-                return false;
-            }
-
-            if (passcode.length < 4) {
-                badge.innerText = 'Passcode key must be at least 4 characters';
-                badge.className = 'status-badge';
-                actionBtn.disabled = true;
-                return false;
-            }
-
-            if (currentMode === 'encode' && payloadBytes > imageCapacityBytes) {
-                badge.innerText = `Payload (${payloadBytes} B) exceeds capacity (${imageCapacityBytes} B)`;
-                badge.className = 'status-badge invalid';
-                actionBtn.disabled = true;
-                return false;
-            }
-
-            badge.innerText = 'Inputs valid. Ready for execution.';
-            badge.className = 'status-badge valid';
-            actionBtn.disabled = false;
-            return true;
-        }
-
-        function logConsole(msg, isErr = false) {
-            const consoleBox = document.getElementById('console-log');
-            const time = new Date().toLocaleTimeString();
-            const prefix = isErr ? '[ERR]' : '[OK]';
-            const color = isErr ? 'var(--error)' : 'var(--text-bright)';
-            consoleBox.innerHTML += `<div style="color:${color}">${time} ${prefix} ${msg}</div>`;
-            consoleBox.scrollTop = consoleBox.scrollHeight;
-        }
-
-        function clearConsoleLog() {
-            document.getElementById('console-log').innerHTML = '[OK] Log cleared.';
-        }
-
-        function executeSteganographyAction() {
-            if (!validateForm()) return;
-
-            if (currentMode === 'encode') {
-                encodePayloadInCanvas();
-            } else {
-                decodePayloadFromCanvas();
-            }
-        }
-
-        function encodePayloadInCanvas() {
-            const canvas = document.getElementById('lsb-canvas');
-            const ctx = canvas.getContext('2d');
-            const width = loadedImage.width;
-            const height = loadedImage.height;
-
-            canvas.width = width;
-            canvas.height = height;
-            ctx.drawImage(loadedImage, 0, 0);
-
-            const imgData = ctx.getImageData(0, 0, width, height);
-            const data = imgData.data;
-
-            const payloadText = document.getElementById('payload-text').value;
-            const passcode = document.getElementById('passcode-input').value;
-
-            let passHash = 0;
-            for (let i = 0; i < passcode.length; i++) {
-                passHash = (passHash * 31 + passcode.charCodeAt(i)) & 0xFFFF;
-            }
-
-            const payloadBytes = new TextEncoder().encode(payloadText);
-            const payloadLen = payloadBytes.length;
-
-            const header = new Uint8Array(10);
-            header[0] = 0x43; // C
-            header[1] = 0x45; // E
-            header[2] = 0x4C; // L
-            header[3] = 0x41; // A
-            header[4] = (passHash >> 8) & 0xFF;
-            header[5] = passHash & 0xFF;
-            header[6] = (payloadLen >> 24) & 0xFF;
-            header[7] = (payloadLen >> 16) & 0xFF;
-            header[8] = (payloadLen >> 8) & 0xFF;
-            header[9] = payloadLen & 0xFF;
-
-            const fullBuffer = new Uint8Array(10 + payloadLen);
-            fullBuffer.set(header, 0);
-            fullBuffer.set(payloadBytes, 10);
-
-            const bits = [];
-            for (let i = 0; i < fullBuffer.length; i++) {
-                const b = fullBuffer[i];
-                for (let bitIndex = 7; bitIndex >= 0; bitIndex--) {
-                    bits.push((b >> bitIndex) & 1);
-                }
-            }
-
-            let bitIdx = 0;
-            for (let i = 0; i < data.length && bitIdx < bits.length; i++) {
-                if ((i + 1) % 4 === 0) continue;
-                data[i] = (data[i] & 0xFE) | bits[bitIdx++];
-            }
-
-            ctx.putImageData(imgData, 0, 0);
-
-            const dataUrl = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.download = 'celatus_encoded.png';
-            link.href = dataUrl;
-            link.click();
-
-            logConsole(`SUCCESS: Encoded payload (${payloadLen} bytes) saved as 'celatus_encoded.png'.`);
-            showModal('Encoding Successful', `Payload (${payloadLen} bytes) encoded cleanly and downloaded as celatus_encoded.png.`);
-        }
-
-        function decodePayloadFromCanvas() {
-            const canvas = document.getElementById('lsb-canvas');
-            const ctx = canvas.getContext('2d');
-            const width = loadedImage.width;
-            const height = loadedImage.height;
-
-            canvas.width = width;
-            canvas.height = height;
-            ctx.drawImage(loadedImage, 0, 0);
-
-            const imgData = ctx.getImageData(0, 0, width, height);
-            const data = imgData.data;
-
-            const extractedBits = [];
-            for (let i = 0; i < data.length; i++) {
-                if ((i + 1) % 4 === 0) continue;
-                extractedBits.push(data[i] & 1);
-            }
-
-            function readBytes(startBit, count) {
-                const bytes = new Uint8Array(count);
-                for (let i = 0; i < count; i++) {
-                    let val = 0;
-                    for (let bitIdx = 0; bitIdx < 8; bitIdx++) {
-                        const bitPos = startBit + (i * 8) + bitIdx;
-                        if (bitPos >= extractedBits.length) return null;
-                        val = (val << 1) | extractedBits[bitPos];
-                    }
-                    bytes[i] = val;
-                }
-                return bytes;
-            }
-
-            const header = readBytes(0, 10);
-            if (!header) {
-                logConsole('ERROR: Failed to read image header.', true);
-                showModal('Decode Error', 'Failed to read image header. Image may not contain a CELATUS payload.');
-                return;
-            }
-
-            if (header[0] !== 0x43 || header[1] !== 0x45 || header[2] !== 0x4C || header[3] !== 0x41) {
-                logConsole('AUTHORIZATION ERROR: Invalid signature or un-encoded image.', true);
-                showModal('Decode Error', 'No valid CELATUS stego-payload detected in this image.');
-                return;
-            }
-
-            const storedHash = (header[4] << 8) | header[5];
-            const passcode = document.getElementById('passcode-input').value;
-            let passHash = 0;
-            for (let i = 0; i < passcode.length; i++) {
-                passHash = (passHash * 31 + passcode.charCodeAt(i)) & 0xFFFF;
-            }
-
-            if (storedHash !== passHash) {
-                logConsole('AUTHORIZATION ERROR: Incorrect passcode key.', true);
-                showModal('Decode Error', 'Incorrect passcode key. Access denied.');
-                return;
-            }
-
-            const payloadLen = (header[6] << 24) | (header[7] << 16) | (header[8] << 8) | header[9];
-            if (payloadLen <= 0 || payloadLen > 10000000) {
-                logConsole('ERROR: Corrupted payload length header.', true);
-                showModal('Decode Error', 'Corrupted payload length header detected.');
-                return;
-            }
-
-            const payloadBytes = readBytes(80, payloadLen);
-            if (!payloadBytes) {
-                logConsole('ERROR: Unexpected EOF reading payload bytes.', true);
-                showModal('Decode Error', 'Image ended prematurely while reading payload.');
-                return;
-            }
-
-            const decodedText = new TextDecoder('utf-8').decode(payloadBytes);
-            logConsole(`SUCCESS: Extracted decrypted message (${payloadLen} bytes).`);
-            showModal('Decrypted Payload', decodedText, true);
+        function triggerAppDownload(platform, event) {
+            console.log('[CELATUS Portal] Initiating download for platform:', platform);
         }
 
         let currentModalText = '';
         function showModal(title, text, isCopyable = false) {
             currentModalText = text;
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-content').innerText = text;
-            document.getElementById('modal-copy-btn').style.display = isCopyable ? 'inline-block' : 'none';
-            document.getElementById('result-modal').classList.add('active');
+            const titleElem = document.getElementById('modal-title');
+            const contentElem = document.getElementById('modal-content');
+            const copyBtn = document.getElementById('modal-copy-btn');
+            const modal = document.getElementById('result-modal');
+            
+            if (titleElem) titleElem.innerText = title;
+            if (contentElem) contentElem.innerText = text;
+            if (copyBtn) copyBtn.style.display = isCopyable ? 'inline-block' : 'none';
+            if (modal) modal.classList.add('active');
         }
 
         function closeModal() {
-            document.getElementById('result-modal').classList.remove('active');
+            const modal = document.getElementById('result-modal');
+            if (modal) modal.classList.remove('active');
         }
 
         function copyModalContent() {
-            navigator.clipboard.writeText(currentModalText);
-            const copyBtn = document.getElementById('modal-copy-btn');
-            copyBtn.innerText = 'Copied!';
-            setTimeout(() => copyBtn.innerText = 'Copy Payload', 1500);
-        }
-
-        let deferredInstallPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredInstallPrompt = e;
-            const pwaBtn = document.getElementById('pwa-install-btn');
-            if (pwaBtn) pwaBtn.style.display = 'inline-flex';
-        });
-
-        function installPWAApp() {
-            if (deferredInstallPrompt) {
-                deferredInstallPrompt.prompt();
-                deferredInstallPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted CELATUS PWA install');
-                    }
-                    deferredInstallPrompt = null;
-                });
-            } else {
-                showModal('Mobile App Installation', 'To install CELATUS on Android or iOS:\n\n1. Open Chrome/Safari menu (⋮ or Share icon)\n2. Tap "Add to Home Screen" or "Install App"\n3. Or download the direct CELATUS APK file below.');
+            if (currentModalText) {
+                navigator.clipboard.writeText(currentModalText);
+                const copyBtn = document.getElementById('modal-copy-btn');
+                if (copyBtn) {
+                    copyBtn.innerText = 'Copied!';
+                    setTimeout(() => copyBtn.innerText = 'Copy Payload', 1500);
+                }
             }
-        }
-
-        function triggerAppDownload(platform, event) {
-            console.log('[CELATUS Portal] Initiating download for platform:', platform);
         }
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('[PWA] Service Worker registered with scope:', reg.scope))
-                    .catch(err => console.error('[PWA] Service Worker registration failed:', err));
+                    .then(reg => console.log('[Service Worker] Registered:', reg.scope))
+                    .catch(err => console.log('[Service Worker] Static page load'));
             });
         }
     </script>
