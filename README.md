@@ -10,6 +10,10 @@
 
 The name **Celatus** originates from Latin (the perfect passive participle of *cēlō*, meaning *"to hide"*, *"to conceal"*, or *"to keep secret"*). It signifies something that has been hidden from view, perfectly reflecting the application's core purpose: concealing sensitive data undetected inside carrier images.
 
+In English, **Celatus** is pronounced approximately:
+
+> **Celatus** (*seh-LAH-tus*)
+
 ---
 
 ## Key Features
@@ -49,19 +53,22 @@ The name **Celatus** originates from Latin (the perfect passive participle of *c
 ```
 Steganography-Project/
 ├── main.py                     # App entry point
+├── celatus.spec                # PyInstaller build specification
+├── installer_setup.iss         # Inno Setup Windows Application Installer script
+├── assets/                     # Application branding & icon assets (icon.ico, icon.png)
 ├── steganography/              # Core steganography logic package
-│   ├── __init__.py             # Exports
+│   ├── __init__.py             # Package exports
 │   ├── lsb.py                  # LSB encoding/decoding engine
 │   └── validator.py            # Input validation & capacity logic
 ├── ui/                         # User interface package
 │   ├── app.py                  # SteganographyApp CustomTkinter window
 │   └── dialogs.py              # Custom modal popups & copy-to-clipboard
 ├── downloads/                  # Native executable installer packages
-│   ├── celatus_setup.exe       # Windows 10/11 standalone executable
+│   ├── CELATUS_Setup_v1.0.exe  # Windows 10/11 Application Setup Installer
 │   ├── celatus_macOS.dmg       # macOS Universal installation package
 │   └── celatus_mobile.apk      # Android / Mobile application package
 ├── LICENSE                     # MIT License file
-├── index.html                  # Public website landing page & downloads
+├── index.html                  # Public website landing page & web studio
 ├── requirements.txt            # Project dependencies
 └── README.md                   # Project documentation
 ```
