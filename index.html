@@ -46,28 +46,28 @@
 
     <style>
         :root {
-            --bg-light: #F8FAFC;
+            --bg-light: #E0E2DB;
             --bg-surface: #FFFFFF;
             --bg-card: #FFFFFF;
-            --bg-card-subtle: #F1F5F9;
-            --border-subtle: #E2E8F0;
-            --border-hover: #4F46E5;
-            --accent-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            --accent-indigo: #4F46E5;
-            --accent-indigo-hover: #4338CA;
-            --text-title: #0F172A;
-            --text-body: #475569;
-            --text-muted: #64748B;
-            --success: #059669;
-            --warning: #D97706;
+            --bg-card-subtle: #E0E2DB;
+            --border-subtle: #191716;
+            --border-hover: #E6AF2E;
+            --accent-gradient: linear-gradient(135deg, #191716 0%, #33302E 100%);
+            --accent-indigo: #191716;
+            --accent-indigo-hover: #33302E;
+            --text-title: #191716;
+            --text-body: #191716;
+            --text-muted: #666461;
+            --success: #16A34A;
+            --warning: #E6AF2E;
             --error: #DC2626;
-            --radius-lg: 18px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
-            --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
-            --shadow-glow: 0 10px 30px -10px rgba(79, 70, 229, 0.35);
+            --radius-lg: 0px;
+            --radius-md: 0px;
+            --radius-sm: 0px;
+            --shadow-sm: 0 1px 3px rgba(25, 23, 22, 0.1);
+            --shadow-md: 0 10px 25px -5px rgba(25, 23, 22, 0.1);
+            --shadow-lg: 0 20px 40px -10px rgba(25, 23, 22, 0.15);
+            --shadow-glow: 0 10px 30px -10px rgba(230, 175, 46, 0.35);
         }
 
         * {
@@ -990,56 +990,54 @@
                     <span class="dot dot-yellow"></span>
                     <span class="dot dot-green"></span>
                 </div>
-                <div class="mockup-title">Steganography Encoder/Decoder (Desktop Software)</div>
+                <div class="mockup-title">CELATUS — Hide. Secure. Reveal.</div>
                 <div style="font-size: 11px; font-weight: 700; color: #16A34A; background: #DCFCE7; padding: 2px 8px; border-radius: 4px;">ENCODE MODE</div>
             </div>
-            <div class="mockup-body" style="grid-template-columns: 1fr 1fr; gap: 16px; background: #FFFFFF; padding: 20px; color: #1E293B;">
+            <div class="mockup-body" style="grid-template-columns: 1fr 1fr; gap: 16px; background: #FFFFFF; padding: 20px; color: #191716; border: 2px solid #191716;">
                 
                 <!-- Left Column: Image Select & Best Fit Preview -->
-                <div style="background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
-                    <div style="font-weight: 700; font-size: 13px; color: #1E293B;">Select Image:</div>
+                <div style="background: #E0E2DB; border: 1px solid #191716; border-radius: 0px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
                     <div style="display: flex; gap: 8px;">
-                        <input type="text" value="D:/Pictures/demo.png" readonly style="flex: 1; padding: 6px 10px; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 12px; color: #1E293B; background: #FFFFFF;" />
-                        <button style="background: #007BFF; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-weight: 700; font-size: 12px; cursor: pointer;">Browse</button>
+                        <input type="text" placeholder="Select image file..." value="D:/Pictures/demo.png" readonly style="flex: 1; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; background: #FFFFFF;" />
+                        <button style="background: #191716; color: #E6AF2E; border: none; padding: 8px 14px; border-radius: 0px; font-weight: 700; font-size: 12px; cursor: pointer;">Browse</button>
                     </div>
                     <!-- Best Fit Image Box -->
-                    <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 6px; flex: 1; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.8" style="margin-bottom: 8px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                        <span style="font-weight: 600; font-size: 12px; color: #1E293B;">demo.png (1920x1080)</span>
-                        <span style="font-size: 11px; color: #16A34A; margin-top: 2px;">Max capacity: 777,600 bytes (Best Fit Aspect Ratio)</span>
+                    <div style="background: #FFFFFF; border: 1px solid #191716; border-radius: 0px; flex: 1; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#191716" stroke-width="1.8" style="margin-bottom: 8px;"><rect x="3" y="3" width="18" height="18" rx="0" ry="0"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span style="font-weight: 700; font-size: 12px; color: #191716;">demo.png (1920x1080)</span>
+                        <span style="font-size: 11px; color: #E6AF2E; font-weight: 700; margin-top: 2px;">Max capacity: 777,600 bytes (Best Fit Aspect Ratio)</span>
                     </div>
-                    <div style="font-size: 11px; font-weight: 600; color: #64748B; text-align: center;">demo.png (1920x1080) • 777,600 bytes</div>
+                    <div style="font-size: 11px; font-weight: 700; color: #191716; text-align: center;">demo.png (1920x1080) • 777,600 bytes</div>
                 </div>
 
-                <!-- Right Column: Form Controls, Action Button, Radio & Logs -->
-                <div style="background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
-                    <div style="font-weight: 700; font-size: 13px; color: #1E293B;">Enter Secret Message:</div>
-                    <textarea readonly style="height: 60px; padding: 6px 10px; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 12px; color: #1E293B; font-family: inherit; resize: none; background: #FFFFFF;">This is a secret message.</textarea>
+                <!-- Right Column: Form Controls, Action Button, Square Checkboxes & Logs -->
+                <div style="background: #E0E2DB; border: 1px solid #191716; border-radius: 0px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+                    <textarea readonly placeholder="Enter Secret Message..." style="height: 70px; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; font-family: inherit; resize: none; background: #FFFFFF;">This is a secret message.</textarea>
 
-                    <div style="font-weight: 700; font-size: 13px; color: #1E293B;">Enter Passcode:</div>
                     <div style="display: flex; gap: 8px;">
-                        <input type="password" value="1234" readonly style="flex: 1; padding: 6px 10px; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 12px; color: #1E293B; background: #FFFFFF;" />
-                        <button style="background: #E2E8F0; color: #1E293B; border: none; padding: 6px 10px; border-radius: 4px; font-weight: 700; font-size: 12px;">👁</button>
+                        <input type="password" placeholder="Enter Passcode..." value="1234" readonly style="flex: 1; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; background: #FFFFFF;" />
+                        <button style="background: #191716; color: #E6AF2E; border: none; padding: 8px 10px; border-radius: 0px; font-weight: 700; font-size: 12px;">👁</button>
                     </div>
 
-                    <!-- Action Button & Radios -->
+                    <!-- Action Button (Sharp Gold Button) -->
                     <div style="text-align: center; margin-top: 2px;">
-                        <button style="background: #28A745; color: white; border: none; padding: 8px 22px; border-radius: 4px; font-weight: 700; font-size: 13px; cursor: pointer;">Encode Message</button>
+                        <button style="background: #E6AF2E; color: #191716; border: 1px solid #191716; padding: 10px 24px; border-radius: 0px; font-weight: 800; font-size: 13px; cursor: pointer;">Encode Message</button>
                     </div>
 
-                    <div style="display: flex; justify-content: center; gap: 24px; font-weight: 700; font-size: 12px; color: #1E293B;">
-                        <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="radio" name="mock-mode-2" checked style="accent-color: #28A745;" /> Encode
+                    <!-- Square Box Mode Selector -->
+                    <div style="display: flex; justify-content: center; gap: 24px; font-weight: 700; font-size: 12px; color: #191716;">
+                        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                            <input type="checkbox" checked style="accent-color: #191716; width: 14px; height: 14px; border-radius: 0px;" /> Encode
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="radio" name="mock-mode-2" style="accent-color: #FFC107;" /> Decode
+                        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                            <input type="checkbox" style="accent-color: #191716; width: 14px; height: 14px; border-radius: 0px;" /> Decode
                         </label>
                     </div>
 
                     <!-- Log Output -->
-                    <div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 4px; padding: 8px 12px; font-family: 'Consolas', monospace; font-size: 11px; color: #28A745; min-height: 60px;">
-                        SUCCESS: Message encoded successfully in encryptedImage.png<br>
-                        SUCCESS: Decrypted message: This is a secret message.
+                    <div style="background: #FFFFFF; border: 1px solid #191716; border-radius: 0px; padding: 8px 12px; font-family: 'Consolas', monospace; font-size: 11px; color: #191716; min-height: 60px;">
+                        SUCCESS: Loaded 'demo.png' (1920x1080). Max capacity: 777,600 bytes.<br>
+                        SUCCESS: Message encoded successfully in demo_encoded.png
                     </div>
                 </div>
 

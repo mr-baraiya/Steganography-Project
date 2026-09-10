@@ -22,7 +22,7 @@ class SteganographyApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Steganography Encoder/Decoder")
+        self.title("CELATUS - Hide. Secure. Reveal.")
         
         # Set Window Icon
         try:
@@ -32,16 +32,16 @@ class SteganographyApp(ctk.CTk):
         except Exception:
             pass
 
-        # Set Window geometry & theme
+        # Set Window geometry & theme with palette ["#191716", "#e6af2e", "#e0e2db"]
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
         self.geometry(f"{min(1150, screen_w)}x{min(780, screen_h)}")
-        self.configure(fg_color="#F4F6F9")
+        self.configure(fg_color="#E0E2DB")
 
         # Start in maximized mode on startup
         self.after(50, self.force_fullscreen)
 
-        # Minimum window size for flexible resizing
+        # Minimum window size
         self.minsize(750, 520)
 
         # Key bindings
@@ -52,6 +52,7 @@ class SteganographyApp(ctk.CTk):
         self.image_path = ""
         self.show_password = False
         self.current_img_capacity = 0
+        self.mode = "Encode"
 
         self.setup_ui()
 
@@ -79,10 +80,39 @@ class SteganographyApp(ctk.CTk):
     def setup_ui(self):
         # Outer Padding Container
         self.main_container = ctk.CTkFrame(self, fg_color="transparent")
-        self.main_container.pack(expand=True, fill="both", padx=24, pady=18)
+        self.main_container.pack(expand=True, fill="both", padx=24, pady=16)
 
-        # Form Card Container
-        self.form_card = ctk.CTkFrame(self.main_container, fg_color="#FFFFFF", corner_radius=12, border_width=1, border_color="#E2E8F0")
+        # Header Bar
+        self.header_frame = ctk.CTkFrame(self.main_container, fg_color="transparent")
+        self.header_frame.pack(fill="x", pady=(0, 12))
+
+        self.title_box = ctk.CTkFrame(self.header_frame, fg_color="transparent")
+        self.title_box.pack(side="left")
+
+        self.title_label = ctk.CTkLabel(
+            self.title_box, 
+            text="CELATUS", 
+            font=ctk.CTkFont(family="Segoe UI", size=24, weight="bold"),
+            text_color="#191716"
+        )
+        self.title_label.pack(side="left", padx=(0, 10))
+
+        self.subtitle_label = ctk.CTkLabel(
+            self.title_box, 
+            text="•   Hide. Secure. Reveal.", 
+            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
+            text_color="#E6AF2E"
+        )
+        self.subtitle_label.pack(side="left")
+
+        # Form Card Container with Sharp Corners (corner_radius=0)
+        self.form_card = ctk.CTkFrame(
+            self.main_container,
+            fg_color="#FFFFFF",
+            corner_radius=0,
+            border_width=2,
+            border_color="#191716"
+        )
         self.form_card.pack(expand=True, fill="both", padx=0, pady=0)
 
         # ----------------------------------------------------
@@ -95,37 +125,32 @@ class SteganographyApp(ctk.CTk):
         self.columns_frame.rowconfigure(0, weight=1)
 
         # ====================================================
-        # LEFT COLUMN: Image Selection & Best-Fit Image Preview
+        # LEFT COLUMN: Image Select Input (Placeholder Only) & Best Fit Preview
         # ====================================================
-        self.left_column = ctk.CTkFrame(self.columns_frame, fg_color="#FAFAFA", corner_radius=10, border_width=1, border_color="#E0E0E0")
+        self.left_column = ctk.CTkFrame(
+            self.columns_frame,
+            fg_color="#E0E2DB",
+            corner_radius=0,
+            border_width=1,
+            border_color="#191716"
+        )
         self.left_column.grid(row=0, column=0, sticky="nsew", padx=(0, 10), pady=0)
 
-        # Select Image Input Row
-        self.row_select = ctk.CTkFrame(self.left_column, fg_color="transparent")
-        self.row_select.pack(fill="x", padx=16, pady=(16, 10))
-
-        self.lbl_select_image = ctk.CTkLabel(
-            self.row_select,
-            text="Select Image:",
-            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            text_color="#1E293B"
-        )
-        self.lbl_select_image.pack(anchor="w", pady=(0, 6))
-
-        self.path_select_frame = ctk.CTkFrame(self.row_select, fg_color="transparent")
-        self.path_select_frame.pack(fill="x")
+        # Select Image Input Row (NO SEPARATE LABEL - PLACEHOLDER ONLY!)
+        self.path_select_frame = ctk.CTkFrame(self.left_column, fg_color="transparent")
+        self.path_select_frame.pack(fill="x", padx=16, pady=(16, 12))
 
         self.path_entry = ctk.CTkEntry(
             self.path_select_frame,
-            placeholder_text="No file selected...",
-            font=ctk.CTkFont(family="Segoe UI", size=12),
+            placeholder_text="Select image file...",
+            font=ctk.CTkFont(family="Segoe UI", size=13),
             fg_color="#FFFFFF",
-            text_color="#1E293B",
-            placeholder_text_color="#94A3B8",
+            text_color="#191716",
+            placeholder_text_color="#666461",
             border_width=1,
-            border_color="#CBD5E1",
-            corner_radius=6,
-            height=36
+            border_color="#191716",
+            corner_radius=0,
+            height=38
         )
         self.path_entry.pack(side="left", expand=True, fill="x", padx=(0, 8))
 
@@ -133,18 +158,24 @@ class SteganographyApp(ctk.CTk):
             self.path_select_frame,
             text="Browse",
             command=self.browse_image,
-            font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold"),
-            fg_color="#007BFF",
-            hover_color="#0056B3",
-            text_color="#FFFFFF",
-            width=85,
-            height=36,
-            corner_radius=6
+            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
+            fg_color="#191716",
+            hover_color="#33302E",
+            text_color="#E6AF2E",
+            width=90,
+            height=38,
+            corner_radius=0
         )
         self.btn_browse.pack(side="right")
 
-        # Best-Fit Image Preview Container
-        self.preview_box = ctk.CTkFrame(self.left_column, fg_color="#FFFFFF", corner_radius=8, border_width=1, border_color="#E0E0E0")
+        # Best-Fit Image Preview Container (Sharp Corners)
+        self.preview_box = ctk.CTkFrame(
+            self.left_column,
+            fg_color="#FFFFFF",
+            corner_radius=0,
+            border_width=1,
+            border_color="#191716"
+        )
         self.preview_box.pack(expand=True, fill="both", padx=16, pady=(0, 10))
         self.preview_box.pack_propagate(False)
 
@@ -152,7 +183,7 @@ class SteganographyApp(ctk.CTk):
             self.preview_box,
             text="📷 Image Preview\n\nClick 'Browse' to select an image",
             font=ctk.CTkFont(family="Segoe UI", size=13),
-            text_color="#64748B"
+            text_color="#191716"
         )
         self.preview_label.pack(expand=True, fill="both", padx=10, pady=10)
 
@@ -161,63 +192,57 @@ class SteganographyApp(ctk.CTk):
             self.left_column,
             text="No file loaded",
             font=ctk.CTkFont(family="Segoe UI", size=11, weight="bold"),
-            text_color="#64748B"
+            text_color="#191716"
         )
         self.info_label.pack(fill="x", padx=16, pady=(0, 14))
 
-
         # ====================================================
-        # RIGHT COLUMN: Form Controls, Radio Switcher & Logs
+        # RIGHT COLUMN: Input Forms (Placeholders Only), Action Button, Square Checkboxes, Log
         # ====================================================
-        self.right_column = ctk.CTkFrame(self.columns_frame, fg_color="#FAFAFA", corner_radius=10, border_width=1, border_color="#E0E0E0")
+        self.right_column = ctk.CTkFrame(
+            self.columns_frame,
+            fg_color="#E0E2DB",
+            corner_radius=0,
+            border_width=1,
+            border_color="#191716"
+        )
         self.right_column.grid(row=0, column=1, sticky="nsew", padx=(10, 0), pady=0)
 
-        # Enter Secret Message
-        self.lbl_secret_msg = ctk.CTkLabel(
-            self.right_column,
-            text="Enter Secret Message:",
-            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            text_color="#1E293B"
-        )
-        self.lbl_secret_msg.pack(anchor="w", padx=16, pady=(16, 6))
+        # Secret Message Input (NO SEPARATE LABEL - PLACEHOLDER ONLY!)
+        self.msg_container = ctk.CTkFrame(self.right_column, fg_color="transparent")
+        self.msg_container.pack(fill="x", padx=16, pady=(16, 12))
 
         self.message_input = ctk.CTkTextbox(
-            self.right_column,
-            font=ctk.CTkFont(family="Segoe UI", size=12),
+            self.msg_container,
+            font=ctk.CTkFont(family="Segoe UI", size=13),
             fg_color="#FFFFFF",
-            text_color="#1E293B",
+            text_color="#191716",
             border_width=1,
-            border_color="#CBD5E1",
-            corner_radius=6,
-            height=90
+            border_color="#191716",
+            corner_radius=0,
+            height=100
         )
-        self.message_input.pack(fill="x", padx=16, pady=(0, 12))
+        self.message_input.pack(fill="x")
+        self.message_input.insert("1.0", "Enter Secret Message...")
+        self.message_input.bind("<FocusIn>", self.clear_msg_placeholder)
         self.message_input.bind("<KeyRelease>", self.on_input_change)
 
-        # Enter Passcode
-        self.lbl_passcode = ctk.CTkLabel(
-            self.right_column,
-            text="Enter Passcode:",
-            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            text_color="#1E293B"
-        )
-        self.lbl_passcode.pack(anchor="w", padx=16, pady=(0, 6))
-
+        # Passcode Input (NO SEPARATE LABEL - PLACEHOLDER ONLY!)
         self.pass_frame = ctk.CTkFrame(self.right_column, fg_color="transparent")
-        self.pass_frame.pack(fill="x", padx=16, pady=(0, 14))
+        self.pass_frame.pack(fill="x", padx=16, pady=(0, 16))
 
         self.passcode_input = ctk.CTkEntry(
             self.pass_frame,
-            placeholder_text="••••",
-            font=ctk.CTkFont(family="Segoe UI", size=12),
+            placeholder_text="Enter Passcode...",
+            font=ctk.CTkFont(family="Segoe UI", size=13),
             show="*",
             fg_color="#FFFFFF",
-            text_color="#1E293B",
-            placeholder_text_color="#94A3B8",
+            text_color="#191716",
+            placeholder_text_color="#666461",
             border_width=1,
-            border_color="#CBD5E1",
-            corner_radius=6,
-            height=36
+            border_color="#191716",
+            corner_radius=0,
+            height=38
         )
         self.passcode_input.pack(side="left", expand=True, fill="x", padx=(0, 8))
         self.passcode_input.bind("<KeyRelease>", self.on_input_change)
@@ -225,78 +250,111 @@ class SteganographyApp(ctk.CTk):
         self.toggle_pass_btn = ctk.CTkButton(
             self.pass_frame,
             text="👁",
-            width=36,
-            height=36,
-            fg_color="#E2E8F0",
-            hover_color="#CBD5E1",
-            text_color="#1E293B",
-            corner_radius=6,
+            width=38,
+            height=38,
+            fg_color="#191716",
+            hover_color="#33302E",
+            text_color="#E6AF2E",
+            corner_radius=0,
             command=self.toggle_password_visibility
         )
         self.toggle_pass_btn.pack(side="right")
 
-        # Action Button (Encode Message / Decode Message)
+        # Action Button (Sharp Gold Button)
         self.action_btn = ctk.CTkButton(
             self.right_column,
             text="Encode Message",
             command=self.on_action_click,
-            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            fg_color="#28A745",
-            hover_color="#218838",
-            text_color="#FFFFFF",
-            width=180,
-            height=38,
-            corner_radius=6
+            font=ctk.CTkFont(family="Segoe UI", size=14, weight="bold"),
+            fg_color="#E6AF2E",
+            hover_color="#D49E24",
+            text_color="#191716",
+            width=200,
+            height=42,
+            corner_radius=0
         )
-        self.action_btn.pack(anchor="center", pady=(0, 10))
+        self.action_btn.pack(anchor="center", pady=(0, 14))
 
-        # Side-by-Side Radio Buttons: (•) Encode   ( ) Decode
-        self.mode_var = ctk.StringVar(value="Encode")
+        # Square Box Selector for Encode and Decode (Square Checkboxes with Sharp Corners)
+        self.square_selector_frame = ctk.CTkFrame(self.right_column, fg_color="transparent")
+        self.square_selector_frame.pack(anchor="center", pady=(0, 14))
 
-        self.radio_frame = ctk.CTkFrame(self.right_column, fg_color="transparent")
-        self.radio_frame.pack(anchor="center", pady=(0, 10))
-
-        self.radio_encode = ctk.CTkRadioButton(
-            self.radio_frame,
+        self.chk_encode = ctk.CTkCheckBox(
+            self.square_selector_frame,
             text="Encode",
-            variable=self.mode_var,
-            value="Encode",
-            command=self.on_mode_change,
-            font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold"),
-            text_color="#1E293B",
-            fg_color="#28A745",
-            hover_color="#218838"
+            command=self.on_chk_encode_click,
+            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
+            text_color="#191716",
+            fg_color="#191716",
+            hover_color="#33302E",
+            checkmark_color="#E6AF2E",
+            border_color="#191716",
+            border_width=2,
+            corner_radius=0
         )
-        self.radio_encode.pack(side="left", padx=16)
+        self.chk_encode.pack(side="left", padx=16)
 
-        self.radio_decode = ctk.CTkRadioButton(
-            self.radio_frame,
+        self.chk_decode = ctk.CTkCheckBox(
+            self.square_selector_frame,
             text="Decode",
-            variable=self.mode_var,
-            value="Decode",
-            command=self.on_mode_change,
-            font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold"),
-            text_color="#1E293B",
-            fg_color="#FFC107",
-            hover_color="#E0A800"
+            command=self.on_chk_decode_click,
+            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
+            text_color="#191716",
+            fg_color="#191716",
+            hover_color="#33302E",
+            checkmark_color="#E6AF2E",
+            border_color="#191716",
+            border_width=2,
+            corner_radius=0
         )
-        self.radio_decode.pack(side="left", padx=16)
+        self.chk_decode.pack(side="left", padx=16)
 
-        # Output Log Box (Light container with green text)
-        self.log_container = ctk.CTkFrame(self.right_column, fg_color="#FFFFFF", corner_radius=6, border_width=1, border_color="#E0E0E0")
-        self.log_container.pack(expand=True, fill="both", padx=16, pady=(0, 14))
+        self.chk_encode.select()
+        self.chk_decode.deselect()
+
+        # Output Log Box (Sharp Corners, White Box, Dark Text)
+        self.log_container = ctk.CTkFrame(
+            self.right_column,
+            fg_color="#FFFFFF",
+            corner_radius=0,
+            border_width=1,
+            border_color="#191716"
+        )
+        self.log_container.pack(expand=True, fill="both", padx=16, pady=(0, 16))
 
         self.log_textbox = ctk.CTkTextbox(
             self.log_container,
             font=ctk.CTkFont(family="Consolas", size=11),
             fg_color="#FFFFFF",
-            text_color="#28A745",
+            text_color="#191716",
             border_width=0,
-            height=110
+            corner_radius=0,
+            height=100
         )
         self.log_textbox.pack(expand=True, fill="both", padx=10, pady=8)
 
-        self.log("Ready. Select an image file using 'Browse' to begin.")
+        self.log("Ready. Select an image file to begin.")
+
+    def clear_msg_placeholder(self, event=None):
+        val = self.message_input.get("1.0", "end-1c")
+        if val == "Enter Secret Message...":
+            self.message_input.delete("1.0", "end")
+
+    def on_chk_encode_click(self):
+        self.mode = "Encode"
+        self.chk_encode.select()
+        self.chk_decode.deselect()
+        self.action_btn.configure(text="Encode Message", fg_color="#E6AF2E", hover_color="#D49E24", text_color="#191716")
+        self.log("Mode set to ENCODE.")
+        self.validate_inputs()
+
+    def on_chk_decode_click(self):
+        self.mode = "Decode"
+        self.chk_decode.select()
+        self.chk_encode.deselect()
+        self.action_btn.configure(text="Decode Message", fg_color="#E6AF2E", hover_color="#D49E24", text_color="#191716")
+        self.log("Mode set to DECODE.")
+        self.validate_inputs()
 
     def update_image_preview(self):
         if not self.image_path or not os.path.isfile(self.image_path):
@@ -352,48 +410,26 @@ class SteganographyApp(ctk.CTk):
             self.show_dialog("Error", f"Failed to open image: {e}", "error")
             self.log(f"ERROR: Could not load image: {e}", is_error=True)
 
-    def on_mode_change(self):
-        mode = self.mode_var.get()
-        if mode == "Encode":
-            self.action_btn.configure(
-                text="Encode Message",
-                fg_color="#28A745",
-                hover_color="#218838",
-                text_color="#FFFFFF"
-            )
-            self.lbl_secret_msg.configure(text="Enter Secret Message:")
-            self.message_input.configure(state="normal")
-            self.log("Mode set to ENCODE.")
-        else:
-            self.action_btn.configure(
-                text="Decode Message",
-                fg_color="#FFC107",
-                hover_color="#E0A800",
-                text_color="#1E293B"
-            )
-            self.lbl_secret_msg.configure(text="Decrypted Output:")
-            self.log("Mode set to DECODE.")
-        self.validate_inputs()
-
     def toggle_password_visibility(self):
         self.show_password = not self.show_password
         if self.show_password:
             self.passcode_input.configure(show="")
-            self.toggle_pass_btn.configure(fg_color="#007BFF", hover_color="#0056B3", text_color="#FFFFFF")
+            self.toggle_pass_btn.configure(fg_color="#E6AF2E", hover_color="#D49E24", text_color="#191716")
         else:
             self.passcode_input.configure(show="*")
-            self.toggle_pass_btn.configure(fg_color="#E2E8F0", hover_color="#CBD5E1", text_color="#1E293B")
+            self.toggle_pass_btn.configure(fg_color="#191716", hover_color="#33302E", text_color="#E6AF2E")
 
     def on_input_change(self, event=None):
         self.validate_inputs()
 
     def validate_inputs(self):
-        mode = self.mode_var.get()
         message = self.message_input.get("1.0", "end-1c")
+        if message == "Enter Secret Message...":
+            message = ""
         password = self.passcode_input.get()
 
         is_valid, badge_text, badge_color, err_msg = validate_inputs(
-            self.image_path, message, password, mode, self.current_img_capacity
+            self.image_path, message, password, self.mode, self.current_img_capacity
         )
         return is_valid, err_msg
 
@@ -423,14 +459,15 @@ class SteganographyApp(ctk.CTk):
             self.log(f"Validation failed: {err_msg}", is_error=True)
             return
 
-        mode = self.mode_var.get()
-        if mode == "Encode":
+        if self.mode == "Encode":
             self.encode_message()
         else:
             self.decode_message()
 
     def encode_message(self):
         message = self.message_input.get("1.0", "end-1c").strip()
+        if message == "Enter Secret Message...":
+            message = ""
         password = self.passcode_input.get().strip()
 
         base_name = os.path.splitext(os.path.basename(self.image_path))[0]
@@ -480,8 +517,6 @@ class SteganographyApp(ctk.CTk):
             return
 
         self.log(f"Decrypted message: {res}")
-        self.lbl_secret_msg.configure(text="Decrypted Output:")
-        self.message_input.configure(state="normal")
         self.message_input.delete("1.0", "end")
         self.message_input.insert("1.0", res)
         self.show_dialog("Decrypted Payload", res, "payload", allow_copy=True)
