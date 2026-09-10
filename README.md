@@ -1,101 +1,92 @@
-# Steganography Encoder/Decoder
+# CELATUS
 
-This Python-based Steganography tool allows users to encode a secret message into an image and decode it using a passcode. The application uses the **Least Significant Bit (LSB)** method for encoding the message into the image. The user interface is built using `Tkinter` to make the process simple and intuitive.
+> **Hide. Secure. Reveal.**
 
-## Features
+**CELATUS** is a sleek, modern desktop application designed for secure image steganography using **Least Significant Bit (LSB)** encoding. Built with **CustomTkinter**, CELATUS provides a dark-themed, responsive user interface with strict input validation, custom modal dialogs, and flexible output save location controls.
 
-- **Encode Message**: Hide a secret message within an image file.
-- **Decode Message**: Retrieve the hidden message from an encoded image using the correct passcode.
-- **Passcode Protection**: The hidden message is encrypted with a passcode for secure access.
-- **Graphical User Interface**: Simple GUI using `Tkinter` for easy interaction.
-- **Supports Various Image Formats**: Works with JPG, PNG, and other standard image formats.
+---
 
-## Requirements
+## Etymology & Meaning
 
-To run this project, you need to have the following dependencies installed:
+The name **Celatus** originates from Latin (the perfect passive participle of *cēlō*, meaning *"to hide"*, *"to conceal"*, or *"to keep secret"*). It signifies something that has been hidden from view, perfectly reflecting the application's core purpose: concealing sensitive data undetected inside carrier images.
 
-- Python 3.x
-- `Tkinter` (usually comes pre-installed with Python)
-- `opencv-python` for image manipulation
-- `numpy` for efficient array handling
+---
 
-Install the necessary dependencies using `pip`:
+## Key Features
 
-```bash
-pip install opencv-python numpy
-```
+- **LSB Steganography**: Encode UTF-8 text payload streams directly into image pixels.
+- **Passcode Security**: Protect payloads with a required 4-character minimum passcode key.
+- **Modern Dark UI**: Designed with `#0B0F17` minimalist palette and clean header action bar.
+- **Custom Square Popups**: Auto-fitting, scroll-free dark modal popups with 1-click clipboard copy.
+- **Custom Save Picker**: Select exact destination folder and custom filename when saving encrypted images.
+- **Responsive Layout**: Seamless switching between wide dual-panel and narrow single-column responsive views.
+- **Best-Fit Preview**: Maintains aspect ratios without distortion for uploaded carrier images.
 
-## How It Works
+---
 
-### Encode a Secret Message:
-1. **Select an Image**: Choose an image to hide the secret message.
-2. **Enter the Message**: Type in the message you want to hide inside the image.
-3. **Set a Passcode**: Set a passcode to protect the message. Only those with the passcode can decode the message.
-4. **Encode the Message**: Click on the "Encode Message" button, and the secret message will be encoded into the image using the Least Significant Bit method.
+## Installation & Setup
 
-### Decode a Secret Message:
-1. **Select the Encoded Image**: Choose the image where the message was encoded.
-2. **Enter the Passcode**: Provide the passcode used during encoding.
-3. **Extract the Message**: Click the "Decode Message" button to reveal the hidden message from the image.
-
-## Installation
-
-1. Clone the repository to your local machine:
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/mr-baraiya/Steganography-Project.git
+   cd Steganography-Project
    ```
-2. Install the required dependencies:
+
+2. **Install Dependencies**:
    ```bash
-   pip install opencv-python numpy
+   pip install -r requirements.txt
    ```
-3. Run the application:
+
+3. **Launch CELATUS**:
    ```bash
    python main.py
    ```
 
-## Usage
-
-1. **Launch the Application**: Once you run `main.py`, the GUI will open.
-2. **Select the Mode**: Choose either "Encode" or "Decode" mode using the radio buttons.
-3. **For Encoding**:
-   - Browse and select an image.
-   - Enter the secret message and passcode.
-   - Click the "Encode Message" button.
-4. **For Decoding**:
-   - Browse and select the encoded image.
-   - Enter the passcode used for encoding.
-   - Click "Decode Message" to extract the hidden message.
-
-## Example
-
-### Encoding Example:
-1. Choose an image (`image.jpg`).
-2. Enter the message: `This is a secret message!`.
-3. Enter a passcode: `1234`.
-4. Click "Encode Message" and the encoded image (`encryptedImage.png`) will be generated.
-
-### Decoding Example:
-1. Choose the encoded image (`encryptedImage.png`).
-2. Enter the passcode: `1234`.
-3. Click "Decode Message" and the hidden message `This is a secret message!` will be displayed.
+---
 
 ## Project Structure
 
 ```
-steganography-project/
-├── main.py               # The main Python file for the application
-├── README.md             # The project documentation
-├── requirements.txt      # List of dependencies for the project
-├── encryptedImage.png    # Encoded image (generated at runtime)
+Steganography-Project/
+├── main.py                     # App entry point
+├── steganography/              # Core steganography logic package
+│   ├── __init__.py             # Exports
+│   ├── lsb.py                  # LSB encoding/decoding engine
+│   └── validator.py            # Input validation & capacity logic
+├── ui/                         # User interface package
+│   ├── app.py                  # SteganographyApp CustomTkinter window
+│   └── dialogs.py              # Custom modal popups & copy-to-clipboard
+├── downloads/                  # Native executable installer packages
+│   ├── celatus_setup.exe       # Windows 10/11 standalone executable
+│   ├── celatus_macOS.dmg       # macOS Universal installation package
+│   └── celatus_mobile.apk      # Android / Mobile application package
+├── LICENSE                     # MIT License file
+├── index.html                  # Public website landing page & downloads
+├── requirements.txt            # Project dependencies
+└── README.md                   # Project documentation
 ```
 
-## Contributing
+---
 
-Contributions are welcome! You can fork this repository, make improvements, or submit bug fixes. Please feel free to create a pull request with your changes.
+## Requirements
+
+- Python 3.8+
+- `customtkinter`
+- `pillow`
+- `opencv-python`
+- `numpy`
+
+---
+
+## Repository & Contact
+
+- **GitHub Repository**: [https://github.com/mr-baraiya/Steganography-Project](https://github.com/mr-baraiya/Steganography-Project)
+- **Contact Email**: [baraiyavishalbhai32@gmail.com](mailto:baraiyavishalbhai32@gmail.com)
+
+---
+
+## License
+
+Distributed under the MIT License. See [LICENSE](file:///d:/VS_CODES/Projects/Steganography-Project/LICENSE) for full details.
 
 
-## Acknowledgments
-
-- **OpenCV**: For image manipulation.
-- **Tkinter**: For building the graphical user interface.
-- **NumPy**: For efficient data handling and manipulation.

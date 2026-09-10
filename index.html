@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELATUS — Hide. Secure. Reveal.</title>
+    <meta name="description" content="CELATUS is an image steganography tool for concealing text payloads inside images using Least Significant Bit (LSB) encoding.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #090d14;
+            --card-bg: #121824;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-border-hover: rgba(99, 102, 241, 0.4);
+            --accent-primary: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-bright: #818cf8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(9, 13, 20, 0.85);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.15s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-cta {
+            background: var(--accent-primary);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            transition: background 0.15s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px 36px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .hero-tagline {
+            font-size: 20px;
+            color: var(--text-bright);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .hero-description {
+            max-width: 640px;
+            margin: 0 auto 24px;
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .etymology-pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .etymology-pill strong {
+            color: var(--text-bright);
+            font-weight: 600;
+        }
+
+        /* Web Studio Container */
+        .studio-container {
+            max-width: 1000px;
+            margin: 0 auto 70px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .studio-header {
+            background: #0d121c;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .studio-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .studio-mode-switcher {
+            display: flex;
+            background: #06090f;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .mode-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            padding: 5px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .mode-btn.active {
+            background: var(--accent-primary);
+            color: #fff;
+        }
+
+        .studio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 24px;
+        }
+
+        .panel-card {
+            background: #0d121c;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .panel-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drop-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 20px 16px;
+            text-align: center;
+            background: rgba(6, 9, 15, 0.4);
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.04);
+        }
+
+        .preview-img {
+            max-width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #d1d5db;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-control {
+            width: 100%;
+            background: #06090f;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 9px 12px;
+            color: var(--text-main);
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.15s ease;
+        }
+
+        .input-control:focus {
+            border-color: var(--accent-primary);
+        }
+
+        textarea.input-control {
+            height: 100px;
+            resize: none;
+        }
+
+        .passcode-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .passcode-toggle {
+            position: absolute;
+            right: 8px;
+            background: #1c2433;
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .action-btn-main {
+            background: var(--accent-primary);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            width: 100%;
+        }
+
+        .action-btn-main:hover {
+            background: var(--accent-hover);
+        }
+
+        .action-btn-main:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .status-badge.valid {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border-color: rgba(16, 185, 129, 0.25);
+        }
+
+        .status-badge.invalid {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border-color: rgba(239, 68, 68, 0.25);
+        }
+
+        .console-box {
+            background: #05070c;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            color: var(--text-bright);
+            height: 85px;
+            overflow-y: auto;
+        }
+
+        /* Downloads Section */
+        .downloads-section {
+            max-width: 1000px;
+            margin: 0 auto 70px;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .download-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .btn-download {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+        }
+
+        .btn-download:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .btn-subtext {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Protocol Specification Box */
+        .protocol-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto 70px;
+        }
+
+        .protocol-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+        }
+
+        .protocol-item {
+            background: #06090f;
+            border: 1px solid var(--card-border);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .protocol-item span {
+            color: var(--text-bright);
+            display: block;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 24px;
+            width: 420px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .modal-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .modal-content-area {
+            background: #06090f;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 13px;
+            color: var(--text-bright);
+            word-break: break-all;
+            max-height: 150px;
+            overflow-y: auto;
+            margin-bottom: 16px;
+            text-align: left;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            background: var(--accent-primary);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .modal-btn-secondary {
+            background: #1c2433;
+            color: var(--text-main);
+        }
+
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        footer a {
+            color: var(--text-bright);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .studio-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 36px; }
+            .nav-container { flex-direction: column; gap: 12px; }
+            footer { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">C</div>
+                <span class="brand-name">CELATUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#app-studio">Web Tool</a></li>
+                <li><a href="#protocol">Protocol</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+                <li><a href="https://github.com/mr-baraiya/Steganography-Project" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="#downloads" class="nav-cta">Get Desktop App</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Hero -->
+    <section class="hero">
+        <h1 class="hero-title">CELATUS</h1>
+        <div class="hero-tagline">Hide. Secure. Reveal.</div>
+        <p class="hero-description">
+            An open-source image steganography tool for hiding UTF-8 text payloads inside carrier images using Least Significant Bit (LSB) channel encoding.
+        </p>
+
+        <div class="etymology-pill">
+            Latin <strong>celatus</strong> — perfect passive participle of <em>cēlō</em> ("to hide" or "conceal").
+        </div>
+    </section>
+
+    <!-- WEB APPLICATION STUDIO -->
+    <section id="app-studio" style="padding: 0 24px;">
+        <div class="studio-container">
+            <div class="studio-header">
+                <span class="studio-title">CELATUS Web Studio</span>
+                <div class="studio-mode-switcher">
+                    <button class="mode-btn active" id="mode-encode-btn" onclick="setStudioMode('encode')">Encode</button>
+                    <button class="mode-btn" id="mode-decode-btn" onclick="setStudioMode('decode')">Decode</button>
+                </div>
+            </div>
+
+            <div class="studio-grid">
+                <!-- Left Panel: Carrier Image -->
+                <div class="panel-card">
+                    <div class="panel-title">
+                        <span>Carrier Image</span>
+                        <span id="img-info-badge" style="font-size: 11px; color: var(--text-muted);">No file selected</span>
+                    </div>
+
+                    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                        <div id="upload-prompt">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <div style="font-size: 13px; font-weight: 600; color: var(--text-main);">Select carrier image</div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">PNG, JPG, WebP, BMP</div>
+                        </div>
+                        <img id="image-preview" class="preview-img" style="display: none;" alt="Preview">
+                        <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                    </div>
+
+                    <button id="clear-img-btn" class="action-btn-main" style="background: #1c2433; display: none;" onclick="clearSelectedImage()">Clear Image</button>
+                </div>
+
+                <!-- Right Panel: Payload & Key -->
+                <div class="panel-card">
+                    <div class="panel-title">
+                        <span>Payload Configuration</span>
+                    </div>
+
+                    <!-- Secret Message Area (Encode Mode) -->
+                    <div class="field-group" id="msg-field-group">
+                        <label class="field-label">
+                            <span>Secret Message Payload</span>
+                            <span id="byte-counter" style="color: var(--text-muted); font-size: 11px;">0 / 0 bytes</span>
+                        </label>
+                        <textarea id="payload-text" class="input-control" placeholder="Enter text payload to conceal..." oninput="validateForm()"></textarea>
+                    </div>
+
+                    <!-- Passcode Key Field -->
+                    <div class="field-group">
+                        <label class="field-label">Passcode Key (min 4 chars)</label>
+                        <div class="passcode-wrapper">
+                            <input type="password" id="passcode-input" class="input-control" placeholder="Enter passcode key..." oninput="validateForm()">
+                            <button class="passcode-toggle" id="passcode-toggle-btn" onclick="togglePasscodeVisibility()">Show</button>
+                        </div>
+                    </div>
+
+                    <!-- Validation Status Badge -->
+                    <div class="status-badge" id="validation-badge">
+                        Select a carrier image file to start
+                    </div>
+
+                    <!-- Action Button -->
+                    <button class="action-btn-main" id="process-action-btn" onclick="executeSteganographyAction()">
+                        Encode Payload
+                    </button>
+                </div>
+            </div>
+
+            <!-- Console Log Bar -->
+            <div style="padding: 0 24px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Execution Log</span>
+                    <button onclick="clearConsoleLog()" style="background: none; border: none; color: var(--text-bright); font-size: 11px; cursor: pointer;">Clear Log</button>
+                </div>
+                <div class="console-box" id="console-log">
+                    [OK] Ready. Select a carrier image to begin.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocol Specs Section -->
+    <section class="protocol-card" id="protocol">
+        <div class="protocol-title">Header Protocol Specification</div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">CELATUS prepends a 10-byte binary header to the LSB bit stream prior to pixel injection:</p>
+        <div class="protocol-grid">
+            <div class="protocol-item">
+                Bytes 0–3: Signature
+                <span>0x43 0x45 0x4C 0x41 ('CELA')</span>
+            </div>
+            <div class="protocol-item">
+                Bytes 4–5: Key Checksum
+                <span>16-bit Passcode Hash</span>
+            </div>
+            <div class="protocol-item">
+                Bytes 6–9: Payload Size
+                <span>32-bit Integer Length</span>
+            </div>
+            <div class="protocol-item">
+                Bytes 10+: UTF-8 Stream
+                <span>Payload Data Stream</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="downloads-section" id="downloads">
+        <h2 class="section-title">Native Desktop & Mobile Builds</h2>
+        <p class="section-subtitle">Download native installers for your operating system.</p>
+
+        <div class="download-group">
+            <div class="btn-download" onclick="triggerAppDownload('Windows')">
+                <div class="btn-title">Windows x64</div>
+                <div class="btn-subtext">celatus_setup.exe (64.8 MB)</div>
+            </div>
+            <div class="btn-download" onclick="triggerAppDownload('macOS')">
+                <div class="btn-title">macOS Universal</div>
+                <div class="btn-subtext">celatus_macOS.dmg</div>
+            </div>
+            <div class="btn-download" onclick="triggerAppDownload('Linux')">
+                <div class="btn-title">Linux x86_64</div>
+                <div class="btn-subtext">celatus_linux.AppImage</div>
+            </div>
+            <div class="btn-download" onclick="triggerAppDownload('Mobile')">
+                <div class="btn-title">Mobile Package</div>
+                <div class="btn-subtext">celatus_mobile.apk</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result & Download Modal -->
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-box">
+            <h3 id="modal-title">Output</h3>
+            <div class="modal-content-area" id="modal-content">Payload extracted cleanly</div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" id="modal-copy-btn" style="display: none;" onclick="copyModalContent()">Copy Payload</button>
+                <button class="modal-btn" onclick="closeModal()">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Canvas for LSB Image Processing -->
+    <canvas id="lsb-canvas" style="display: none;"></canvas>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            © 2026 <strong>CELATUS Project</strong> • <a href="LICENSE">MIT License</a>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+            <a href="https://github.com/mr-baraiya/Steganography-Project" target="_blank" rel="noopener">GitHub Repository</a>
+            <span>•</span>
+            <a href="mailto:baraiyavishalbhai32@gmail.com">baraiyavishalbhai32@gmail.com</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript LSB Steganography Engine -->
+    <script>
+        let currentMode = 'encode';
+        let loadedImage = null;
+        let imageCapacityBytes = 0;
+
+        const dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                loadImageFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        function setStudioMode(mode) {
+            currentMode = mode;
+            document.getElementById('mode-encode-btn').classList.toggle('active', mode === 'encode');
+            document.getElementById('mode-decode-btn').classList.toggle('active', mode === 'decode');
+
+            const msgGroup = document.getElementById('msg-field-group');
+            const actionBtn = document.getElementById('process-action-btn');
+
+            if (mode === 'encode') {
+                msgGroup.style.display = 'flex';
+                actionBtn.innerText = 'Encode Payload';
+                actionBtn.style.background = 'var(--accent-primary)';
+                logConsole('Mode set to ENCODE.');
+            } else {
+                msgGroup.style.display = 'none';
+                actionBtn.innerText = 'Decode Payload';
+                actionBtn.style.background = '#8b5cf6';
+                logConsole('Mode set to DECODE.');
+            }
+            validateForm();
+        }
+
+        function handleFileSelect(e) {
+            if (e.target.files && e.target.files[0]) {
+                loadImageFile(e.target.files[0]);
+            }
+        }
+
+        function loadImageFile(file) {
+            if (!file.type.startsWith('image/')) {
+                logConsole('ERROR: File is not a valid image format.', true);
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    loadedImage = img;
+                    document.getElementById('image-preview').src = event.target.result;
+                    document.getElementById('image-preview').style.display = 'block';
+                    document.getElementById('upload-prompt').style.display = 'none';
+                    document.getElementById('clear-img-btn').style.display = 'block';
+
+                    const width = img.width;
+                    const height = img.height;
+                    imageCapacityBytes = Math.max(0, Math.floor((width * height * 3) / 8) - 10);
+
+                    document.getElementById('img-info-badge').innerText = `${file.name} (${width}x${height})`;
+                    logConsole(`Loaded '${file.name}' (${width}x${height}). Capacity: ${imageCapacityBytes.toLocaleString()} bytes.`);
+                    validateForm();
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearSelectedImage() {
+            loadedImage = null;
+            imageCapacityBytes = 0;
+            document.getElementById('image-preview').style.display = 'none';
+            document.getElementById('upload-prompt').style.display = 'flex';
+            document.getElementById('clear-img-btn').style.display = 'none';
+            document.getElementById('file-input').value = '';
+            document.getElementById('img-info-badge').innerText = 'No file selected';
+            logConsole('Image cleared.');
+            validateForm();
+        }
+
+        function togglePasscodeVisibility() {
+            const passInput = document.getElementById('passcode-input');
+            const toggleBtn = document.getElementById('passcode-toggle-btn');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleBtn.innerText = 'Hide';
+            } else {
+                passInput.type = 'password';
+                toggleBtn.innerText = 'Show';
+            }
+        }
+
+        function validateForm() {
+            const badge = document.getElementById('validation-badge');
+            const actionBtn = document.getElementById('process-action-btn');
+            const payload = document.getElementById('payload-text').value;
+            const passcode = document.getElementById('passcode-input').value;
+            const counter = document.getElementById('byte-counter');
+
+            const payloadBytes = new TextEncoder().encode(payload).length;
+            if (imageCapacityBytes > 0) {
+                counter.innerText = `${payloadBytes.toLocaleString()} / ${imageCapacityBytes.toLocaleString()} bytes`;
+            } else {
+                counter.innerText = `${payloadBytes.toLocaleString()} bytes`;
+            }
+
+            if (!loadedImage) {
+                badge.innerText = 'Select a carrier image file to start';
+                badge.className = 'status-badge';
+                actionBtn.disabled = true;
+                return false;
+            }
+
+            if (currentMode === 'encode' && payload.length === 0) {
+                badge.innerText = 'Secret message payload cannot be empty';
+                badge.className = 'status-badge';
+                actionBtn.disabled = true;
+                return false;
+            }
+
+            if (passcode.length < 4) {
+                badge.innerText = 'Passcode key must be at least 4 characters';
+                badge.className = 'status-badge';
+                actionBtn.disabled = true;
+                return false;
+            }
+
+            if (currentMode === 'encode' && payloadBytes > imageCapacityBytes) {
+                badge.innerText = `Payload (${payloadBytes} B) exceeds capacity (${imageCapacityBytes} B)`;
+                badge.className = 'status-badge invalid';
+                actionBtn.disabled = true;
+                return false;
+            }
+
+            badge.innerText = 'Inputs valid. Ready for execution.';
+            badge.className = 'status-badge valid';
+            actionBtn.disabled = false;
+            return true;
+        }
+
+        function logConsole(msg, isErr = false) {
+            const consoleBox = document.getElementById('console-log');
+            const time = new Date().toLocaleTimeString();
+            const prefix = isErr ? '[ERR]' : '[OK]';
+            const color = isErr ? 'var(--error)' : 'var(--text-bright)';
+            consoleBox.innerHTML += `<div style="color:${color}">${time} ${prefix} ${msg}</div>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+        }
+
+        function clearConsoleLog() {
+            document.getElementById('console-log').innerHTML = '[OK] Log cleared.';
+        }
+
+        function executeSteganographyAction() {
+            if (!validateForm()) return;
+
+            if (currentMode === 'encode') {
+                encodePayloadInCanvas();
+            } else {
+                decodePayloadFromCanvas();
+            }
+        }
+
+        function encodePayloadInCanvas() {
+            const canvas = document.getElementById('lsb-canvas');
+            const ctx = canvas.getContext('2d');
+            const width = loadedImage.width;
+            const height = loadedImage.height;
+
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(loadedImage, 0, 0);
+
+            const imgData = ctx.getImageData(0, 0, width, height);
+            const data = imgData.data;
+
+            const payloadText = document.getElementById('payload-text').value;
+            const passcode = document.getElementById('passcode-input').value;
+
+            let passHash = 0;
+            for (let i = 0; i < passcode.length; i++) {
+                passHash = (passHash * 31 + passcode.charCodeAt(i)) & 0xFFFF;
+            }
+
+            const payloadBytes = new TextEncoder().encode(payloadText);
+            const payloadLen = payloadBytes.length;
+
+            const header = new Uint8Array(10);
+            header[0] = 0x43; // C
+            header[1] = 0x45; // E
+            header[2] = 0x4C; // L
+            header[3] = 0x41; // A
+            header[4] = (passHash >> 8) & 0xFF;
+            header[5] = passHash & 0xFF;
+            header[6] = (payloadLen >> 24) & 0xFF;
+            header[7] = (payloadLen >> 16) & 0xFF;
+            header[8] = (payloadLen >> 8) & 0xFF;
+            header[9] = payloadLen & 0xFF;
+
+            const fullBuffer = new Uint8Array(10 + payloadLen);
+            fullBuffer.set(header, 0);
+            fullBuffer.set(payloadBytes, 10);
+
+            const bits = [];
+            for (let i = 0; i < fullBuffer.length; i++) {
+                const b = fullBuffer[i];
+                for (let bitIndex = 7; bitIndex >= 0; bitIndex--) {
+                    bits.push((b >> bitIndex) & 1);
+                }
+            }
+
+            let bitIdx = 0;
+            for (let i = 0; i < data.length && bitIdx < bits.length; i++) {
+                if ((i + 1) % 4 === 0) continue;
+                data[i] = (data[i] & 0xFE) | bits[bitIdx++];
+            }
+
+            ctx.putImageData(imgData, 0, 0);
+
+            const dataUrl = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'celatus_encoded.png';
+            link.href = dataUrl;
+            link.click();
+
+            logConsole(`SUCCESS: Encoded payload (${payloadLen} bytes) saved as 'celatus_encoded.png'.`);
+            showModal('Encoding Successful', `Payload (${payloadLen} bytes) encoded cleanly and downloaded as celatus_encoded.png.`);
+        }
+
+        function decodePayloadFromCanvas() {
+            const canvas = document.getElementById('lsb-canvas');
+            const ctx = canvas.getContext('2d');
+            const width = loadedImage.width;
+            const height = loadedImage.height;
+
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(loadedImage, 0, 0);
+
+            const imgData = ctx.getImageData(0, 0, width, height);
+            const data = imgData.data;
+
+            const extractedBits = [];
+            for (let i = 0; i < data.length; i++) {
+                if ((i + 1) % 4 === 0) continue;
+                extractedBits.push(data[i] & 1);
+            }
+
+            function readBytes(startBit, count) {
+                const bytes = new Uint8Array(count);
+                for (let i = 0; i < count; i++) {
+                    let val = 0;
+                    for (let bitIdx = 0; bitIdx < 8; bitIdx++) {
+                        const bitPos = startBit + (i * 8) + bitIdx;
+                        if (bitPos >= extractedBits.length) return null;
+                        val = (val << 1) | extractedBits[bitPos];
+                    }
+                    bytes[i] = val;
+                }
+                return bytes;
+            }
+
+            const header = readBytes(0, 10);
+            if (!header) {
+                logConsole('ERROR: Failed to read image header.', true);
+                showModal('Decode Error', 'Failed to read image header. Image may not contain a CELATUS payload.');
+                return;
+            }
+
+            if (header[0] !== 0x43 || header[1] !== 0x45 || header[2] !== 0x4C || header[3] !== 0x41) {
+                logConsole('AUTHORIZATION ERROR: Invalid signature or un-encoded image.', true);
+                showModal('Decode Error', 'No valid CELATUS stego-payload detected in this image.');
+                return;
+            }
+
+            const storedHash = (header[4] << 8) | header[5];
+            const passcode = document.getElementById('passcode-input').value;
+            let passHash = 0;
+            for (let i = 0; i < passcode.length; i++) {
+                passHash = (passHash * 31 + passcode.charCodeAt(i)) & 0xFFFF;
+            }
+
+            if (storedHash !== passHash) {
+                logConsole('AUTHORIZATION ERROR: Incorrect passcode key.', true);
+                showModal('Decode Error', 'Incorrect passcode key. Access denied.');
+                return;
+            }
+
+            const payloadLen = (header[6] << 24) | (header[7] << 16) | (header[8] << 8) | header[9];
+            if (payloadLen <= 0 || payloadLen > 10000000) {
+                logConsole('ERROR: Corrupted payload length header.', true);
+                showModal('Decode Error', 'Corrupted payload length header detected.');
+                return;
+            }
+
+            const payloadBytes = readBytes(80, payloadLen);
+            if (!payloadBytes) {
+                logConsole('ERROR: Unexpected EOF reading payload bytes.', true);
+                showModal('Decode Error', 'Image ended prematurely while reading payload.');
+                return;
+            }
+
+            const decodedText = new TextDecoder('utf-8').decode(payloadBytes);
+            logConsole(`SUCCESS: Extracted decrypted message (${payloadLen} bytes).`);
+            showModal('Decrypted Payload', decodedText, true);
+        }
+
+        let currentModalText = '';
+        function showModal(title, text, isCopyable = false) {
+            currentModalText = text;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-content').innerText = text;
+            document.getElementById('modal-copy-btn').style.display = isCopyable ? 'inline-block' : 'none';
+            document.getElementById('result-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').classList.remove('active');
+        }
+
+        function copyModalContent() {
+            navigator.clipboard.writeText(currentModalText);
+            const copyBtn = document.getElementById('modal-copy-btn');
+            copyBtn.innerText = 'Copied!';
+            setTimeout(() => copyBtn.innerText = 'Copy Payload', 1500);
+        }
+
+        function triggerAppDownload(platform) {
+            const fileMap = {
+                'Windows': 'downloads/celatus_setup.exe',
+                'macOS': 'downloads/celatus_macOS.dmg',
+                'Linux': 'downloads/celatus_linux.AppImage',
+                'Mobile': 'downloads/celatus_mobile.apk'
+            };
+            const filePath = fileMap[platform];
+            if (filePath) {
+                const link = document.createElement('a');
+                link.href = filePath;
+                link.download = filePath.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            showModal(`Downloading CELATUS for ${platform}`, `Native ${platform} installer (${filePath.split('/').pop()}) download started.`);
+        }
+    </script>
+</body>
+</html>
