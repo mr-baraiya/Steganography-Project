@@ -110,8 +110,8 @@ class SteganographyApp(ctk.CTk):
             self.main_container,
             fg_color="#FFFFFF",
             corner_radius=0,
-            border_width=2,
-            border_color="#191716"
+            border_width=1,
+            border_color="#808080"
         )
         self.form_card.pack(expand=True, fill="both", padx=0, pady=0)
 
@@ -132,7 +132,7 @@ class SteganographyApp(ctk.CTk):
             fg_color="#E0E2DB",
             corner_radius=0,
             border_width=1,
-            border_color="#191716"
+            border_color="#808080"
         )
         self.left_column.grid(row=0, column=0, sticky="nsew", padx=(0, 10), pady=0)
 
@@ -148,7 +148,7 @@ class SteganographyApp(ctk.CTk):
             text_color="#191716",
             placeholder_text_color="#666461",
             border_width=1,
-            border_color="#191716",
+            border_color="#808080",
             corner_radius=0,
             height=38
         )
@@ -174,7 +174,7 @@ class SteganographyApp(ctk.CTk):
             fg_color="#FFFFFF",
             corner_radius=0,
             border_width=1,
-            border_color="#191716"
+            border_color="#808080"
         )
         self.preview_box.pack(expand=True, fill="both", padx=16, pady=(0, 10))
         self.preview_box.pack_propagate(False)
@@ -204,7 +204,7 @@ class SteganographyApp(ctk.CTk):
             fg_color="#E0E2DB",
             corner_radius=0,
             border_width=1,
-            border_color="#191716"
+            border_color="#808080"
         )
         self.right_column.grid(row=0, column=1, sticky="nsew", padx=(10, 0), pady=0)
 
@@ -218,7 +218,7 @@ class SteganographyApp(ctk.CTk):
             fg_color="#FFFFFF",
             text_color="#191716",
             border_width=1,
-            border_color="#191716",
+            border_color="#808080",
             corner_radius=0,
             height=100
         )
@@ -240,7 +240,7 @@ class SteganographyApp(ctk.CTk):
             text_color="#191716",
             placeholder_text_color="#666461",
             border_width=1,
-            border_color="#191716",
+            border_color="#808080",
             corner_radius=0,
             height=38
         )
@@ -288,8 +288,8 @@ class SteganographyApp(ctk.CTk):
             fg_color="#191716",
             hover_color="#33302E",
             checkmark_color="#E6AF2E",
-            border_color="#191716",
-            border_width=2,
+            border_color="#808080",
+            border_width=1,
             corner_radius=0
         )
         self.chk_encode.pack(side="left", padx=16)
@@ -303,8 +303,8 @@ class SteganographyApp(ctk.CTk):
             fg_color="#191716",
             hover_color="#33302E",
             checkmark_color="#E6AF2E",
-            border_color="#191716",
-            border_width=2,
+            border_color="#808080",
+            border_width=1,
             corner_radius=0
         )
         self.chk_decode.pack(side="left", padx=16)
@@ -318,7 +318,7 @@ class SteganographyApp(ctk.CTk):
             fg_color="#FFFFFF",
             corner_radius=0,
             border_width=1,
-            border_color="#191716"
+            border_color="#808080"
         )
         self.log_container.pack(expand=True, fill="both", padx=16, pady=(0, 16))
 
@@ -344,6 +344,11 @@ class SteganographyApp(ctk.CTk):
         self.mode = "Encode"
         self.chk_encode.select()
         self.chk_decode.deselect()
+        self.msg_container.pack(fill="x", padx=16, pady=(16, 12), before=self.pass_frame)
+        self.pass_frame.pack_configure(pady=(0, 16))
+        self.message_input.delete("1.0", "end")
+        self.message_input.insert("1.0", "Enter Secret Message...")
+        self.passcode_input.delete(0, "end")
         self.action_btn.configure(text="Encode Message", fg_color="#E6AF2E", hover_color="#D49E24", text_color="#191716")
         self.log("Mode set to ENCODE.")
         self.validate_inputs()
@@ -352,6 +357,11 @@ class SteganographyApp(ctk.CTk):
         self.mode = "Decode"
         self.chk_decode.select()
         self.chk_encode.deselect()
+        self.msg_container.pack_forget()
+        self.pass_frame.pack_configure(pady=(16, 16))
+        self.message_input.delete("1.0", "end")
+        self.message_input.insert("1.0", "Enter Secret Message...")
+        self.passcode_input.delete(0, "end")
         self.action_btn.configure(text="Decode Message", fg_color="#E6AF2E", hover_color="#D49E24", text_color="#191716")
         self.log("Mode set to DECODE.")
         self.validate_inputs()

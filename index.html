@@ -5,7 +5,7 @@
     <!-- Core Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CELATUS — Hide. Secure. Reveal. | Native Security Software</title>
+    <title>CELATUS - Hide. Secure. Reveal. | Native Security Software</title>
     <meta name="description"
         content="CELATUS is an open-source cross-platform steganography software suite for Windows, macOS, Linux, Android, and iOS to conceal encrypted text payloads inside carrier images.">
     <meta name="keywords"
@@ -17,21 +17,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="CELATUS">
-    <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://mr-baraiya.github.io/Steganography-Project/">
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="CELATUS">
     <meta property="og:url" content="https://mr-baraiya.github.io/Steganography-Project/">
-    <meta property="og:title" content="CELATUS — Hide. Secure. Reveal.">
+    <meta property="og:title" content="CELATUS &mdash; Hide. Secure. Reveal.">
     <meta property="og:description"
         content="Conceal secret UTF-8 payloads undetected inside carrier images with LSB channel encoding & passcode key security. Free native software for Windows, Mac, Linux, Android, iOS.">
     <meta property="og:image" content="assets/icon.png">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="CELATUS — Hide. Secure. Reveal.">
+    <meta name="twitter:title" content="CELATUS &mdash; Hide. Secure. Reveal.">
     <meta name="twitter:description"
         content="Conceal secret UTF-8 payloads undetected inside carrier images using LSB channel encoding and passcode protection.">
     <meta name="twitter:image" content="assets/icon.png">
@@ -42,867 +41,10 @@
     <link rel="apple-touch-icon" href="assets/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-light: #E0E2DB;
-            --bg-surface: #FFFFFF;
-            --bg-card: #FFFFFF;
-            --bg-card-subtle: #E0E2DB;
-            --border-subtle: #191716;
-            --border-hover: #E6AF2E;
-            --accent-gradient: linear-gradient(135deg, #191716 0%, #33302E 100%);
-            --accent-indigo: #191716;
-            --accent-indigo-hover: #33302E;
-            --text-title: #191716;
-            --text-body: #191716;
-            --text-muted: #666461;
-            --success: #16A34A;
-            --warning: #E6AF2E;
-            --error: #DC2626;
-            --radius-lg: 0px;
-            --radius-md: 0px;
-            --radius-sm: 0px;
-            --shadow-sm: 0 1px 3px rgba(25, 23, 22, 0.1);
-            --shadow-md: 0 10px 25px -5px rgba(25, 23, 22, 0.1);
-            --shadow-lg: 0 20px 40px -10px rgba(25, 23, 22, 0.15);
-            --shadow-glow: 0 10px 30px -10px rgba(230, 175, 46, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 60%),
-                radial-gradient(circle at 100% 40%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 0% 80%, rgba(14, 165, 233, 0.06) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        h1, h2, h3, h4, .brand-name {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-title);
-        }
-
-        /* Light Grid Pattern Overlay */
-        .grid-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Header Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.88);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 24px;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .brand-icon-box {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: #EEF2FF;
-            border: 1px solid #C7D2FE;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
-        }
-
-        .brand-name {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            background: linear-gradient(135deg, #0F172A 30%, #4338CA 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-body);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-indigo);
-        }
-
-        .nav-cta-btn {
-            background: var(--accent-indigo);
-            color: #fff;
-            padding: 9px 20px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
-            transition: all 0.2s ease;
-        }
-
-        .nav-cta-btn:hover {
-            background: var(--accent-indigo-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 70px 24px 60px;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .version-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            border-radius: 30px;
-            background: rgba(79, 70, 229, 0.08);
-            border: 1px solid rgba(79, 70, 229, 0.2);
-            color: #4338CA;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .version-badge-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #059669;
-            box-shadow: 0 0 8px #059669;
-        }
-
-        .hero-title {
-            font-size: 56px;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
-            margin-bottom: 18px;
-            background: linear-gradient(135deg, #0F172A 20%, #334155 60%, #4338CA 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-tagline-sub {
-            display: block;
-            font-size: 22px;
-            font-weight: 700;
-            color: #4338CA;
-            margin-top: 6px;
-            -webkit-text-fill-color: initial;
-        }
-
-        .hero-description {
-            max-width: 760px;
-            margin: 0 auto 32px;
-            font-size: 17px;
-            color: var(--text-body);
-            line-height: 1.6;
-        }
-
-        /* Hero Buttons Container */
-        .hero-btn-group {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent-gradient);
-            color: #FFFFFF;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: var(--shadow-glow);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.45);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #F1F5F9;
-            color: #0F172A;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 1px solid #CBD5E1;
-            transition: all 0.25s ease;
-        }
-
-        .btn-secondary:hover {
-            background: #E2E8F0;
-            border-color: #94A3B8;
-            transform: translateY(-2px);
-        }
-
-        /* Trust Badges Strip */
-        .trust-strip {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 50px;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* App Preview Mockup Window (Sleek Contrast App Frame) */
-        .mockup-container {
-            max-width: 980px;
-            margin: 0 auto;
-            background: #0F172A;
-            border-radius: 16px;
-            border: 1px solid #1E293B;
-            box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25), 0 0 30px rgba(79, 70, 229, 0.12);
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .mockup-titlebar {
-            background: #080C14;
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .mockup-dots {
-            display: flex;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .dot-red { background: #FF5F56; }
-        .dot-yellow { background: #FFBD2E; }
-        .dot-green { background: #27C93F; }
-
-        .mockup-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: #94A3B8;
-            letter-spacing: 0.5px;
-        }
-
-        .mockup-body {
-            padding: 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .mock-card {
-            background: #151D2A;
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #263346;
-        }
-
-        .mock-card-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #E5E7EB;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .mock-img-placeholder {
-            height: 160px;
-            background: #0D131F;
-            border-radius: 8px;
-            border: 1px dashed #263346;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #94A3B8;
-            font-size: 13px;
-        }
-
-        .mock-input {
-            width: 100%;
-            height: 90px;
-            background: #0D131F;
-            border: 1px solid #1E293B;
-            border-radius: 8px;
-            padding: 10px;
-            color: #F9FAFB;
-            font-size: 12px;
-            resize: none;
-            margin-bottom: 12px;
-        }
-
-        .mock-badge {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34D399;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            border: 1px solid rgba(16, 185, 129, 0.25);
-        }
-
-        .mock-btn {
-            width: 100%;
-            background: #6366F1;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        .mock-console {
-            grid-column: span 2;
-            background: #151D2A;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border: 1px solid #263346;
-            font-family: 'Fira Code', monospace;
-            font-size: 12px;
-            color: #818CF8;
-        }
-
-        /* Features Section */
-        .section-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 90px 24px;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 680px;
-            margin: 0 auto 50px;
-        }
-
-        .section-tag {
-            text-transform: uppercase;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            color: var(--accent-indigo);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 38px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 14px;
-        }
-
-        .section-subtitle {
-            font-size: 16px;
-            color: var(--text-body);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: #6366F1;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon-frame {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .feature-desc {
-            font-size: 14px;
-            color: var(--text-body);
-            line-height: 1.6;
-        }
-
-        /* Download Center Section */
-        .download-center {
-            background: #F1F5F9;
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .download-grid-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .dl-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-decoration: none;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.25s ease;
-            position: relative;
-        }
-
-        .dl-card:hover {
-            border-color: var(--accent-indigo);
-            transform: translateY(-3px);
-            box-shadow: 0 14px 30px -10px rgba(79, 70, 229, 0.2);
-        }
-
-        .dl-card-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .dl-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dl-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: rgba(79, 70, 229, 0.08);
-            color: #4338CA;
-            border: 1px solid rgba(79, 70, 229, 0.2);
-        }
-
-        .dl-name {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--text-title);
-            margin-bottom: 6px;
-        }
-
-        .dl-meta {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .dl-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #F1F5F9;
-            color: #0F172A;
-            padding: 10px 16px;
-            border-radius: var(--radius-md);
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-
-        .dl-card:hover .dl-btn {
-            background: var(--accent-indigo);
-            color: #FFFFFF;
-        }
-
-        .featured-dl-card {
-            grid-column: span 2;
-            background: linear-gradient(135deg, #FFFFFF 0%, #EEF2FF 100%);
-            border: 1px solid #C7D2FE;
-            box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.2);
-        }
-
-        /* Protocol Spec Section */
-        .protocol-box {
-            background: #FFFFFF;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 36px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .protocol-grid-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .proto-item {
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            border-radius: 12px;
-            padding: 18px;
-        }
-
-        .proto-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-title);
-            margin-bottom: 6px;
-        }
-
-        .proto-value {
-            font-family: 'Fira Code', monospace;
-            font-size: 13px;
-            color: #4338CA;
-            font-weight: 600;
-        }
-
-        /* FAQ Section */
-        .faq-accordion {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 20px 24px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .faq-q {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-title);
-            margin-bottom: 8px;
-        }
-
-        .faq-a {
-            font-size: 14px;
-            color: var(--text-body);
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid #1E293B;
-            background: #0F172A;
-            padding: 40px 24px;
-            text-align: center;
-            color: #94A3B8;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 14px;
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            color: #E2E8F0;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: #818CF8;
-        }
-
-        /* Result & Download Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background: #FFFFFF;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            width: 90%;
-            max-width: 520px;
-            padding: 28px;
-            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: #0F172A;
-        }
-
-        .modal-content-area {
-            font-size: 14px;
-            color: var(--text-body);
-            line-height: 1.6;
-            margin-bottom: 24px;
-            white-space: pre-line;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-
-        .modal-btn {
-            background: var(--accent-indigo);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-        }
-
-        /* Mobile Responsive Media Queries */
-        @media (max-width: 850px) {
-            .featured-dl-card {
-                grid-column: span 1;
-            }
-            .mockup-body {
-                grid-template-columns: 1fr;
-            }
-            .hero-title {
-                font-size: 38px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 12px 16px;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-cta-btn {
-                padding: 7px 14px;
-                font-size: 12px;
-            }
-            .hero-section {
-                padding: 40px 16px 40px;
-            }
-            .hero-title {
-                font-size: 34px;
-                letter-spacing: -0.5px;
-            }
-            .hero-tagline-sub {
-                font-size: 17px;
-            }
-            .hero-description {
-                font-size: 15px;
-                margin-bottom: 24px;
-            }
-            .hero-btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-                padding: 13px 20px;
-            }
-            .trust-strip {
-                gap: 12px 18px;
-                font-size: 12px;
-                margin-bottom: 36px;
-            }
-            .mockup-body {
-                grid-template-columns: 1fr;
-                padding: 16px;
-            }
-            .mock-console {
-                grid-column: span 1;
-            }
-            .section-wrapper {
-                padding: 50px 16px;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .feature-card {
-                padding: 20px;
-            }
-            .download-grid-matrix {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .featured-dl-card {
-                grid-column: span 1;
-            }
-            .protocol-box {
-                padding: 20px;
-            }
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 16px;
-            }
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 28px;
-            }
-            .version-badge {
-                font-size: 11px;
-                padding: 5px 12px;
-            }
-            .brand-name {
-                font-size: 18px;
-            }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -913,7 +55,8 @@
         <div class="nav-container">
             <a href="#" class="brand-logo">
                 <div class="brand-icon-box">
-                    <img src="assets/icon.png" alt="CELATUS Icon" style="width: 24px; height: 24px; object-fit: contain;">
+                    <img src="assets/icon.png" alt="CELATUS Icon"
+                        style="width: 24px; height: 24px; object-fit: contain;">
                 </div>
                 <span class="brand-name">CELATUS</span>
             </a>
@@ -929,55 +72,50 @@
 
     <!-- Main Hero Section -->
     <section class="hero-section">
-        <div class="version-badge">
-            <span class="version-badge-dot"></span>
-            <span>CELATUS v1.0.0 — Cross-Platform Security Suite</span>
-        </div>
-
         <h1 class="hero-title">
             Hide. Secure. Reveal.
             <span class="hero-tagline-sub">Enterprise-Grade Image Steganography Software</span>
         </h1>
 
         <p class="hero-description">
-            Conceal encrypted UTF-8 text payloads undetected inside carrier images using Least Significant Bit (LSB) channel encoding. Built natively for <strong>Windows, macOS, Linux, Android, and iOS</strong>.
+            Conceal encrypted UTF-8 text payloads undetected inside carrier images using Least Significant Bit (LSB)
+            channel encoding. Built natively for <strong>Windows and Android</strong>.
         </p>
 
         <!-- CTA Buttons -->
         <div class="hero-btn-group">
-            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="btn-primary" onclick="triggerAppDownload('Windows Setup', event)">
+            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="btn-primary"
+                onclick="triggerAppDownload('Windows Setup', event)">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                    <path
+                        d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
                 </svg>
                 Download Windows Setup (43.8 MB)
             </a>
 
             <a href="#downloads" class="btn-secondary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
                 </svg>
-                All Platform Downloads
+                All Downloads
             </a>
         </div>
 
         <!-- Trust Badges Strip -->
         <div class="trust-strip">
             <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <span>100% Offline Privacy</span>
             </div>
             <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 <span>Zero Pixel Degradation</span>
             </div>
             <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <span>AES-16 Passcode Hash</span>
             </div>
             <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 <span>MIT Open Source</span>
             </div>
         </div>
@@ -990,54 +128,82 @@
                     <span class="dot dot-yellow"></span>
                     <span class="dot dot-green"></span>
                 </div>
-                <div class="mockup-title">CELATUS — Hide. Secure. Reveal.</div>
-                <div style="font-size: 11px; font-weight: 700; color: #16A34A; background: #DCFCE7; padding: 2px 8px; border-radius: 4px;">ENCODE MODE</div>
+                <div class="mockup-title">CELATUS &mdash; Hide. Secure. Reveal.</div>
+                <div id="mockup-mode-badge"
+                    style="font-size: 11px; font-weight: 700; color: #16A34A; background: #DCFCE7; padding: 2px 8px; border-radius: 4px;">
+                    ENCODE MODE</div>
             </div>
-            <div class="mockup-body" style="grid-template-columns: 1fr 1fr; gap: 16px; background: #FFFFFF; padding: 20px; color: #191716; border: 2px solid #191716;">
-                
+            <div class="mockup-body">
+
                 <!-- Left Column: Image Select & Best Fit Preview -->
-                <div style="background: #E0E2DB; border: 1px solid #191716; border-radius: 0px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+                <div class="mockup-col">
+                    <!-- Hidden real file input -->
+                    <input type="file" id="mockup-file-input" accept="image/png,image/webp,image/bmp,image/jpeg"
+                        style="display:none;" />
                     <div style="display: flex; gap: 8px;">
-                        <input type="text" placeholder="Select image file..." value="D:/Pictures/demo.png" readonly style="flex: 1; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; background: #FFFFFF;" />
-                        <button style="background: #191716; color: #E6AF2E; border: none; padding: 8px 14px; border-radius: 0px; font-weight: 700; font-size: 12px; cursor: pointer;">Browse</button>
+                        <input type="text" id="mockup-file-path" placeholder="Select image file..." readonly
+                            style="flex: 1; min-width: 0; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; background: #FFFFFF;" />
+                        <button id="mockup-browse-btn"
+                            style="background: #191716; color: #E6AF2E; border: none; padding: 8px 14px; border-radius: 0px; font-weight: 700; font-size: 12px; cursor: pointer; flex-shrink: 0;">Browse</button>
                     </div>
                     <!-- Best Fit Image Box -->
-                    <div style="background: #FFFFFF; border: 1px solid #191716; border-radius: 0px; flex: 1; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center;">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#191716" stroke-width="1.8" style="margin-bottom: 8px;"><rect x="3" y="3" width="18" height="18" rx="0" ry="0"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                        <span style="font-weight: 700; font-size: 12px; color: #191716;">demo.png (1920x1080)</span>
-                        <span style="font-size: 11px; color: #E6AF2E; font-weight: 700; margin-top: 2px;">Max capacity: 777,600 bytes (Best Fit Aspect Ratio)</span>
+                    <div id="mockup-preview-box"
+                        style="background: #FFFFFF; border: 1px solid #191716; border-radius: 0px; flex: 1; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center; overflow: hidden;">
+                        <svg id="mockup-placeholder-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="#191716" stroke-width="1.8" style="margin-bottom: 8px;">
+                            <rect x="3" y="3" width="18" height="18" rx="0" ry="0" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg>
+                        <img id="mockup-preview-img" src="" alt=""
+                            style="display:none; max-width:100%; max-height:160px; object-fit:contain; border: 1px solid #e0e0e0;" />
+                        <span id="mockup-img-name"
+                            style="font-weight: 700; font-size: 12px; color: #191716; margin-top: 6px;">No image
+                            selected</span>
+                        <span id="mockup-img-capacity"
+                            style="font-size: 11px; color: #E6AF2E; font-weight: 700; margin-top: 2px;"></span>
                     </div>
-                    <div style="font-size: 11px; font-weight: 700; color: #191716; text-align: center;">demo.png (1920x1080) • 777,600 bytes</div>
+                    <div id="mockup-img-meta"
+                        style="font-size: 11px; font-weight: 700; color: #191716; text-align: center;"></div>
                 </div>
 
                 <!-- Right Column: Form Controls, Action Button, Square Checkboxes & Logs -->
-                <div style="background: #E0E2DB; border: 1px solid #191716; border-radius: 0px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
-                    <textarea readonly placeholder="Enter Secret Message..." style="height: 70px; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; font-family: inherit; resize: none; background: #FFFFFF;">This is a secret message.</textarea>
+                <div class="mockup-col">
+                    <!-- Secret message box (hidden in Decode mode) -->
+                    <textarea id="mockup-msg-box" placeholder="Enter Secret Message..."
+                        style="height: 70px; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; font-family: inherit; resize: none; background: #FFFFFF; width: 100%;"></textarea>
 
                     <div style="display: flex; gap: 8px;">
-                        <input type="password" placeholder="Enter Passcode..." value="1234" readonly style="flex: 1; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; background: #FFFFFF;" />
-                        <button style="background: #191716; color: #E6AF2E; border: none; padding: 8px 10px; border-radius: 0px; font-weight: 700; font-size: 12px;">👁</button>
+                        <input id="mockup-passcode" type="password" placeholder="Enter Passcode..."
+                            style="flex: 1; min-width: 0; padding: 8px 10px; border: 1px solid #191716; border-radius: 0px; font-size: 12px; color: #191716; background: #FFFFFF;" />
+                        <button id="mockup-eye-btn"
+                            style="background: #191716; color: #E6AF2E; border: none; padding: 8px 10px; border-radius: 0px; font-weight: 700; font-size: 12px; flex-shrink: 0; cursor: pointer;">&#128065;</button>
                     </div>
 
-                    <!-- Action Button (Sharp Gold Button) -->
+                    <!-- Action Button -->
                     <div style="text-align: center; margin-top: 2px;">
-                        <button style="background: #E6AF2E; color: #191716; border: 1px solid #191716; padding: 10px 24px; border-radius: 0px; font-weight: 800; font-size: 13px; cursor: pointer;">Encode Message</button>
+                        <button id="mockup-action-btn"
+                            style="background: #E6AF2E; color: #191716; border: 1px solid #191716; padding: 10px 24px; border-radius: 0px; font-weight: 800; font-size: 13px; cursor: pointer;">Encode
+                            Message</button>
                     </div>
 
                     <!-- Square Box Mode Selector -->
-                    <div style="display: flex; justify-content: center; gap: 24px; font-weight: 700; font-size: 12px; color: #191716;">
+                    <div
+                        style="display: flex; justify-content: center; gap: 24px; font-weight: 700; font-size: 12px; color: #191716;">
                         <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-                            <input type="checkbox" checked style="accent-color: #191716; width: 14px; height: 14px; border-radius: 0px;" /> Encode
+                            <input type="checkbox" id="mockup-chk-encode" checked
+                                style="accent-color: #191716; width: 14px; height: 14px;" /> Encode
                         </label>
                         <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-                            <input type="checkbox" style="accent-color: #191716; width: 14px; height: 14px; border-radius: 0px;" /> Decode
+                            <input type="checkbox" id="mockup-chk-decode"
+                                style="accent-color: #191716; width: 14px; height: 14px;" /> Decode
                         </label>
                     </div>
 
                     <!-- Log Output -->
-                    <div style="background: #FFFFFF; border: 1px solid #191716; border-radius: 0px; padding: 8px 12px; font-family: 'Consolas', monospace; font-size: 11px; color: #191716; min-height: 60px;">
-                        SUCCESS: Loaded 'demo.png' (1920x1080). Max capacity: 777,600 bytes.<br>
-                        SUCCESS: Message encoded successfully in demo_encoded.png
+                    <div id="mockup-log"
+                        style="background: #FFFFFF; border: 1px solid #191716; border-radius: 0px; padding: 8px 12px; font-family: 'Consolas', monospace; font-size: 11px; color: #191716; min-height: 60px;">
+                        Ready. Select an image and enter your message.
                     </div>
                 </div>
 
@@ -1050,74 +216,44 @@
         <div class="section-header">
             <span class="section-tag">Powerful Security Architecture</span>
             <h2 class="section-title">Engineered for Absolute Confidentiality</h2>
-            <p class="section-subtitle">CELATUS combines Least Significant Bit channel encoding with passcode key validation to ensure covert data transmission without visual footprints.</p>
+            <p class="section-subtitle">CELATUS combines Least Significant Bit channel encoding with passcode key
+                validation to ensure covert data transmission without visual footprints.</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon-frame" style="background: #EEF2FF; border: 1px solid #C7D2FE;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Native Desktop Software</h3>
-                <p class="feature-desc">Dedicated desktop application built for Windows, macOS, and Linux with modern interface, layout scaling, and high-performance pixel operations.</p>
+                <h3 class="feature-title">Native Desktop Application</h3>
+                <p class="feature-desc">Dedicated desktop application built for Windows with a modern interface, layout scaling, and high-performance pixel operations.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon-frame" style="background: #ECFDF5; border: 1px solid #A7F3D0;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                        <line x1="12" y1="18" x2="12.01" y2="18"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Mobile Packages & WebAPK</h3>
-                <p class="feature-desc">Standalone Android APK and iOS packages designed for mobile devices. Supports one-tap WebAPK native home-screen installation with full offline support.</p>
+                <h3 class="feature-title">Android Mobile App</h3>
+                <p class="feature-desc">Standalone Android APK designed for mobile devices with full offline support and one-tap installation.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon-frame" style="background: #FEF3C7; border: 1px solid #FDE68A;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                </div>
                 <h3 class="feature-title">AES-16 Passcode Key Protection</h3>
-                <p class="feature-desc">Passcode key checksum verification prevents unauthorized payload extraction. Incorrect passcode keys reject payload reading before decoding begins.</p>
+                <p class="feature-desc">Passcode key checksum verification prevents unauthorized payload extraction.
+                    Incorrect passcode keys reject payload reading before decoding begins.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon-frame" style="background: #FDF4FF; border: 1px solid #F5D0FE;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                </div>
                 <h3 class="feature-title">10-Byte Header Protocol</h3>
-                <p class="feature-desc">Every payload is injected with a 10-byte binary header containing magic signature <code style="color:#4F46E5; font-weight:700;">0x43454C41</code>, key hash, and 32-bit payload length descriptor.</p>
+                <p class="feature-desc">Every payload is injected with a 10-byte binary header containing magic
+                    signature <code style="color:#4F46E5; font-weight:700;">0x43454C41</code>, key hash, and 32-bit
+                    payload length descriptor.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon-frame" style="background: #F0F9FF; border: 1px solid #BAE6FD;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </div>
                 <h3 class="feature-title">100% Offline & Local Privacy</h3>
-                <p class="feature-desc">All bitwise operations occur locally on your machine. Zero cloud uploads, zero telemetry tracking, and zero external server dependencies.</p>
+                <p class="feature-desc">All bitwise operations occur locally on your machine. Zero cloud uploads, zero
+                    telemetry tracking, and zero external server dependencies.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon-frame" style="background: #FAF5FF; border: 1px solid #E9D5FF;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
-                    </svg>
-                </div>
                 <h3 class="feature-title">Lossless Image Carrier Support</h3>
-                <p class="feature-desc">Supports PNG, WebP, BMP, and carrier images. Retains pristine visual quality with zero imperceptible color shifts in RGB color channels.</p>
+                <p class="feature-desc">Supports PNG, WebP, BMP, and carrier images. Retains pristine visual quality
+                    with zero imperceptible color shifts in RGB color channels.</p>
             </div>
         </div>
     </section>
@@ -1125,129 +261,86 @@
     <!-- Download Center Section -->
     <section class="section-wrapper download-center" id="downloads">
         <div class="section-header">
-            <span class="section-tag">Cross-Platform Downloads</span>
+            <span class="section-tag">Available Downloads</span>
             <h2 class="section-title">Download CELATUS for Your Device</h2>
-            <p class="section-subtitle">Select your operating system to download the native software package or installer.</p>
+            <p class="section-subtitle">Download the native Windows installer or Android APK for your device.</p>
         </div>
 
         <div class="download-grid-matrix">
             <!-- Featured Windows Setup Card -->
-            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="dl-card featured-dl-card" onclick="triggerAppDownload('Windows Setup', event)">
+            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe"
+                class="dl-card featured-dl-card" onclick="triggerAppDownload('Windows Setup', event)">
                 <div>
                     <div class="dl-card-top">
                         <div class="dl-icon" style="background: #EEF2FF; border: 1px solid #C7D2FE;">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#4F46E5">
-                                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                                <path
+                                    d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
                             </svg>
                         </div>
-                        <span class="dl-tag">FEATURED • RECOMMENDED</span>
                     </div>
                     <div class="dl-name">Windows Setup Installer</div>
-                    <div class="dl-meta">CELATUS_Setup_v1.0.exe • 43.82 MB • Windows 10 / 11 (64-bit)</div>
+                    <div class="dl-meta">CELATUS_Setup_v1.0.exe &bull; 43.82 MB &bull; Windows 10 / 11 (64-bit)</div>
                 </div>
-                <div class="dl-btn" style="background: var(--accent-indigo); color: #FFFFFF;">
+                <div class="dl-btn" style="background: #111827; color: #FFFFFF;">
                     <span>Download Windows Setup</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
                 </div>
             </a>
 
             <!-- Windows Standalone Zip Card -->
-            <a href="downloads/celatus_windows_x64.zip" download="celatus_windows_x64.zip" class="dl-card" onclick="triggerAppDownload('Windows Zip', event)">
+            <a href="downloads/celatus_windows_x64.zip" download="celatus_windows_x64.zip" class="dl-card"
+                onclick="triggerAppDownload('Windows Zip', event)">
                 <div>
                     <div class="dl-card-top">
                         <div class="dl-icon" style="background: #EEF2FF;">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="#4F46E5">
-                                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
+                                <path
+                                    d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
                             </svg>
                         </div>
-                        <span class="dl-tag">PORTABLE ZIP</span>
                     </div>
                     <div class="dl-name">Windows Portable Zip</div>
-                    <div class="dl-meta">celatus_windows_x64.zip • 62.50 MB • Standalone Executable</div>
+                    <div class="dl-meta">celatus_windows_x64.zip &bull; 62.50 MB &bull; Standalone Executable</div>
                 </div>
-                <div class="dl-btn">
+                <div class="dl-btn" style="background: #111827; color: #FFFFFF;">
                     <span>Download ZIP</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
                 </div>
             </a>
 
-            <!-- macOS Installer Card -->
-            <a href="downloads/celatus_macOS.dmg" download="celatus_macOS.dmg" class="dl-card" onclick="triggerAppDownload('macOS', event)">
-                <div>
-                    <div class="dl-card-top">
-                        <div class="dl-icon" style="background: #F1F5F9;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0F172A">
-                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.36c.62-.75 1.04-1.8 0.92-2.86-.9.04-2 .6-2.65 1.36-.58.67-1.08 1.74-.94 2.78 1.01.08 2.05-.53 2.67-1.28z" />
-                            </svg>
-                        </div>
-                        <span class="dl-tag">UNIVERSAL</span>
-                    </div>
-                    <div class="dl-name">macOS DMG Package</div>
-                    <div class="dl-meta">celatus_macOS.dmg • 42.0 KB • macOS 11.0+ (Universal)</div>
-                </div>
-                <div class="dl-btn">
-                    <span>Download DMG</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-                </div>
-            </a>
-
-            <!-- Linux AppImage Card -->
-            <a href="downloads/celatus_linux.AppImage" download="celatus_linux.AppImage" class="dl-card" onclick="triggerAppDownload('Linux', event)">
-                <div>
-                    <div class="dl-card-top">
-                        <div class="dl-icon" style="background: #E0F2FE;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0284C7">
-                                <path d="M12.001 2c-2.76 0-5 2.24-5 5 0 1.23.45 2.36 1.19 3.23C6.44 11.27 5 13.44 5 16c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4 0-2.56-1.44-4.73-3.19-5.77.74-.87 1.19-2 1.19-3.23 0-2.76-2.24-5-5-5zm-2 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 2.5a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5z" />
-                            </svg>
-                        </div>
-                        <span class="dl-tag">APPIMAGE</span>
-                    </div>
-                    <div class="dl-name">Linux Executable</div>
-                    <div class="dl-meta">celatus_linux.AppImage • 42.0 KB • Linux x86_64</div>
-                </div>
-                <div class="dl-btn">
-                    <span>Download AppImage</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-                </div>
-            </a>
-
-            <!-- Android Native APK & WebAPK Card -->
-            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="dl-card" onclick="triggerAppDownload('Android APK', event)">
+            <!-- Android APK Card -->
+            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="dl-card"
+                onclick="triggerAppDownload('Android APK', event)">
                 <div>
                     <div class="dl-card-top">
                         <div class="dl-icon" style="background: #ECFDF5;">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="#059669">
-                                <path d="M6 18c0 .55.45 1 1 1h1v3c0 .55.45 1 1 1s1-.45 1-1v-3h4v3c0 .55.45 1 1 1s1-.45 1-1v-3h1c.55 0 1-.45 1-1v-8H6v8zM3.5 9c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zm17 0c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71a.498.498 0 0 0-.7 0l-1.47 1.47C13.68 1.24 12.87 1 12 1s-1.68.24-2.66.62L7.87.15c-.2-.2-.51-.2-.7 0-.2.2-.2.51 0 .71l1.3 1.3C6.67 3.23 5 5.43 5 8h14c0-2.57-1.67-4.77-3.47-5.84zM9 5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+                                <path
+                                    d="M6 18c0 .55.45 1 1 1h1v3c0 .55.45 1 1 1s1-.45 1-1v-3h4v3c0 .55.45 1 1 1s1-.45 1-1v-3h1c.55 0 1-.45 1-1v-8H6v8zM3.5 9c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zm17 0c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1s1-.45 1-1v-6c0-.55-.45-1-1-1zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71a.498.498 0 0 0-.7 0l-1.47 1.47C13.68 1.24 12.87 1 12 1s-1.68.24-2.66.62L7.87.15c-.2-.2-.51-.2-.7 0-.2.2-.2.51 0 .71l1.3 1.3C6.67 3.23 5 5.43 5 8h14c0-2.57-1.67-4.77-3.47-5.84zM9 5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
                             </svg>
                         </div>
-                        <span class="dl-tag" style="background: #ECFDF5; color: #059669; border-color: #A7F3D0;">ANDROID APK</span>
                     </div>
                     <div class="dl-name">Android Mobile App</div>
-                    <div class="dl-meta">celatus_mobile.apk • 86.7 KB • Signed APK Package with Logo</div>
+                    <div class="dl-meta">celatus_mobile.apk &bull; 86.7 KB &bull; Signed APK Package</div>
                 </div>
-                <div class="dl-btn" style="background: #ECFDF5; color: #059669;">
-                    <span>Download APK File</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-                </div>
-            </a>
-
-            <!-- iOS Mobile Package Card -->
-            <a href="downloads/celatus_mobile_package.zip" download="celatus_mobile_package.zip" class="dl-card" onclick="triggerAppDownload('iOS', event)">
-                <div>
-                    <div class="dl-card-top">
-                        <div class="dl-icon" style="background: #FFF7ED;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#EA580C">
-                                <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
-                            </svg>
-                        </div>
-                        <span class="dl-tag" style="background: #FFF7ED; color: #EA580C; border-color: #FFEDD5;">iOS PACKAGE</span>
-                    </div>
-                    <div class="dl-name">iOS Mobile Package</div>
-                    <div class="dl-meta">celatus_mobile_package.zip • 11.8 KB • iOS Mobile Bundle</div>
-                </div>
-                <div class="dl-btn">
-                    <span>Download iOS Package</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                <div class="dl-btn" style="background: #111827; color: #FFFFFF;">
+                    <span>Download APK</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
                 </div>
             </a>
         </div>
@@ -1258,24 +351,27 @@
         <div class="section-header">
             <span class="section-tag">Under The Hood</span>
             <h2 class="section-title">Header Binary Protocol Specification</h2>
-            <p class="section-subtitle">CELATUS injects a 10-byte binary validation header prior to bitwise LSB injection to enforce checksum key verification.</p>
+            <p class="section-subtitle">CELATUS injects a 10-byte binary validation header prior to bitwise LSB
+                injection to enforce checksum key verification.</p>
         </div>
 
         <div class="protocol-box">
-            <div style="font-size: 15px; font-weight: 700; color: var(--text-title); margin-bottom: 8px;">10-Byte Header Byte Layout:</div>
-            <p style="font-size: 13px; color: var(--text-body);">The payload bitstream is preceded by 80 bits (10 bytes) of structured metadata:</p>
+            <div style="font-size: 15px; font-weight: 700; color: var(--text-title); margin-bottom: 8px;">10-Byte Header
+                Byte Layout:</div>
+            <p style="font-size: 13px; color: var(--text-body);">The payload bitstream is preceded by 80 bits (10 bytes)
+                of structured metadata:</p>
 
             <div class="protocol-grid-row">
                 <div class="proto-item">
-                    <div class="proto-title">Bytes 0–3: Signature</div>
+                    <div class="proto-title">Bytes 0??3: Signature</div>
                     <div class="proto-value">0x43 0x45 0x4C 0x41 ('CELA')</div>
                 </div>
                 <div class="proto-item">
-                    <div class="proto-title">Bytes 4–5: Key Checksum</div>
+                    <div class="proto-title">Bytes 4&ndash;5: Key Checksum</div>
                     <div class="proto-value">16-bit Passcode Hash</div>
                 </div>
                 <div class="proto-item">
-                    <div class="proto-title">Bytes 6–9: Payload Size</div>
+                    <div class="proto-title">Bytes 6&ndash;9: Payload Size</div>
                     <div class="proto-value">32-bit Integer Length</div>
                 </div>
                 <div class="proto-item">
@@ -1296,17 +392,21 @@
         <div class="faq-accordion">
             <div class="faq-item">
                 <div class="faq-q">How does CELATUS conceal secret text inside images?</div>
-                <div class="faq-a">CELATUS uses Least Significant Bit (LSB) channel steganography. It replaces the least significant bit of RGB pixel values in your carrier image with payload bits. Because pixel values change by at most 1 unit, the human eye cannot perceive any difference.</div>
+                <div class="faq-a">CELATUS uses Least Significant Bit (LSB) channel steganography. It replaces the least
+                    significant bit of RGB pixel values in your carrier image with payload bits. Because pixel values
+                    change by at most 1 unit, the human eye cannot perceive any difference.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-q">Is my data safe or uploaded to any server?</div>
-                <div class="faq-a">CELATUS operates 100% offline. All pixel manipulation and passcode hashing occur locally on your machine or phone. No network calls or cloud telemetry exist.</div>
+                <div class="faq-a">CELATUS operates 100% offline. All pixel manipulation and passcode hashing occur
+                    locally on your machine or phone. No network calls or cloud telemetry exist.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-q">What happens if someone enters an incorrect passcode key?</div>
-                <div class="faq-a">CELATUS evaluates the 16-bit passcode key checksum in the binary header. If an incorrect passcode is supplied, CELATUS denies access and aborts payload extraction.</div>
+                <div class="faq-a">CELATUS evaluates the 16-bit passcode key checksum in the binary header. If an
+                    incorrect passcode is supplied, CELATUS denies access and aborts payload extraction.</div>
             </div>
         </div>
     </section>
@@ -1315,13 +415,14 @@
     <footer>
         <div class="footer-container">
             <div>
-                © 2026 <strong>CELATUS</strong> • Open-Source MIT License
+                &copy; 2026 <strong>CELATUS</strong> &bull; Open-Source MIT License
             </div>
             <div class="footer-links">
-                <a href="downloads/CELATUS_Project_Presentation.pptx" download="CELATUS_Project_Presentation.pptx">Presentation PPT</a>
-                <span>•</span>
-                <a href="https://github.com/mr-baraiya/Steganography-Project" target="_blank" rel="noopener">GitHub Repository</a>
-                <span>•</span>
+                <a href="downloads/CELATUS_Project_Presentation.pptx"
+                    download="CELATUS_Project_Presentation.pptx">PPT</a>
+                <span>&bull;</span>
+                <a href="https://github.com/mr-baraiya/Steganography-Project" target="_blank" rel="noopener">GitHub</a>
+                <span>&bull;</span>
                 <a href="mailto:baraiyavishalbhai32@gmail.com">Contact Support</a>
             </div>
         </div>
@@ -1333,7 +434,8 @@
             <h3 class="modal-title" id="modal-title">Notification</h3>
             <div class="modal-content-area" id="modal-content">Payload processed cleanly.</div>
             <div class="modal-actions">
-                <button class="modal-btn" id="modal-copy-btn" style="display: none;" onclick="copyModalContent()">Copy Text</button>
+                <button class="modal-btn" id="modal-copy-btn" style="display: none;" onclick="copyModalContent()">Copy
+                    Text</button>
                 <button class="modal-btn" onclick="closeModal()">Dismiss</button>
             </div>
         </div>
@@ -1341,17 +443,257 @@
 
     <!-- JavaScript Software Portal Handler -->
     <script>
-        let deferredInstallPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            deferredInstallPrompt = e;
+        // ----------????????????????????????????????????????????????????????????
+        // CELATUS -- Browser Steganography Prototype
+        // Protocol identical to Python lsb.py:
+        //   payload = UTF-8(password + "|" + message + "###")
+        //   bits written into LSB of R, G, B channels sequentially (row-major)
+        //   output: lossless PNG download
+        // ----------????????????????????????????????????????????????????????????
+        (function () {
+            // -- Element refs ??????????????????????????????????????????????????????????????????????????????????????????????????
+            const browseBtn = document.getElementById('mockup-browse-btn');
+            const fileInput = document.getElementById('mockup-file-input');
+            const filePath = document.getElementById('mockup-file-path');
+            const previewImg = document.getElementById('mockup-preview-img');
+            const placeholderIcon = document.getElementById('mockup-placeholder-icon');
+            const imgName = document.getElementById('mockup-img-name');
+            const imgCapacity = document.getElementById('mockup-img-capacity');
+            const imgMeta = document.getElementById('mockup-img-meta');
+            const chkEncode = document.getElementById('mockup-chk-encode');
+            const chkDecode = document.getElementById('mockup-chk-decode');
+            const msgBox = document.getElementById('mockup-msg-box');
+            const passcode = document.getElementById('mockup-passcode');
+            const eyeBtn = document.getElementById('mockup-eye-btn');
+            const actionBtn = document.getElementById('mockup-action-btn');
+            const log = document.getElementById('mockup-log');
+
+            let currentMode = 'encode';
+            let loadedImageFile = null;
+
+            // -- Log helpers ????????????????????????????????????????????????????????????????????????????????????????????????????
+            function logInfo(msg) { log.style.color = '#555'; log.innerHTML = msg; }
+            function logOk(msg) { log.style.color = '#16A34A'; log.innerHTML = msg; }
+            function logErr(msg) { log.style.color = '#DC2626'; log.textContent = msg; }
+
+            // -- Load image -> canvas ImageData ????????????????????????????????????????????????????????????????
+            function fileToImageData(file) {
+                return new Promise((resolve, reject) => {
+                    const url = URL.createObjectURL(file);
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.naturalWidth;
+                        canvas.height = img.naturalHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        try {
+                            const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            URL.revokeObjectURL(url);
+                            resolve({ canvas, ctx, data, w: canvas.width, h: canvas.height });
+                        } catch (e) {
+                            reject('Cannot read pixels -- open via http:// (use Live Server) instead of file://');
+                        }
+                    };
+                    img.onerror = () => reject('Failed to load image file.');
+                    img.src = url;
+                });
+            }
+
+            // -- Browse button ????????????????????????????????????????????????????????????????????????????????????????????????
+            if (browseBtn && fileInput) {
+                browseBtn.addEventListener('click', () => fileInput.click());
+                fileInput.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (!file) return;
+                    loadedImageFile = file;
+                    filePath.value = file.name;
+                    const url = URL.createObjectURL(file);
+                    const img = new Image();
+                    img.onload = () => {
+                        const w = img.naturalWidth, h = img.naturalHeight;
+                        const capacity = Math.floor((w * h * 3) / 8);
+                        previewImg.src = url;
+                        previewImg.style.display = 'block';
+                        placeholderIcon.style.display = 'none';
+                        imgName.textContent = `${file.name} (${w}×${h})`;
+                        imgCapacity.textContent = `Max capacity: ${capacity.toLocaleString()} bytes`;
+                        imgMeta.textContent = `${file.name} (${w}\u00d7${h}) \u2022 ${capacity.toLocaleString()} bytes`;
+                        logInfo('Image loaded. Enter your message and passcode, then click Encode Message.');
+                    };
+                    img.src = url;
+                });
+            }
+
+            // -- Encode --------------------------------------------------------------------------------------------------------------
+            async function doEncode() {
+                if (!loadedImageFile) { logErr('ERROR: No image selected.'); return; }
+                const pass = passcode.value.trim();
+                const msg = msgBox.value.trim();
+                if (!pass) { logErr('ERROR: Passcode is required.'); return; }
+                if (!msg) { logErr('ERROR: Secret message cannot be empty.'); return; }
+
+                logInfo('Encoding? please wait.');
+                actionBtn.disabled = true;
+                try {
+                    const { canvas, ctx, data, w, h } = await fileToImageData(loadedImageFile);
+                    const payloadStr = pass + '|' + msg + '###';
+                    const payloadBytes = new TextEncoder().encode(payloadStr);
+                    const maxCapacity = Math.floor((w * h * 3) / 8);
+
+                    if (payloadBytes.length > maxCapacity) {
+                        logErr(`ERROR: Payload (${payloadBytes.length.toLocaleString()} bytes) exceeds image capacity (${maxCapacity.toLocaleString()} bytes).`);
+                        actionBtn.disabled = false;
+                        return;
+                    }
+
+                    // Build bit stream
+                    const bits = [];
+                    for (const byte of payloadBytes)
+                        for (let b = 7; b >= 0; b--) bits.push((byte >> b) & 1);
+
+                    // Write into LSB of R, G, B (skip Alpha at offset 3)
+                    const pixels = data.data;
+                    let bitIdx = 0;
+                    outer:
+                    for (let i = 0; i < pixels.length; i += 4) {
+                        for (let c = 0; c < 3; c++) {
+                            if (bitIdx >= bits.length) break outer;
+                            pixels[i + c] = (pixels[i + c] & 0xFE) | bits[bitIdx++];
+                        }
+                    }
+                    ctx.putImageData(data, 0, 0);
+
+                    // Download as lossless PNG
+                    canvas.toBlob(blob => {
+                        const a = document.createElement('a');
+                        const base = loadedImageFile.name.replace(/\.[^.]+$/, '');
+                        a.download = base + '_encoded.png';
+                        a.href = URL.createObjectURL(blob);
+                        a.click();
+                        URL.revokeObjectURL(a.href);
+                        logOk(`SUCCESS: Encoded <strong>${payloadBytes.length.toLocaleString()} bytes</strong> into image.<br>Downloading <strong>${base}_encoded.png</strong> &mdash; use this file to decode later.`);
+                        actionBtn.disabled = false;
+                    }, 'image/png');
+                } catch (e) {
+                    logErr('ERROR: ' + e);
+                    actionBtn.disabled = false;
+                }
+            }
+
+            // -- Decode --------------------------------------------------------------------------------------------------------------
+            async function doDecode() {
+                if (!loadedImageFile) { logErr('ERROR: No image selected.'); return; }
+                const pass = passcode.value.trim();
+                if (!pass) { logErr('ERROR: Passcode is required.'); return; }
+
+                logInfo('Decoding? please wait.');
+                actionBtn.disabled = true;
+                try {
+                    const { data } = await fileToImageData(loadedImageFile);
+                    const pixels = data.data;
+                    let bits = '';
+                    const bytes = [];
+                    let found = false;
+
+                    for (let i = 0; i < pixels.length && !found; i += 4) {
+                        for (let c = 0; c < 3 && !found; c++) {
+                            bits += (pixels[i + c] & 1);
+                            if (bits.length === 8) {
+                                bytes.push(parseInt(bits, 2));
+                                bits = '';
+                                const n = bytes.length;
+                                if (n >= 3 && bytes[n - 3] === 0x23 && bytes[n - 2] === 0x23 && bytes[n - 1] === 0x23)
+                                    found = true;
+                            }
+                        }
+                    }
+
+                    if (!found) { logErr('ERROR: No steganography payload found in this image.'); actionBtn.disabled = false; return; }
+
+                    const text = new TextDecoder('utf-8', { fatal: false }).decode(new Uint8Array(bytes.slice(0, -3)));
+                    if (!text.includes('|')) { logErr('ERROR: No valid CELATUS payload found.'); actionBtn.disabled = false; return; }
+
+                    const sep = text.indexOf('|');
+                    const storedPass = text.substring(0, sep);
+                    const message = text.substring(sep + 1);
+
+                    if (storedPass.trim() !== pass) { logErr('ERROR: Incorrect Passcode Key! Access denied.'); actionBtn.disabled = false; return; }
+
+                    logOk(`SUCCESS: Message decoded successfully.<br><div style="margin-top:8px;padding:8px;background:#F0FDF4;border:1px solid #86EFAC;border-radius:4px;color:#191716;font-family:inherit;white-space:pre-wrap;word-break:break-word;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`);
+                    actionBtn.disabled = false;
+                } catch (e) {
+                    logErr('ERROR: ' + e);
+                    actionBtn.disabled = false;
+                }
+            }
+
+            // -- Mode toggle ----------------------------------------------------------------------------------------------------
+            const modeBadge = document.getElementById('mockup-mode-badge');
+
+            function setEncodeMode() {
+                currentMode = 'encode';
+                chkEncode.checked = true; chkDecode.checked = false;
+                msgBox.style.display = ''; msgBox.value = '';
+                passcode.value = '';
+                actionBtn.textContent = 'Encode Message';
+                if (modeBadge) {
+                    modeBadge.textContent = 'ENCODE MODE';
+                    modeBadge.style.color = '#16A34A';
+                    modeBadge.style.background = '#DCFCE7';
+                }
+                logInfo('Encode mode. Select an image, type your secret message and passcode, then click Encode Message.');
+            }
+            function setDecodeMode() {
+                currentMode = 'decode';
+                chkEncode.checked = false; chkDecode.checked = true;
+                msgBox.style.display = 'none';
+                passcode.value = '';
+                actionBtn.textContent = 'Decode Message';
+                if (modeBadge) {
+                    modeBadge.textContent = 'DECODE MODE';
+                    modeBadge.style.color = '#1D4ED8';
+                    modeBadge.style.background = '#DBEAFE';
+                }
+                logInfo('Decode mode. Select an encoded PNG image, enter the passcode, then click Decode Message.');
+            }
+
+            if (chkEncode) chkEncode.addEventListener('change', setEncodeMode);
+            if (chkDecode) chkDecode.addEventListener('change', setDecodeMode);
+
+            // -- Eye button ------------------------------------------------------------------------------------------------------
+            if (eyeBtn && passcode) {
+                eyeBtn.addEventListener('click', () => {
+                    passcode.type = passcode.type === 'password' ? 'text' : 'password';
+                    eyeBtn.style.opacity = passcode.type === 'text' ? '0.5' : '1';
+                });
+            }
+
+            // -- Action button ------------------------------------------------------------------------------------------------
+            if (actionBtn) {
+                actionBtn.addEventListener('click', () => {
+                    if (currentMode === 'encode') doEncode(); else doDecode();
+                });
+            }
+        })();
+
+        // -- FAQ Accordion ----------------------------------------------------------------------------------------------------------
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
         });
 
-        function triggerAppDownload(platform, event) {
-            console.log('[CELATUS Portal] Direct download initiated for platform:', platform);
-        }
+        let deferredInstallPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => { deferredInstallPrompt = e; });
 
+        function triggerAppDownload(platform, event) {
+            console.log('[CELATUS Portal] Download initiated for:', platform);
+        }
         function handleAndroidInstall(event) {
-            console.log('[CELATUS Portal] Android APK direct download requested.');
+            console.log('[CELATUS Portal] Android APK download requested.');
         }
 
         let currentModalText = '';
@@ -1361,18 +703,15 @@
             const contentElem = document.getElementById('modal-content');
             const copyBtn = document.getElementById('modal-copy-btn');
             const modal = document.getElementById('result-modal');
-            
             if (titleElem) titleElem.innerText = title;
             if (contentElem) contentElem.innerText = text;
             if (copyBtn) copyBtn.style.display = isCopyable ? 'inline-block' : 'none';
             if (modal) modal.classList.add('active');
         }
-
         function closeModal() {
             const modal = document.getElementById('result-modal');
             if (modal) modal.classList.remove('active');
         }
-
         function copyModalContent() {
             if (currentModalText) {
                 navigator.clipboard.writeText(currentModalText);
@@ -1384,12 +723,19 @@
             }
         }
 
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('[Service Worker] Registered:', reg.scope))
-                    .catch(err => console.log('[Service Worker] Static load'));
-            });
+        // Register Service Worker & PWA Manifest only on http/https (prevents file:// CORS errors)
+        if (location.protocol === 'http:' || location.protocol === 'https:') {
+            const manifestLink = document.createElement('link');
+            manifestLink.rel = 'manifest';
+            manifestLink.href = 'manifest.json';
+            document.head.appendChild(manifestLink);
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./sw.js')
+                        .then(reg => console.log('[Service Worker] Registered:', reg.scope))
+                        .catch(err => console.log('[Service Worker] Registration failed:', err));
+                });
+            }
         }
     </script>
 </body>

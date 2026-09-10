@@ -58,8 +58,8 @@ class CTkCustomDialog(ctk.CTkToplevel):
             self,
             fg_color="#FFFFFF",
             corner_radius=0,
-            border_width=2,
-            border_color="#191716"
+            border_width=1,
+            border_color="#808080"
         )
         self.card.pack(expand=True, fill="both", padx=14, pady=14)
 
@@ -80,7 +80,7 @@ class CTkCustomDialog(ctk.CTkToplevel):
                 fg_color="#E0E2DB",
                 text_color="#191716",
                 border_width=1,
-                border_color="#191716",
+                border_color="#808080",
                 corner_radius=0,
                 height=150
             )
