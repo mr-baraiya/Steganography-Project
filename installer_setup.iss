@@ -1,6 +1,6 @@
-; Inno Setup Script for CELATUS Steganography Application Installer
+; Inno Setup Script for CELATUS Application Installer
 
-#define MyAppName "CELATUS Steganography"
+#define MyAppName "CELATUS"
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "CELATUS Security"
 #define MyAppExeName "CELATUS.exe"

@@ -211,9 +211,49 @@ class SteganographyApp(ctk.CTk):
         )
         self.fullscreen_btn.pack(side="left")
 
-        # Main Workspace Card
+        # BOTTOM PANEL: Clean Minimal Console Output (Packed at bottom first to reserve fixed space)
+        self.console_card = ctk.CTkFrame(self.main_container, fg_color="#151D2A", corner_radius=14, border_width=1, border_color="#263346")
+        self.console_card.pack(side="bottom", fill="x")
+
+        self.console_header = ctk.CTkFrame(self.console_card, fg_color="transparent")
+        self.console_header.pack(fill="x", padx=24, pady=(12, 6))
+
+        self.console_title = ctk.CTkLabel(
+            self.console_header, 
+            text="Activity Log", 
+            font=ctk.CTkFont(family="Segoe UI", size=14, weight="bold"),
+            text_color="#E5E7EB"
+        )
+        self.console_title.pack(side="left")
+
+        self.clear_log_btn = ctk.CTkButton(
+            self.console_header,
+            text="Clear",
+            width=60,
+            height=24,
+            fg_color="#1E293B",
+            hover_color="#334155",
+            font=ctk.CTkFont(family="Segoe UI", size=11),
+            command=self.clear_log,
+            corner_radius=6
+        )
+        self.clear_log_btn.pack(side="right")
+
+        self.log_textbox = ctk.CTkTextbox(
+            self.console_card,
+            font=ctk.CTkFont(family="Consolas", size=12),
+            fg_color="#0D131F",
+            text_color="#818CF8",
+            border_width=1,
+            border_color="#1E293B",
+            corner_radius=8,
+            height=130
+        )
+        self.log_textbox.pack(fill="x", padx=24, pady=(0, 14))
+
+        # Main Workspace Card (Center panel filling available space)
         self.content_grid = ctk.CTkFrame(self.main_container, fg_color="transparent")
-        self.content_grid.pack(expand=True, fill="both", pady=(0, 20))
+        self.content_grid.pack(side="top", expand=True, fill="both", pady=(0, 16))
         self.content_grid.columnconfigure(0, weight=1, uniform="col")
         self.content_grid.columnconfigure(1, weight=1, uniform="col")
         self.content_grid.rowconfigure(0, weight=1)
@@ -230,9 +270,10 @@ class SteganographyApp(ctk.CTk):
         )
         self.left_card_title.pack(anchor="w", padx=24, pady=(20, 12))
 
-        # Image Preview Zone
+        # Image Preview Zone (Fixed propagation so preview fits without pushing Activity Log down)
         self.preview_box = ctk.CTkFrame(self.left_card, fg_color="#0D131F", corner_radius=10, border_width=1, border_color="#1E293B")
         self.preview_box.pack(expand=True, fill="both", padx=24, pady=(0, 12))
+        self.preview_box.pack_propagate(False)
 
         self.preview_label = ctk.CTkLabel(
             self.preview_box, 
@@ -366,46 +407,6 @@ class SteganographyApp(ctk.CTk):
         )
 
         self.repack_right_panel()
-
-        # BOTTOM PANEL: Clean Minimal Console Output
-        self.console_card = ctk.CTkFrame(self.main_container, fg_color="#151D2A", corner_radius=14, border_width=1, border_color="#263346")
-        self.console_card.pack(fill="x")
-
-        self.console_header = ctk.CTkFrame(self.console_card, fg_color="transparent")
-        self.console_header.pack(fill="x", padx=24, pady=(12, 6))
-
-        self.console_title = ctk.CTkLabel(
-            self.console_header, 
-            text="Activity Log", 
-            font=ctk.CTkFont(family="Segoe UI", size=14, weight="bold"),
-            text_color="#E5E7EB"
-        )
-        self.console_title.pack(side="left")
-
-        self.clear_log_btn = ctk.CTkButton(
-            self.console_header,
-            text="Clear",
-            width=60,
-            height=24,
-            fg_color="#1E293B",
-            hover_color="#334155",
-            font=ctk.CTkFont(family="Segoe UI", size=11),
-            command=self.clear_log,
-            corner_radius=6
-        )
-        self.clear_log_btn.pack(side="right")
-
-        self.log_textbox = ctk.CTkTextbox(
-            self.console_card,
-            font=ctk.CTkFont(family="Consolas", size=12),
-            fg_color="#0D131F",
-            text_color="#818CF8",
-            border_width=1,
-            border_color="#1E293B",
-            corner_radius=8,
-            height=90
-        )
-        self.log_textbox.pack(fill="x", padx=24, pady=(0, 14))
 
         self.log("Ready. Select an image file to begin.")
 
