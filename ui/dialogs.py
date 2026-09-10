@@ -18,7 +18,7 @@ class CTkCustomDialog(ctk.CTkToplevel):
 
         self.geometry(f"{popup_w}x{popup_h}")
         self.resizable(False, False)
-        self.configure(fg_color="#0B0F17")
+        self.configure(fg_color="#F8FAFC")
         self.transient(parent)
         self.grab_set()
 
@@ -37,24 +37,24 @@ class CTkCustomDialog(ctk.CTkToplevel):
 
         # Select type styles
         if dialog_type == "error":
-            badge_color = "#EF4444"
+            badge_color = "#DC2626"
             icon = "❌"
-            accent_hover = "#DC2626"
+            accent_hover = "#B91C1C"
         elif dialog_type == "success":
-            badge_color = "#10B981"
+            badge_color = "#059669"
             icon = "✨"
-            accent_hover = "#059669"
+            accent_hover = "#047857"
         elif dialog_type == "payload":
-            badge_color = "#8B5CF6"
+            badge_color = "#7C3AED"
             icon = "🔓"
-            accent_hover = "#7C3AED"
+            accent_hover = "#6D28D9"
         else:
-            badge_color = "#6366F1"
+            badge_color = "#4F46E5"
             icon = "ℹ️"
-            accent_hover = "#4F46E5"
+            accent_hover = "#4338CA"
 
         # Card Container
-        self.card = ctk.CTkFrame(self, fg_color="#151D2A", corner_radius=16, border_width=1, border_color="#263346")
+        self.card = ctk.CTkFrame(self, fg_color="#FFFFFF", corner_radius=16, border_width=1, border_color="#E2E8F0")
         self.card.pack(expand=True, fill="both", padx=16, pady=16)
 
         # Header Badge
@@ -71,10 +71,10 @@ class CTkCustomDialog(ctk.CTkToplevel):
             self.msg_widget = ctk.CTkTextbox(
                 self.card,
                 font=ctk.CTkFont(family="Segoe UI", size=13),
-                fg_color="#0D131F",
-                text_color="#F3F4F6",
+                fg_color="#F8FAFC",
+                text_color="#0F172A",
                 border_width=1,
-                border_color="#1E293B",
+                border_color="#CBD5E1",
                 corner_radius=8,
                 height=150
             )
@@ -86,7 +86,7 @@ class CTkCustomDialog(ctk.CTkToplevel):
                 self.card,
                 text=message,
                 font=ctk.CTkFont(family="Segoe UI", size=13),
-                text_color="#D1D5DB",
+                text_color="#334155",
                 justify="left",
                 wraplength=320
             )
@@ -101,9 +101,9 @@ class CTkCustomDialog(ctk.CTkToplevel):
                 self.btn_frame,
                 text="📋 Copy Message",
                 font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold"),
-                fg_color="#1E293B",
-                hover_color="#334155",
-                text_color="#F3F4F6",
+                fg_color="#F1F5F9",
+                hover_color="#E2E8F0",
+                text_color="#0F172A",
                 height=36,
                 corner_radius=8,
                 command=lambda: self.copy_to_clipboard(message)
@@ -115,9 +115,9 @@ class CTkCustomDialog(ctk.CTkToplevel):
                 self.btn_frame,
                 text=action_text,
                 font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold"),
-                fg_color="#1E293B",
-                hover_color="#334155",
-                text_color="#F3F4F6",
+                fg_color="#F1F5F9",
+                hover_color="#E2E8F0",
+                text_color="#0F172A",
                 height=36,
                 corner_radius=8,
                 command=action_cmd
@@ -130,6 +130,7 @@ class CTkCustomDialog(ctk.CTkToplevel):
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
             fg_color=badge_color,
             hover_color=accent_hover,
+            text_color="#FFFFFF",
             height=36,
             width=90,
             corner_radius=8,
@@ -140,5 +141,5 @@ class CTkCustomDialog(ctk.CTkToplevel):
     def copy_to_clipboard(self, text):
         self.clipboard_clear()
         self.clipboard_append(text)
-        self.copy_btn.configure(text="✅ Copied!", fg_color="#10B981")
-        self.after(1500, lambda: self.copy_btn.configure(text="📋 Copy Message", fg_color="#1E293B"))
+        self.copy_btn.configure(text="✅ Copied!", fg_color="#059669", text_color="#FFFFFF")
+        self.after(1500, lambda: self.copy_btn.configure(text="📋 Copy Message", fg_color="#F1F5F9", text_color="#0F172A"))

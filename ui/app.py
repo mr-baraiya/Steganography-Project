@@ -8,7 +8,7 @@ from PIL import Image
 from steganography import encode_lsb, decode_lsb, calculate_max_capacity, validate_inputs
 from ui.dialogs import CTkCustomDialog
 
-ctk.set_appearance_mode("Dark")
+ctk.set_appearance_mode("Light")
 ctk.set_default_color_theme("blue")
 
 def get_resource_path(relative_path):
@@ -36,7 +36,7 @@ class SteganographyApp(ctk.CTk):
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
         self.geometry(f"{screen_w}x{screen_h}+0+0")
-        self.configure(fg_color="#0B0F17")  # Minimalist Deep Charcoal Background
+        self.configure(fg_color="#F8FAFC")  # Premium Light Slate Canvas Background
 
         # Start in maximized mode on startup
         self.after(50, self.force_fullscreen)
@@ -163,7 +163,7 @@ class SteganographyApp(ctk.CTk):
             self.title_box, 
             text="CELATUS", 
             font=ctk.CTkFont(family="Segoe UI", size=26, weight="bold"),
-            text_color="#F3F4F6"
+            text_color="#0F172A"
         )
         self.title_label.pack(anchor="w")
 
@@ -171,7 +171,7 @@ class SteganographyApp(ctk.CTk):
             self.title_box, 
             text="Hide. Secure. Reveal.", 
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            text_color="#818CF8"
+            text_color="#4F46E5"
         )
         self.subtitle_label.pack(anchor="w", pady=(2, 0))
 
@@ -187,10 +187,11 @@ class SteganographyApp(ctk.CTk):
             command=self.on_mode_change,
             variable=self.mode_var,
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            selected_color="#6366F1",
-            selected_hover_color="#4F46E5",
-            unselected_color="#151D2A",
-            unselected_hover_color="#1F2937",
+            selected_color="#4F46E5",
+            selected_hover_color="#4338CA",
+            unselected_color="#E2E8F0",
+            unselected_hover_color="#CBD5E1",
+            text_color="#0F172A",
             height=36,
             width=180
         )
@@ -202,9 +203,9 @@ class SteganographyApp(ctk.CTk):
             text="⛶",
             width=36,
             height=36,
-            fg_color="#151D2A",
-            hover_color="#1F2937",
-            text_color="#E5E7EB",
+            fg_color="#E2E8F0",
+            hover_color="#CBD5E1",
+            text_color="#0F172A",
             font=ctk.CTkFont(family="Segoe UI", size=16, weight="bold"),
             command=self.toggle_fullscreen,
             corner_radius=8
@@ -212,7 +213,7 @@ class SteganographyApp(ctk.CTk):
         self.fullscreen_btn.pack(side="left")
 
         # BOTTOM PANEL: Clean Minimal Console Output (Packed at bottom first to reserve fixed space)
-        self.console_card = ctk.CTkFrame(self.main_container, fg_color="#151D2A", corner_radius=14, border_width=1, border_color="#263346")
+        self.console_card = ctk.CTkFrame(self.main_container, fg_color="#FFFFFF", corner_radius=14, border_width=1, border_color="#E2E8F0")
         self.console_card.pack(side="bottom", fill="x")
 
         self.console_header = ctk.CTkFrame(self.console_card, fg_color="transparent")
@@ -222,7 +223,7 @@ class SteganographyApp(ctk.CTk):
             self.console_header, 
             text="Activity Log", 
             font=ctk.CTkFont(family="Segoe UI", size=14, weight="bold"),
-            text_color="#E5E7EB"
+            text_color="#0F172A"
         )
         self.console_title.pack(side="left")
 
@@ -231,9 +232,10 @@ class SteganographyApp(ctk.CTk):
             text="Clear",
             width=60,
             height=24,
-            fg_color="#1E293B",
-            hover_color="#334155",
-            font=ctk.CTkFont(family="Segoe UI", size=11),
+            fg_color="#F1F5F9",
+            hover_color="#E2E8F0",
+            text_color="#475569",
+            font=ctk.CTkFont(family="Segoe UI", size=11, weight="bold"),
             command=self.clear_log,
             corner_radius=6
         )
@@ -242,10 +244,10 @@ class SteganographyApp(ctk.CTk):
         self.log_textbox = ctk.CTkTextbox(
             self.console_card,
             font=ctk.CTkFont(family="Consolas", size=12),
-            fg_color="#0D131F",
-            text_color="#818CF8",
+            fg_color="#F8FAFC",
+            text_color="#4338CA",
             border_width=1,
-            border_color="#1E293B",
+            border_color="#CBD5E1",
             corner_radius=8,
             height=130
         )
@@ -259,19 +261,19 @@ class SteganographyApp(ctk.CTk):
         self.content_grid.rowconfigure(0, weight=1)
 
         # LEFT PANEL: Minimalist Image Select Box
-        self.left_card = ctk.CTkFrame(self.content_grid, fg_color="#151D2A", corner_radius=14, border_width=1, border_color="#263346")
+        self.left_card = ctk.CTkFrame(self.content_grid, fg_color="#FFFFFF", corner_radius=14, border_width=1, border_color="#E2E8F0")
         self.left_card.grid(row=0, column=0, sticky="nsew", padx=(0, 12))
 
         self.left_card_title = ctk.CTkLabel(
             self.left_card, 
             text="Source Image", 
             font=ctk.CTkFont(family="Segoe UI", size=16, weight="bold"),
-            text_color="#E5E7EB"
+            text_color="#0F172A"
         )
         self.left_card_title.pack(anchor="w", padx=24, pady=(20, 12))
 
         # Image Preview Zone (Fixed propagation so preview fits without pushing Activity Log down)
-        self.preview_box = ctk.CTkFrame(self.left_card, fg_color="#0D131F", corner_radius=10, border_width=1, border_color="#1E293B")
+        self.preview_box = ctk.CTkFrame(self.left_card, fg_color="#F1F5F9", corner_radius=10, border_width=1, border_color="#E2E8F0")
         self.preview_box.pack(expand=True, fill="both", padx=24, pady=(0, 12))
         self.preview_box.pack_propagate(False)
 
@@ -288,7 +290,7 @@ class SteganographyApp(ctk.CTk):
             self.left_card, 
             text="No file loaded", 
             font=ctk.CTkFont(family="Segoe UI", size=12),
-            text_color="#9CA3AF"
+            text_color="#475569"
         )
         self.info_label.pack(anchor="w", padx=24, pady=(0, 12))
 
@@ -298,23 +300,23 @@ class SteganographyApp(ctk.CTk):
             text="Choose Image...",
             command=self.browse_image,
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            fg_color="#1E293B",
-            hover_color="#334155",
-            text_color="#F3F4F6",
+            fg_color="#F1F5F9",
+            hover_color="#E2E8F0",
+            text_color="#0F172A",
             height=40,
             corner_radius=8
         )
         self.browse_btn.pack(fill="x", padx=24, pady=(0, 20))
 
         # RIGHT PANEL: Payload & Password Security
-        self.right_card = ctk.CTkFrame(self.content_grid, fg_color="#151D2A", corner_radius=14, border_width=1, border_color="#263346")
+        self.right_card = ctk.CTkFrame(self.content_grid, fg_color="#FFFFFF", corner_radius=14, border_width=1, border_color="#E2E8F0")
         self.right_card.grid(row=0, column=1, sticky="nsew", padx=(12, 0))
 
         self.right_card_title = ctk.CTkLabel(
             self.right_card, 
             text="Payload & Key", 
             font=ctk.CTkFont(family="Segoe UI", size=16, weight="bold"),
-            text_color="#E5E7EB"
+            text_color="#0F172A"
         )
         self.right_card_title.pack(anchor="w", padx=24, pady=(20, 12))
 
@@ -325,7 +327,7 @@ class SteganographyApp(ctk.CTk):
             self.msg_header_frame, 
             text="Secret Message", 
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            text_color="#D1D5DB"
+            text_color="#1E293B"
         )
         self.message_label.pack(side="left")
 
@@ -333,17 +335,17 @@ class SteganographyApp(ctk.CTk):
             self.msg_header_frame, 
             text="0 chars", 
             font=ctk.CTkFont(family="Segoe UI", size=11),
-            text_color="#6B7280"
+            text_color="#64748B"
         )
         self.char_count_label.pack(side="right")
 
         self.message_input = ctk.CTkTextbox(
             self.right_card,
             font=ctk.CTkFont(family="Segoe UI", size=13),
-            fg_color="#0D131F",
-            text_color="#F9FAFB",
+            fg_color="#F8FAFC",
+            text_color="#0F172A",
             border_width=1,
-            border_color="#1E293B",
+            border_color="#CBD5E1",
             corner_radius=8,
             height=120
         )
@@ -354,7 +356,7 @@ class SteganographyApp(ctk.CTk):
             self.right_card, 
             text="Passcode Key (min 4 chars)", 
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
-            text_color="#D1D5DB"
+            text_color="#1E293B"
         )
 
         self.pass_frame = ctk.CTkFrame(self.right_card, fg_color="transparent")
@@ -364,10 +366,11 @@ class SteganographyApp(ctk.CTk):
             placeholder_text="Enter passcode key...",
             font=ctk.CTkFont(family="Segoe UI", size=13),
             show="*",
-            fg_color="#0D131F",
-            text_color="#F9FAFB",
+            fg_color="#F8FAFC",
+            text_color="#0F172A",
+            placeholder_text_color="#94A3B8",
             border_width=1,
-            border_color="#1E293B",
+            border_color="#CBD5E1",
             corner_radius=8,
             height=40
         )
@@ -379,8 +382,9 @@ class SteganographyApp(ctk.CTk):
             text="👁",
             width=40,
             height=40,
-            fg_color="#1E293B",
-            hover_color="#334155",
+            fg_color="#F1F5F9",
+            hover_color="#E2E8F0",
+            text_color="#0F172A",
             corner_radius=8,
             command=self.toggle_password_visibility
         )
@@ -391,7 +395,7 @@ class SteganographyApp(ctk.CTk):
             self.right_card,
             text="⚠️ Select an image file to begin",
             font=ctk.CTkFont(family="Segoe UI", size=12, weight="bold"),
-            text_color="#F59E0B"
+            text_color="#D97706"
         )
 
         # Action Button
@@ -400,8 +404,9 @@ class SteganographyApp(ctk.CTk):
             text="Encode Payload",
             command=self.on_action_click,
             font=ctk.CTkFont(family="Segoe UI", size=14, weight="bold"),
-            fg_color="#6366F1",
-            hover_color="#4F46E5",
+            fg_color="#4F46E5",
+            hover_color="#4338CA",
+            text_color="#FFFFFF",
             height=44,
             corner_radius=8
         )
@@ -436,15 +441,15 @@ class SteganographyApp(ctk.CTk):
         if value == "Encode":
             self.action_btn.configure(
                 text="Encode Payload",
-                fg_color="#6366F1",
-                hover_color="#4F46E5"
+                fg_color="#4F46E5",
+                hover_color="#4338CA"
             )
             self.log("Mode set to ENCODE.")
         else:
             self.action_btn.configure(
                 text="Decode Payload",
-                fg_color="#8B5CF6",
-                hover_color="#7C3AED"
+                fg_color="#7C3AED",
+                hover_color="#6D28D9"
             )
             self.log("Mode set to DECODE.")
         self.repack_right_panel()
@@ -454,10 +459,10 @@ class SteganographyApp(ctk.CTk):
         self.show_password = not self.show_password
         if self.show_password:
             self.passcode_input.configure(show="")
-            self.toggle_pass_btn.configure(fg_color="#6366F1", hover_color="#4F46E5")
+            self.toggle_pass_btn.configure(fg_color="#4F46E5", hover_color="#4338CA", text_color="#FFFFFF")
         else:
             self.passcode_input.configure(show="*")
-            self.toggle_pass_btn.configure(fg_color="#1E293B", hover_color="#334155")
+            self.toggle_pass_btn.configure(fg_color="#F1F5F9", hover_color="#E2E8F0", text_color="#0F172A")
 
     def on_input_change(self, event=None):
         self.update_char_count()
