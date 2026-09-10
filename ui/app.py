@@ -1,4 +1,5 @@
 import os
+import sys
 import datetime
 import customtkinter as ctk
 from tkinter import filedialog
@@ -10,12 +11,27 @@ from ui.dialogs import CTkCustomDialog
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
+def get_resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    return os.path.join(base_dir, relative_path)
+
 class SteganographyApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
         self.title("CELATUS - Hide. Secure. Reveal.")
         
+        # Set Window Icon
+        try:
+            ico_path = get_resource_path(os.path.join("assets", "icon.ico"))
+            if os.path.exists(ico_path):
+                self.iconbitmap(ico_path)
+        except Exception:
+            pass
+
         # Set full screen resolution
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
