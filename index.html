@@ -719,22 +719,22 @@
         <p class="section-subtitle">Download native installers for your operating system.</p>
 
         <div class="download-group">
-            <div class="btn-download" onclick="triggerAppDownload('Windows')">
-                <div class="btn-title">Windows x64</div>
-                <div class="btn-subtext">celatus_setup.exe (64.8 MB)</div>
-            </div>
-            <div class="btn-download" onclick="triggerAppDownload('macOS')">
+            <a href="downloads/CELATUS_Setup_v1.0.exe" download="CELATUS_Setup_v1.0.exe" class="btn-download" onclick="triggerAppDownload('Windows', event)">
+                <div class="btn-title">Windows Setup Installer (x64)</div>
+                <div class="btn-subtext">CELATUS_Setup_v1.0.exe (45.9 MB)</div>
+            </a>
+            <a href="downloads/celatus_macOS.dmg" download="celatus_macOS.dmg" class="btn-download" onclick="triggerAppDownload('macOS', event)">
                 <div class="btn-title">macOS Universal</div>
                 <div class="btn-subtext">celatus_macOS.dmg</div>
-            </div>
-            <div class="btn-download" onclick="triggerAppDownload('Linux')">
+            </a>
+            <a href="downloads/celatus_linux.AppImage" download="celatus_linux.AppImage" class="btn-download" onclick="triggerAppDownload('Linux', event)">
                 <div class="btn-title">Linux x86_64</div>
                 <div class="btn-subtext">celatus_linux.AppImage</div>
-            </div>
-            <div class="btn-download" onclick="triggerAppDownload('Mobile')">
+            </a>
+            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="btn-download" onclick="triggerAppDownload('Mobile', event)">
                 <div class="btn-title">Mobile Package</div>
                 <div class="btn-subtext">celatus_mobile.apk</div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -1101,23 +1101,18 @@
             setTimeout(() => copyBtn.innerText = 'Copy Payload', 1500);
         }
 
-        function triggerAppDownload(platform) {
+        function triggerAppDownload(platform, event) {
             const fileMap = {
-                'Windows': 'downloads/celatus_setup.exe',
+                'Windows': 'downloads/CELATUS_Setup_v1.0.exe',
                 'macOS': 'downloads/celatus_macOS.dmg',
                 'Linux': 'downloads/celatus_linux.AppImage',
                 'Mobile': 'downloads/celatus_mobile.apk'
             };
             const filePath = fileMap[platform];
             if (filePath) {
-                const link = document.createElement('a');
-                link.href = filePath;
-                link.download = filePath.split('/').pop();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                const fileName = filePath.split('/').pop();
+                showModal(`Downloading CELATUS for ${platform}`, `Native ${platform} installer (${fileName}) download starting...`);
             }
-            showModal(`Downloading CELATUS for ${platform}`, `Native ${platform} installer (${filePath.split('/').pop()}) download started.`);
         }
     </script>
 </body>
