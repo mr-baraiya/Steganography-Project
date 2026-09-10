@@ -35,6 +35,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   
+  const url = new URL(event.request.url);
+  // Do not intercept or cache binary download files (e.g. .apk, .exe, .zip, .dmg, .AppImage, .pptx)
+  if (url.pathname.includes('/downloads/') || url.pathname.endsWith('.apk') || url.pathname.endsWith('.zip') || url.pathname.endsWith('.exe') || url.pathname.endsWith('.dmg') || url.pathname.endsWith('.AppImage') || url.pathname.endsWith('.pptx')) {
+    return;
+  }
+  
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {

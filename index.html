@@ -1191,7 +1191,7 @@
             </a>
 
             <!-- Android Native APK & WebAPK Card -->
-            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="dl-card" onclick="handleAndroidInstall(event)">
+            <a href="downloads/celatus_mobile.apk" download="celatus_mobile.apk" class="dl-card" onclick="triggerAppDownload('Android APK', event)">
                 <div>
                     <div class="dl-card-top">
                         <div class="dl-icon" style="background: #ECFDF5;">
@@ -1202,10 +1202,10 @@
                         <span class="dl-tag" style="background: #ECFDF5; color: #059669; border-color: #A7F3D0;">ANDROID APK</span>
                     </div>
                     <div class="dl-name">Android Mobile App</div>
-                    <div class="dl-meta">celatus_mobile.apk • 57.2 KB • One-Tap WebAPK & Package</div>
+                    <div class="dl-meta">celatus_mobile.apk • 57.2 KB • Direct APK Download</div>
                 </div>
                 <div class="dl-btn" style="background: #ECFDF5; color: #059669;">
-                    <span>Download APK / Install</span>
+                    <span>Download APK File</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
             </a>
@@ -1322,30 +1322,15 @@
     <script>
         let deferredInstallPrompt = null;
         window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
             deferredInstallPrompt = e;
         });
 
-        function handleAndroidInstall(event) {
-            if (deferredInstallPrompt) {
-                event.preventDefault();
-                deferredInstallPrompt.prompt();
-                deferredInstallPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('[CELATUS Mobile] WebAPK installed on Android device');
-                    }
-                    deferredInstallPrompt = null;
-                });
-            } else {
-                showModal(
-                    'Android Installation Helper',
-                    'To install CELATUS on your Android phone:\n\n1. Open browser menu (⋮ top right)\n2. Tap "Install App" or "Add to Home Screen"\n   -> Android will natively install CELATUS onto your home screen!\n\n3. If downloading raw APK: Enable "Install Unknown Apps" in Android Settings > Security.'
-                );
-            }
+        function triggerAppDownload(platform, event) {
+            console.log('[CELATUS Portal] Direct download initiated for platform:', platform);
         }
 
-        function triggerAppDownload(platform, event) {
-            console.log('[CELATUS Portal] Initiating download for platform:', platform);
+        function handleAndroidInstall(event) {
+            console.log('[CELATUS Portal] Android APK direct download requested.');
         }
 
         let currentModalText = '';
